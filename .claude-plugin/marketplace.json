@@ -1,0 +1,41 @@
+{
+  "$schema": "https://raw.githubusercontent.com/anthropics/claude-code/main/.claude-plugin/marketplace.schema.json",
+  "name": "shuji-bonji",
+  "owner": {
+    "name": "shuji-bonji",
+    "email": "bonji@mikuro.jp",
+    "url": "https://github.com/shuji-bonji"
+  },
+  "metadata": {
+    "description": "shuji-bonji's Claude Plugins — Skill, MCP server, slash command などをまとめた個人 marketplace。日本の法令調査 (houki family)、Web 仕様 (W3C/RFC)、品質ツール、ドメイン特化 MCP 等を category 別に提供。",
+    "version": "0.1.0"
+  },
+  "plugins": [
+    {
+      "name": "houki-research",
+      "source": {
+        "source": "github",
+        "repo": "shuji-bonji/houki-research-skill"
+      },
+      "version": "0.1.0",
+      "description": "日本の全法規 (法律・政令・通達・判例・裁決・行政解釈) を houki-hub MCP family で横断調査するための Claude Skill。業法独占規定の注意喚起・citation 標準化・横断オーケストレーションを担う。",
+      "category": "houki",
+      "keywords": [
+        "japan",
+        "law",
+        "tax",
+        "skill",
+        "houki",
+        "egov",
+        "nta",
+        "research"
+      ],
+      "homepage": "https://github.com/shuji-bonji/houki-research-skill",
+      "license": "MIT",
+      "author": {
+        "name": "shuji-bonji",
+        "url": "https://github.com/shuji-bonji"
+      }
+    }
+  ]
+}

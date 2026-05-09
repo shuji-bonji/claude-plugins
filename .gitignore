@@ -1,0 +1,18 @@
+# macOS
+.DS_Store
+**/.DS_Store
+
+# Editors
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Local notes / drafts
+/drafts/
+/scratch/
+NOTES.local.md
+
+# Logs
+*.log
