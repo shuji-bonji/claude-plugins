@@ -13,71 +13,69 @@ graph TB
   user["利用者"] -->|"/plugin marketplace add<br/>shuji-bonji/claude-plugins"| mp[("shuji-bonji/claude-plugins<br/>(このリポジトリ)")]
 
   mp --> houki[houki category]
+  mp --> pdf[pdf category]
   mp --> webspec[web-spec category]
   mp --> quality[quality-tools category]
   mp --> domain[domain-specific category]
-  mp --> meta[dev-meta category]
 
-  houki -->|github source| hr["houki-research-skill<br/>✅ v0.1.0"]
-  houki -.計画.-> hegov["houki-egov-mcp"]
-  houki -.計画.-> hnta["houki-nta-mcp"]
-  houki -.計画.-> hpdf["pdf-reader-mcp"]
+  houki --> hr["houki-research<br/>✅ v0.1.0"]
+  houki --> hegov["houki-egov-mcp<br/>✅ v0.3.1"]
+  houki --> hnta["houki-nta-mcp<br/>✅ v0.9.5"]
 
-  webspec -.計画.-> rfcxml["rfcxml-mcp"]
-  webspec -.計画.-> w3c["w3c-mcp"]
-  webspec -.計画.-> webcompat["web-compat-mcp"]
+  pdf --> ptrust["pdf-trust<br/>✅ v0.1.0"]
+  pdf --> pverify["pdf-verify-mcp<br/>✅ v0.5.2"]
+  pdf --> hpdf["pdf-reader-mcp<br/>✅ v0.6.3"]
+  pdf --> pspec["pdf-spec-mcp<br/>✅ v0.3.2"]
 
-  quality -.計画.-> xcomet["xcomet-mcp"]
-  quality -.計画.-> deepl["deepl-glossary-translation"]
+  webspec --> rfcxml["rfcxml-mcp<br/>✅ v0.5.4"]
+  webspec --> w3c["w3c-mcp<br/>✅ v0.1.12"]
+  webspec --> webcompat["web-compat-mcp<br/>✅ v0.1.5"]
 
-  domain -.計画.-> epsg["epsg-mcp"]
-  domain -.計画.-> ifc["ifc-core-mcp"]
-  domain -.計画.-> esh["e-shiwake-mcp"]
+  quality --> xcomet["xcomet-mcp<br/>✅ v0.6.2"]
+  quality --> deepl["deepl-glossary-translation<br/>✅ v0.1.0"]
+  quality --> fact["factcheck<br/>✅ v0.1.0"]
+  quality --> media["media-literacy-check<br/>✅ v0.1.0"]
+  quality --> speccomp["spec-compliance-skills<br/>✅ v0.1.0"]
 
-  meta -.計画.-> patterns["shuji-mcp-patterns"]
-  meta -.計画.-> mermaid["mcp-mermaid"]
+  domain --> epsg["epsg-mcp<br/>✅ v0.9.10"]
+  domain --> ifc["ifc-core-mcp<br/>✅ v0.2.2"]
 
   classDef live fill:#d4edda,stroke:#28a745
-  classDef plan fill:#fff3cd,stroke:#ffc107
-  class hr live
-  class hegov,hnta,hpdf,rfcxml,w3c,webcompat,xcomet,deepl,epsg,ifc,esh,patterns,mermaid plan
+  class hr,hegov,hnta,ptrust,pverify,hpdf,pspec,rfcxml,w3c,webcompat,xcomet,deepl,fact,media,speccomp,epsg,ifc live
 ```
 
 ## 収録済み plugin
 
-| plugin | category | version | repo |
-|---|---|---|---|
-| [houki-research](https://github.com/shuji-bonji/houki-research-skill) | houki | v0.1.0 | `shuji-bonji/houki-research-skill` |
+| plugin | 種別 | category | version | repo |
+|---|---|---|---|---|
+| [houki-research](https://github.com/shuji-bonji/houki-research-skill) | Skill | houki | v0.1.0 | `shuji-bonji/houki-research-skill` |
+| [houki-egov-mcp](https://github.com/shuji-bonji/houki-egov-mcp) | MCP | houki | v0.3.1 | `shuji-bonji/houki-egov-mcp` |
+| [houki-nta-mcp](https://github.com/shuji-bonji/houki-nta-mcp) | MCP | houki | v0.9.5 | `shuji-bonji/houki-nta-mcp` |
+| [pdf-trust](https://github.com/shuji-bonji/pdf-trust-skill) | Skill | pdf | v0.1.0 | `shuji-bonji/pdf-trust-skill` |
+| [pdf-verify-mcp](https://github.com/shuji-bonji/pdf-verify-mcp) | MCP | pdf | v0.5.2 | `shuji-bonji/pdf-verify-mcp` |
+| [pdf-reader-mcp](https://github.com/shuji-bonji/pdf-reader-mcp) | MCP | pdf | v0.6.3 | `shuji-bonji/pdf-reader-mcp` |
+| [pdf-spec-mcp](https://github.com/shuji-bonji/pdf-spec-mcp) | MCP | pdf | v0.3.2 | `shuji-bonji/pdf-spec-mcp` |
+| [rfcxml-mcp](https://github.com/shuji-bonji/rfcxml-mcp) | MCP | web-spec | v0.5.4 | `shuji-bonji/rfcxml-mcp` |
+| [w3c-mcp](https://github.com/shuji-bonji/w3c-mcp) | MCP | web-spec | v0.1.12 | `shuji-bonji/w3c-mcp` |
+| [web-compat-mcp](https://github.com/shuji-bonji/web-compat-mcp) | MCP | web-spec | v0.1.5 | `shuji-bonji/web-compat-mcp` |
+| [xcomet-mcp](https://github.com/shuji-bonji/xcomet-mcp-server) | MCP | quality-tools | v0.6.2 | `shuji-bonji/xcomet-mcp-server` |
+| [deepl-glossary-translation](https://github.com/shuji-bonji/deepl-glossary-translation) | Skill | quality-tools | v0.1.0 | `shuji-bonji/deepl-glossary-translation` |
+| [factcheck](https://github.com/shuji-bonji/factcheck-skill) | Skill | quality-tools | v0.1.0 | `shuji-bonji/factcheck-skill` |
+| [media-literacy-check](https://github.com/shuji-bonji/media-literacycheck-skill) | Skill | quality-tools | v0.1.0 | `shuji-bonji/media-literacycheck-skill` |
+| [spec-compliance-skills](https://github.com/shuji-bonji/spec-compliance-skills) | Skill | quality-tools | v0.1.0 | `shuji-bonji/spec-compliance-skills` |
+| [epsg-mcp](https://github.com/shuji-bonji/epsg-mcp) | MCP | domain-specific | v0.9.10 | `shuji-bonji/epsg-mcp` |
+| [ifc-core-mcp](https://github.com/shuji-bonji/ifc-core-mcp) | MCP | domain-specific | v0.2.2 | `shuji-bonji/ifc-core-mcp` |
 
-## 収録予定 plugin (計画中)
+> `pdf-trust` は `pdf-verify-mcp` を必須の前提 MCP とします。両方 install してください。
 
-| category | plugin 候補 | 元リポジトリ |
-|---|---|---|
-| `houki` | houki-egov-mcp | [shuji-bonji/houki-egov-mcp](https://github.com/shuji-bonji/houki-egov-mcp) |
-| `houki` | houki-nta-mcp | [shuji-bonji/houki-nta-mcp](https://github.com/shuji-bonji/houki-nta-mcp) |
-| `houki` | pdf-reader-mcp | [shuji-bonji/pdf-reader-mcp](https://github.com/shuji-bonji/pdf-reader-mcp) |
-| `web-spec` | rfcxml-mcp | [shuji-bonji/rfcxml-mcp](https://github.com/shuji-bonji/rfcxml-mcp) |
-| `web-spec` | w3c-mcp | [shuji-bonji/w3c-mcp](https://github.com/shuji-bonji/w3c-mcp) |
-| `web-spec` | web-compat-mcp | [shuji-bonji/web-compat-mcp](https://github.com/shuji-bonji/web-compat-mcp) |
-| `quality-tools` | xcomet-mcp | [shuji-bonji/xcomet-mcp](https://github.com/shuji-bonji/xcomet-mcp) |
-| `quality-tools` | deepl-glossary-translation | [shuji-bonji/deepl-glossary-translation](https://github.com/shuji-bonji/deepl-glossary-translation) |
-| `quality-tools` | code-review-skill | [shuji-bonji/code-review-skill](https://github.com/shuji-bonji/code-review-skill) |
-| `quality-tools` | factcheck-skill | [shuji-bonji/factcheck-skill](https://github.com/shuji-bonji/factcheck-skill) |
-| `quality-tools` | media-literacycheck-skill | [shuji-bonji/media-literacycheck-skill](https://github.com/shuji-bonji/media-literacycheck-skill) |
-| `quality-tools` | spec-compliance-skills | [shuji-bonji/spec-compliance-skills](https://github.com/shuji-bonji/spec-compliance-skills) |
-| `domain-specific` | epsg-mcp | [shuji-bonji/epsg-mcp](https://github.com/shuji-bonji/epsg-mcp) |
-| `domain-specific` | ifc-core-mcp | [shuji-bonji/ifc-core-mcp](https://github.com/shuji-bonji/ifc-core-mcp) |
-| `domain-specific` | e-shiwake-mcp | [shuji-bonji/e-shiwake-mcp](https://github.com/shuji-bonji/e-shiwake-mcp) |
-| `domain-specific` | labor-law-mcp | [shuji-bonji/labor-law-mcp](https://github.com/shuji-bonji/labor-law-mcp) |
-| `domain-specific` | tax-law-mcp | [shuji-bonji/tax-law-mcp](https://github.com/shuji-bonji/tax-law-mcp) |
-| `dev-meta` | shuji-mcp-patterns | [shuji-bonji/shuji-mcp-patterns](https://github.com/shuji-bonji/shuji-mcp-patterns) |
-| `dev-meta` | mcp-mermaid | [shuji-bonji/mcp-mermaid](https://github.com/shuji-bonji/mcp-mermaid) |
+### 利用上の注意
 
-各 plugin は元リポジトリで `.claude-plugin/plugin.json` を整備した上で、本 marketplace に順次追加していきます。
+- **pdf-spec-mcp**: ISO 32000 仕様 PDF は利用者が用意し、環境変数 `PDF_SPEC_DIR` で配置先を指定してください。
+- **xcomet-mcp**: xCOMET 推論用のローカル Python 環境が必要です（環境変数 `XCOMET_PYTHON_PATH`）。詳細は [repo の README](https://github.com/shuji-bonji/xcomet-mcp-server) を参照。
 
 ## インストール
 
-### Claude Code
+### Claude Code (個人ユーザー)
 
 ```bash
 # 1. marketplace を登録 (初回のみ)
@@ -85,29 +83,40 @@ graph TB
 
 # 2. plugin を install
 /plugin install houki-research@shuji-bonji
+
+# 例: PDF 信頼性監査 (pdf-trust は pdf-verify-mcp が必須)
+/plugin install pdf-verify-mcp@shuji-bonji
+/plugin install pdf-trust@shuji-bonji
 ```
 
-### Cowork
+### Cowork (個人ユーザー)
 
-Cowork mode の Settings から marketplace URL を追加：
+個人 Cowork は marketplace URL の追加 UI を持たないため、各 plugin の `.plugin` ファイルを直接アップロードしてください。
 
-```
-https://github.com/shuji-bonji/claude-plugins
-```
+1. 各 plugin リポジトリの Releases から `.plugin` ファイルをダウンロード
+   例: [houki-research-skill releases](https://github.com/shuji-bonji/houki-research-skill/releases)
+2. Claude Desktop → Cowork タブ → サイドバーの **Plugins** → **「Upload plugin」** から選択
+3. 有効化
 
-その後、Customize → Plugins から `houki-research` を install。
+### Cowork Enterprise (組織管理者向け)
 
-> Cowork 用の `.plugin` (zip) ファイルは各 plugin の元リポジトリの GitHub Release からも取得できます。例: [houki-research-skill releases](https://github.com/shuji-bonji/houki-research-skill/releases)
+組織内で配布する場合は、本 marketplace URL を Organization Settings に登録できます。
+
+1. Organization Settings → Plugins → **「Add plugin」** → Source: **GitHub**
+2. URL: `https://github.com/shuji-bonji/claude-plugins`
+3. per-user provisioning / auto-install をチームに設定
+
+詳細: [Manage Claude Cowork plugins for your organization](https://support.claude.com/en/articles/13837433-manage-claude-cowork-plugins-for-your-organization)
 
 ## category の方針
 
 | category | 用途 | 例 |
 |---|---|---|
 | `houki` | 日本の法令・通達・判例調査 | houki-research, houki-egov-mcp 等 |
+| `pdf` | PDF の読取・真正性検証・信頼性監査 | pdf-trust, pdf-verify-mcp 等 |
 | `web-spec` | Web 標準・RFC の参照 | rfcxml-mcp, w3c-mcp 等 |
-| `quality-tools` | コードレビュー・翻訳評価・ファクトチェック | xcomet-mcp, code-review-skill 等 |
-| `domain-specific` | 特定ドメイン (測地・BIM・会計・労務) | epsg-mcp, ifc-core-mcp 等 |
-| `dev-meta` | MCP / Skill 開発支援 | shuji-mcp-patterns 等 |
+| `quality-tools` | 翻訳評価・ファクトチェック・仕様準拠 | xcomet-mcp, factcheck 等 |
+| `domain-specific` | 特定ドメイン (測地・BIM) | epsg-mcp, ifc-core-mcp 等 |
 
 ## ディレクトリ構成
 

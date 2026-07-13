@@ -7,8 +7,8 @@
     "url": "https://github.com/shuji-bonji"
   },
   "metadata": {
-    "description": "shuji-bonji's Claude Plugins — Skill, MCP server, slash command などをまとめた個人 marketplace。日本の法令調査 (houki family)、Web 仕様 (W3C/RFC)、品質ツール、ドメイン特化 MCP 等を category 別に提供。",
-    "version": "0.1.0"
+    "description": "shuji-bonji's Claude Plugins — Skill, MCP server, slash command などをまとめた個人 marketplace。日本の法令調査 (houki family)、PDF 真正性検証 (pdf family)、Web 仕様 (W3C/RFC)、品質ツール、ドメイン特化 MCP 等を category 別に提供。",
+    "version": "0.2.0"
   },
   "plugins": [
     {
@@ -31,6 +31,404 @@
         "research"
       ],
       "homepage": "https://github.com/shuji-bonji/houki-research-skill",
+      "license": "MIT",
+      "author": {
+        "name": "shuji-bonji",
+        "url": "https://github.com/shuji-bonji"
+      }
+    },
+    {
+      "name": "houki-egov-mcp",
+      "source": {
+        "source": "github",
+        "repo": "shuji-bonji/houki-egov-mcp"
+      },
+      "version": "0.3.1",
+      "description": "日本の法令 (e-Gov 法令API v2) MCP server。法令検索・条文取得・略称解決・改正沿革の取得を提供。houki-hub family の一員。",
+      "category": "houki",
+      "keywords": [
+        "japan",
+        "law",
+        "egov",
+        "houki",
+        "mcp",
+        "mcp-server",
+        "legal"
+      ],
+      "homepage": "https://github.com/shuji-bonji/houki-egov-mcp",
+      "license": "MIT",
+      "author": {
+        "name": "shuji-bonji",
+        "url": "https://github.com/shuji-bonji"
+      }
+    },
+    {
+      "name": "houki-nta-mcp",
+      "source": {
+        "source": "github",
+        "repo": "shuji-bonji/houki-nta-mcp"
+      },
+      "version": "0.9.5",
+      "description": "国税庁 (NTA) の通達・質疑応答事例・タックスアンサー・文書回答事例・事務運営指針を取得する MCP server。houki-hub family の一員。",
+      "category": "houki",
+      "keywords": [
+        "japan",
+        "tax",
+        "nta",
+        "tsutatsu",
+        "houki",
+        "mcp",
+        "mcp-server"
+      ],
+      "homepage": "https://github.com/shuji-bonji/houki-nta-mcp",
+      "license": "MIT",
+      "author": {
+        "name": "shuji-bonji",
+        "url": "https://github.com/shuji-bonji"
+      }
+    },
+    {
+      "name": "pdf-trust",
+      "source": {
+        "source": "github",
+        "repo": "shuji-bonji/pdf-trust-skill"
+      },
+      "version": "0.1.0",
+      "description": "PDF の信頼性監査オーケストレーション Skill。契約書・請求書・診療文書・行政文書などの PDF の真正性 (署名・改ざん・PAdES/PDF-A) を pdf-verify-mcp を軸に PDF family MCP を編成して判定し、ドメイン別プロファイルに基づく推奨判定付き Trust Report を返す。pdf-verify-mcp plugin が必須。",
+      "category": "pdf",
+      "keywords": [
+        "pdf",
+        "skill",
+        "trust",
+        "audit",
+        "digital-signature",
+        "tamper-detection",
+        "pades",
+        "denchoho"
+      ],
+      "homepage": "https://github.com/shuji-bonji/pdf-trust-skill",
+      "license": "MIT",
+      "author": {
+        "name": "shuji-bonji",
+        "url": "https://github.com/shuji-bonji"
+      }
+    },
+    {
+      "name": "pdf-verify-mcp",
+      "source": {
+        "source": "github",
+        "repo": "shuji-bonji/pdf-verify-mcp"
+      },
+      "version": "0.5.2",
+      "description": "PDF 真正性検証 MCP server。電子署名の暗号学的検証 (CMS/PKCS#7)・改ざん検知・PAdES レベル判定・PDF/A 適合性検証を提供。npm @shuji-bonji/pdf-verify-mcp を npx で起動する。pdf-trust Skill の必須基盤。",
+      "category": "pdf",
+      "keywords": [
+        "pdf",
+        "mcp",
+        "mcp-server",
+        "pdf-verification",
+        "digital-signature",
+        "signature-verification",
+        "tamper-detection",
+        "pades"
+      ],
+      "homepage": "https://github.com/shuji-bonji/pdf-verify-mcp",
+      "license": "MIT",
+      "author": {
+        "name": "shuji-bonji",
+        "url": "https://github.com/shuji-bonji"
+      }
+    },
+    {
+      "name": "pdf-reader-mcp",
+      "source": {
+        "source": "github",
+        "repo": "shuji-bonji/pdf-reader-mcp"
+      },
+      "version": "0.6.3",
+      "description": "PDF 構造解析 MCP server。テキスト・画像・表の抽出、署名フィールド・フォント・注釈・タグ構造の inspect、PDF/UA タグ検証を提供。",
+      "category": "pdf",
+      "keywords": [
+        "pdf",
+        "mcp",
+        "mcp-server",
+        "pdf-parser",
+        "accessibility",
+        "pdf-ua",
+        "signature"
+      ],
+      "homepage": "https://github.com/shuji-bonji/pdf-reader-mcp",
+      "license": "MIT",
+      "author": {
+        "name": "shuji-bonji",
+        "url": "https://github.com/shuji-bonji"
+      }
+    },
+    {
+      "name": "pdf-spec-mcp",
+      "source": {
+        "source": "github",
+        "repo": "shuji-bonji/pdf-spec-mcp"
+      },
+      "version": "0.3.2",
+      "description": "ISO 32000 (PDF 仕様) の構造化参照 MCP server。条項検索・要求事項 (MUST/SHOULD) 抽出・定義取得・版間比較を提供。ISO 仕様 PDF は利用者が用意し PDF_SPEC_DIR で指定する。",
+      "category": "pdf",
+      "keywords": [
+        "pdf",
+        "iso-32000",
+        "specification",
+        "mcp",
+        "mcp-server",
+        "requirements"
+      ],
+      "homepage": "https://github.com/shuji-bonji/pdf-spec-mcp",
+      "license": "MIT",
+      "author": {
+        "name": "shuji-bonji",
+        "url": "https://github.com/shuji-bonji"
+      }
+    },
+    {
+      "name": "rfcxml-mcp",
+      "source": {
+        "source": "github",
+        "repo": "shuji-bonji/rfcxml-mcp"
+      },
+      "version": "0.5.4",
+      "description": "RFC 文書の構造化理解 MCP server。RFCXML 経由でセクション・規範的要求事項 (MUST/SHOULD/MAY)・依存 RFC・準拠チェックリストを取得。",
+      "category": "web-spec",
+      "keywords": [
+        "rfc",
+        "ietf",
+        "rfcxml",
+        "specification",
+        "mcp",
+        "mcp-server",
+        "requirements"
+      ],
+      "homepage": "https://github.com/shuji-bonji/rfcxml-mcp",
+      "license": "MIT",
+      "author": {
+        "name": "shuji-bonji",
+        "url": "https://github.com/shuji-bonji"
+      }
+    },
+    {
+      "name": "w3c-mcp",
+      "source": {
+        "source": "github",
+        "repo": "shuji-bonji/w3c-mcp"
+      },
+      "version": "0.1.12",
+      "description": "W3C Web 仕様参照 MCP server。仕様検索・WebIDL・CSS プロパティ・HTML 要素・PWA 関連仕様・仕様間依存の取得を提供。",
+      "category": "web-spec",
+      "keywords": [
+        "w3c",
+        "web-standards",
+        "webidl",
+        "css",
+        "html",
+        "pwa",
+        "mcp",
+        "mcp-server"
+      ],
+      "homepage": "https://github.com/shuji-bonji/w3c-mcp",
+      "license": "MIT",
+      "author": {
+        "name": "shuji-bonji",
+        "url": "https://github.com/shuji-bonji"
+      }
+    },
+    {
+      "name": "web-compat-mcp",
+      "source": {
+        "source": "github",
+        "repo": "shuji-bonji/web-compat-mcp"
+      },
+      "version": "0.1.5",
+      "description": "ブラウザ互換性 MCP server。MDN BCD と W3C WebDX web-features (Baseline) に基づき、機能サポート状況の確認・比較・検索を提供。",
+      "category": "web-spec",
+      "keywords": [
+        "browser-compatibility",
+        "baseline",
+        "mdn",
+        "bcd",
+        "web-features",
+        "mcp",
+        "mcp-server"
+      ],
+      "homepage": "https://github.com/shuji-bonji/web-compat-mcp",
+      "license": "MIT",
+      "author": {
+        "name": "shuji-bonji",
+        "url": "https://github.com/shuji-bonji"
+      }
+    },
+    {
+      "name": "xcomet-mcp",
+      "source": {
+        "source": "github",
+        "repo": "shuji-bonji/xcomet-mcp-server"
+      },
+      "version": "0.6.2",
+      "description": "xCOMET による翻訳品質評価 MCP server。参照訳なしで翻訳をスコアリングし、エラースパンを検出。ローカル Python 環境 (XCOMET_PYTHON_PATH) が必要。",
+      "category": "quality-tools",
+      "keywords": [
+        "translation",
+        "quality-estimation",
+        "xcomet",
+        "comet",
+        "mt-evaluation",
+        "mcp",
+        "mcp-server"
+      ],
+      "homepage": "https://github.com/shuji-bonji/xcomet-mcp-server",
+      "license": "MIT",
+      "author": {
+        "name": "shuji-bonji",
+        "url": "https://github.com/shuji-bonji"
+      }
+    },
+    {
+      "name": "deepl-glossary-translation",
+      "source": {
+        "source": "github",
+        "repo": "shuji-bonji/deepl-glossary-translation"
+      },
+      "version": "0.1.0",
+      "description": "pdf-spec-mcp と DeepL MCP Server を連携させ、PDF 仕様書 (ISO 32000-2) などを用語統一された日本語に翻訳する Skill。グロッサリー (用語集) の作成・登録・適用までの一連のワークフローをガイドする。",
+      "category": "quality-tools",
+      "keywords": [
+        "translation",
+        "deepl",
+        "glossary",
+        "skill",
+        "pdf-spec",
+        "terminology"
+      ],
+      "homepage": "https://github.com/shuji-bonji/deepl-glossary-translation",
+      "license": "MIT",
+      "author": {
+        "name": "shuji-bonji",
+        "url": "https://github.com/shuji-bonji"
+      }
+    },
+    {
+      "name": "factcheck",
+      "source": {
+        "source": "github",
+        "repo": "shuji-bonji/factcheck-skill"
+      },
+      "version": "0.1.0",
+      "description": "情報の信頼性を科学的・体系的に評価するファクトチェック Skill。20項目×4カテゴリの評価フレームワークで記事・URL・主張・LLM 回答をスコアリングし、独立 sub-agent による自己評価バイアス排除を行う。",
+      "category": "quality-tools",
+      "keywords": [
+        "factcheck",
+        "verification",
+        "reliability",
+        "skill",
+        "media",
+        "research"
+      ],
+      "homepage": "https://github.com/shuji-bonji/factcheck-skill",
+      "license": "MIT",
+      "author": {
+        "name": "shuji-bonji",
+        "url": "https://github.com/shuji-bonji"
+      }
+    },
+    {
+      "name": "media-literacy-check",
+      "source": {
+        "source": "github",
+        "repo": "shuji-bonji/media-literacycheck-skill"
+      },
+      "version": "0.1.0",
+      "description": "オンライン情報の信頼性をメディアリテラシーの観点から体系的に評価する Skill。ニュース記事・SNS 投稿・ブログ・動画・口コミを 30項目×6カテゴリで分析する。",
+      "category": "quality-tools",
+      "keywords": [
+        "media-literacy",
+        "misinformation",
+        "evaluation",
+        "skill",
+        "sns",
+        "news"
+      ],
+      "homepage": "https://github.com/shuji-bonji/media-literacycheck-skill",
+      "license": "MIT",
+      "author": {
+        "name": "shuji-bonji",
+        "url": "https://github.com/shuji-bonji"
+      }
+    },
+    {
+      "name": "spec-compliance-skills",
+      "source": {
+        "source": "github",
+        "repo": "shuji-bonji/spec-compliance-skills"
+      },
+      "version": "0.1.0",
+      "description": "W3C/IETF仕様準拠チェック用スキル集。EPUB 3.3品質レビュー、PDF/A検証、RFC準拠チェックなど、仕様の規範的要件（MUST/SHOULD/MAY）に基づいた構造化検証とレポート生成を行います。",
+      "category": "quality-tools",
+      "keywords": [
+        "specification",
+        "compliance",
+        "epub",
+        "w3c",
+        "ietf",
+        "skill",
+        "validation"
+      ],
+      "homepage": "https://github.com/shuji-bonji/spec-compliance-skills",
+      "license": "MIT",
+      "author": {
+        "name": "shuji-bonji",
+        "url": "https://github.com/shuji-bonji"
+      }
+    },
+    {
+      "name": "epsg-mcp",
+      "source": {
+        "source": "github",
+        "repo": "shuji-bonji/epsg-mcp"
+      },
+      "version": "0.9.10",
+      "description": "測地系・座標参照系 (CRS) の専門知識 MCP server。EPSG コード検索・用途別推奨・座標変換提案・Country Pack (日本/US/UK)・トラブルシュートを提供。",
+      "category": "domain-specific",
+      "keywords": [
+        "epsg",
+        "crs",
+        "gis",
+        "geodesy",
+        "coordinate-systems",
+        "mcp",
+        "mcp-server"
+      ],
+      "homepage": "https://github.com/shuji-bonji/epsg-mcp",
+      "license": "MIT",
+      "author": {
+        "name": "shuji-bonji",
+        "url": "https://github.com/shuji-bonji"
+      }
+    },
+    {
+      "name": "ifc-core-mcp",
+      "source": {
+        "source": "github",
+        "repo": "shuji-bonji/ifc-core-mcp"
+      },
+      "version": "0.2.2",
+      "description": "IFC4.3 (BIM) 仕様参照 MCP server。IFC エンティティ定義・属性・継承階層・PropertySet の検索取得を提供。",
+      "category": "domain-specific",
+      "keywords": [
+        "ifc",
+        "bim",
+        "ifc4x3",
+        "buildingsmart",
+        "mcp",
+        "mcp-server"
+      ],
+      "homepage": "https://github.com/shuji-bonji/ifc-core-mcp",
       "license": "MIT",
       "author": {
         "name": "shuji-bonji",
