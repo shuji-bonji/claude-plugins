@@ -75,7 +75,7 @@ graph TB
 ### 利用上の注意
 
 - **pdf-spec-mcp**: ISO 32000 仕様 PDF は利用者が用意し、環境変数 `PDF_SPEC_DIR` で配置先を指定してください。
-- **pdf-publish**: 前提の `pdf-writer-mcp` は **marketplace 未収録**です（`npx @shuji-bonji/pdf-writer-mcp` で接続してください）。また writer には未修正の既知欠陥があります — Markdown 生成時に `snake_case` の `_` が無警告で消えます（[B-17](https://github.com/shuji-bonji/pdf-writer-mcp/blob/main/docs/TASKS.md)）。Skill 側は読み戻して照合する手順を持っていますが、関数名を含む技術文書では出力を確認してください。
+- **pdf-publish**: 前提の `pdf-writer-mcp` は **marketplace 未収録**です（`npx @shuji-bonji/pdf-writer-mcp` で接続してください）。なお v0.14.0 以前には、Markdown 生成時に `snake_case` の `_` が無警告で消える欠陥があります（[B-17](https://github.com/shuji-bonji/pdf-writer-mcp/blob/main/docs/TASKS.md)・**修正済み・次版で反映**）。古い版を掴んでいる場合は、関数名を含む技術文書で出力を確認してください。
 - **xcomet-mcp**: xCOMET 推論用のローカル Python 環境が必要です（環境変数 `XCOMET_PYTHON_PATH`）。詳細は [repo の README](https://github.com/shuji-bonji/xcomet-mcp-server) を参照。
 
 ## インストール
