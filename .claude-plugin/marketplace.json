@@ -88,13 +88,41 @@
       }
     },
     {
+      "name": "pdf-publish",
+      "source": {
+        "source": "github",
+        "repo": "shuji-bonji/pdf-publish-skill"
+      },
+      "version": "0.2.0",
+      "description": "PDF の生成・編集から納品までを品質ゲート付きで編成する出力パイプライン Skill。pdf-writer-mcp で書き、pdf-reader-mcp で読み戻し、pdf-verify-mcp (veraPDF) で機械採点する write → read-back → verify ループを回し、根拠付きの Publish Report を添えて納品する。PDF/UA-1 (アクセシブル PDF)・PDF/A-3 添付 (電帳法)・タグ付きフォーム修復に対応。pdf-trust (受入監査) の対になる送り出し側。pdf-writer-mcp が必須。",
+      "category": "pdf",
+      "keywords": [
+        "pdf",
+        "skill",
+        "publish",
+        "pdf-generation",
+        "pdf-ua",
+        "accessibility",
+        "pdf-a",
+        "verapdf",
+        "quality-gate",
+        "denchoho"
+      ],
+      "homepage": "https://github.com/shuji-bonji/pdf-publish-skill",
+      "license": "MIT",
+      "author": {
+        "name": "shuji-bonji",
+        "url": "https://github.com/shuji-bonji"
+      }
+    },
+    {
       "name": "pdf-trust",
       "source": {
         "source": "github",
         "repo": "shuji-bonji/pdf-trust-skill"
       },
-      "version": "0.1.0",
-      "description": "PDF の信頼性監査オーケストレーション Skill。契約書・請求書・診療文書・行政文書などの PDF の真正性 (署名・改ざん・PAdES/PDF-A) を pdf-verify-mcp を軸に PDF family MCP を編成して判定し、ドメイン別プロファイルに基づく推奨判定付き Trust Report を返す。pdf-verify-mcp plugin が必須。",
+      "version": "0.2.0",
+      "description": "PDF の信頼性監査オーケストレーション Skill。契約書・請求書・診療文書・行政文書などの PDF の真正性 (署名・改ざん・PAdES/PDF-A) を pdf-verify-mcp を軸に PDF family MCP を編成して判定し、ドメイン別プロファイルに基づく推奨判定付き Trust Report を返す。4 値判定は pdf-verify-mcp v0.7.0+ の evaluate_policy (決定論的ルールエンジン) に委譲し、Skill は解説・推奨アクション・法令根拠を担う。pdf-verify-mcp plugin が必須。",
       "category": "pdf",
       "keywords": [
         "pdf",
@@ -119,7 +147,7 @@
         "source": "github",
         "repo": "shuji-bonji/pdf-verify-mcp"
       },
-      "version": "0.5.2",
+      "version": "0.7.0",
       "description": "PDF 真正性検証 MCP server。電子署名の暗号学的検証 (CMS/PKCS#7)・改ざん検知・PAdES レベル判定・PDF/A 適合性検証を提供。npm @shuji-bonji/pdf-verify-mcp を npx で起動する。pdf-trust Skill の必須基盤。",
       "category": "pdf",
       "keywords": [
@@ -145,7 +173,7 @@
         "source": "github",
         "repo": "shuji-bonji/pdf-reader-mcp"
       },
-      "version": "0.6.3",
+      "version": "0.9.1",
       "description": "PDF 構造解析 MCP server。テキスト・画像・表の抽出、署名フィールド・フォント・注釈・タグ構造の inspect、PDF/UA タグ検証を提供。",
       "category": "pdf",
       "keywords": [
@@ -170,7 +198,7 @@
         "source": "github",
         "repo": "shuji-bonji/pdf-spec-mcp"
       },
-      "version": "0.3.2",
+      "version": "0.4.4",
       "description": "ISO 32000 (PDF 仕様) の構造化参照 MCP server。条項検索・要求事項 (MUST/SHOULD) 抽出・定義取得・版間比較を提供。ISO 仕様 PDF は利用者が用意し PDF_SPEC_DIR で指定する。",
       "category": "pdf",
       "keywords": [

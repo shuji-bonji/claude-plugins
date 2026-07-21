@@ -18,31 +18,34 @@ graph TB
   mp --> quality[quality-tools category]
   mp --> domain[domain-specific category]
 
-  houki --> hr["houki-research<br/>✅ v0.1.0"]
-  houki --> hegov["houki-egov-mcp<br/>✅ v0.3.1"]
-  houki --> hnta["houki-nta-mcp<br/>✅ v0.9.5"]
+  houki --> hr["houki-research"]
+  houki --> hegov["houki-egov-mcp"]
+  houki --> hnta["houki-nta-mcp"]
 
-  pdf --> ptrust["pdf-trust<br/>✅ v0.1.0"]
-  pdf --> pverify["pdf-verify-mcp<br/>✅ v0.5.2"]
-  pdf --> hpdf["pdf-reader-mcp<br/>✅ v0.6.3"]
-  pdf --> pspec["pdf-spec-mcp<br/>✅ v0.3.2"]
+  pdf --> ppub["pdf-publish"]
+  pdf --> ptrust["pdf-trust"]
+  pdf --> pverify["pdf-verify-mcp"]
+  pdf --> hpdf["pdf-reader-mcp"]
+  pdf --> pspec["pdf-spec-mcp"]
 
-  webspec --> rfcxml["rfcxml-mcp<br/>✅ v0.5.4"]
-  webspec --> w3c["w3c-mcp<br/>✅ v0.1.12"]
-  webspec --> webcompat["web-compat-mcp<br/>✅ v0.1.5"]
+  webspec --> rfcxml["rfcxml-mcp"]
+  webspec --> w3c["w3c-mcp"]
+  webspec --> webcompat["web-compat-mcp"]
 
-  quality --> xcomet["xcomet-mcp<br/>✅ v0.6.2"]
-  quality --> deepl["deepl-glossary-translation<br/>✅ v0.1.0"]
-  quality --> fact["factcheck<br/>✅ v0.1.0"]
-  quality --> media["media-literacy-check<br/>✅ v0.1.0"]
-  quality --> speccomp["spec-compliance-skills<br/>✅ v0.1.0"]
+  quality --> xcomet["xcomet-mcp"]
+  quality --> deepl["deepl-glossary-translation"]
+  quality --> fact["factcheck"]
+  quality --> media["media-literacy-check"]
+  quality --> speccomp["spec-compliance-skills"]
 
-  domain --> epsg["epsg-mcp<br/>✅ v0.9.10"]
-  domain --> ifc["ifc-core-mcp<br/>✅ v0.2.2"]
+  domain --> epsg["epsg-mcp"]
+  domain --> ifc["ifc-core-mcp"]
 
   classDef live fill:#d4edda,stroke:#28a745
-  class hr,hegov,hnta,ptrust,pverify,hpdf,pspec,rfcxml,w3c,webcompat,xcomet,deepl,fact,media,speccomp,epsg,ifc live
+  class hr,hegov,hnta,ppub,ptrust,pverify,hpdf,pspec,rfcxml,w3c,webcompat,xcomet,deepl,fact,media,speccomp,epsg,ifc live
 ```
+
+> 図は構成のみを示します。**version は下の一覧表と `.claude-plugin/marketplace.json` が出所**です（同じ数値を 3 か所に書くと必ず乖離するため、図からは外しています）。
 
 ## 収録済み plugin
 
@@ -51,10 +54,11 @@ graph TB
 | [houki-research](https://github.com/shuji-bonji/houki-research-skill) | Skill | houki | v0.1.0 | `shuji-bonji/houki-research-skill` |
 | [houki-egov-mcp](https://github.com/shuji-bonji/houki-egov-mcp) | MCP | houki | v0.3.1 | `shuji-bonji/houki-egov-mcp` |
 | [houki-nta-mcp](https://github.com/shuji-bonji/houki-nta-mcp) | MCP | houki | v0.9.5 | `shuji-bonji/houki-nta-mcp` |
-| [pdf-trust](https://github.com/shuji-bonji/pdf-trust-skill) | Skill | pdf | v0.1.0 | `shuji-bonji/pdf-trust-skill` |
-| [pdf-verify-mcp](https://github.com/shuji-bonji/pdf-verify-mcp) | MCP | pdf | v0.5.2 | `shuji-bonji/pdf-verify-mcp` |
-| [pdf-reader-mcp](https://github.com/shuji-bonji/pdf-reader-mcp) | MCP | pdf | v0.6.3 | `shuji-bonji/pdf-reader-mcp` |
-| [pdf-spec-mcp](https://github.com/shuji-bonji/pdf-spec-mcp) | MCP | pdf | v0.3.2 | `shuji-bonji/pdf-spec-mcp` |
+| [pdf-publish](https://github.com/shuji-bonji/pdf-publish-skill) | Skill | pdf | v0.2.0 | `shuji-bonji/pdf-publish-skill` |
+| [pdf-trust](https://github.com/shuji-bonji/pdf-trust-skill) | Skill | pdf | v0.2.0 | `shuji-bonji/pdf-trust-skill` |
+| [pdf-verify-mcp](https://github.com/shuji-bonji/pdf-verify-mcp) | MCP | pdf | v0.7.0 | `shuji-bonji/pdf-verify-mcp` |
+| [pdf-reader-mcp](https://github.com/shuji-bonji/pdf-reader-mcp) | MCP | pdf | v0.9.1 | `shuji-bonji/pdf-reader-mcp` |
+| [pdf-spec-mcp](https://github.com/shuji-bonji/pdf-spec-mcp) | MCP | pdf | v0.4.4 | `shuji-bonji/pdf-spec-mcp` |
 | [rfcxml-mcp](https://github.com/shuji-bonji/rfcxml-mcp) | MCP | web-spec | v0.5.4 | `shuji-bonji/rfcxml-mcp` |
 | [w3c-mcp](https://github.com/shuji-bonji/w3c-mcp) | MCP | web-spec | v0.1.12 | `shuji-bonji/w3c-mcp` |
 | [web-compat-mcp](https://github.com/shuji-bonji/web-compat-mcp) | MCP | web-spec | v0.1.5 | `shuji-bonji/web-compat-mcp` |
@@ -66,11 +70,12 @@ graph TB
 | [epsg-mcp](https://github.com/shuji-bonji/epsg-mcp) | MCP | domain-specific | v0.9.10 | `shuji-bonji/epsg-mcp` |
 | [ifc-core-mcp](https://github.com/shuji-bonji/ifc-core-mcp) | MCP | domain-specific | v0.2.2 | `shuji-bonji/ifc-core-mcp` |
 
-> `pdf-trust` は `pdf-verify-mcp` を必須の前提 MCP とします。両方 install してください。
+> `pdf-trust`（受入監査）は `pdf-verify-mcp` を、`pdf-publish`（送り出し）は `pdf-writer-mcp` を必須の前提 MCP とします。対になる 2 つの Skill なので、用途に応じて必要な MCP と一緒に install してください。
 
 ### 利用上の注意
 
 - **pdf-spec-mcp**: ISO 32000 仕様 PDF は利用者が用意し、環境変数 `PDF_SPEC_DIR` で配置先を指定してください。
+- **pdf-publish**: 前提の `pdf-writer-mcp` は **marketplace 未収録**です（`npx @shuji-bonji/pdf-writer-mcp` で接続してください）。また writer には未修正の既知欠陥があります — Markdown 生成時に `snake_case` の `_` が無警告で消えます（[B-17](https://github.com/shuji-bonji/pdf-writer-mcp/blob/main/docs/TASKS.md)）。Skill 側は読み戻して照合する手順を持っていますが、関数名を含む技術文書では出力を確認してください。
 - **xcomet-mcp**: xCOMET 推論用のローカル Python 環境が必要です（環境変数 `XCOMET_PYTHON_PATH`）。詳細は [repo の README](https://github.com/shuji-bonji/xcomet-mcp-server) を参照。
 
 ## インストール
@@ -84,9 +89,14 @@ graph TB
 # 2. plugin を install
 /plugin install houki-research@shuji-bonji
 
-# 例: PDF 信頼性監査 (pdf-trust は pdf-verify-mcp が必須)
+# 例: PDF 信頼性監査 = 受け取った PDF を監査する (pdf-verify-mcp が必須)
 /plugin install pdf-verify-mcp@shuji-bonji
 /plugin install pdf-trust@shuji-bonji
+
+# 例: PDF 品質ゲート付き納品 = 送り出す PDF を保証する
+#     pdf-writer-mcp は marketplace 未収録のため npx で接続する
+/plugin install pdf-publish@shuji-bonji
+/plugin install pdf-reader-mcp@shuji-bonji
 ```
 
 ### Cowork (個人ユーザー)
