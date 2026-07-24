@@ -8,7 +8,7 @@
   },
   "metadata": {
     "description": "shuji-bonji's Claude Plugins — Skill, MCP server, slash command などをまとめた個人 marketplace。日本の法令調査 (houki family)、PDF 真正性検証 (pdf family)、Web 仕様 (W3C/RFC)、品質ツール、ドメイン特化 MCP 等を category 別に提供。",
-    "version": "0.2.0"
+    "version": "0.3.0"
   },
   "plugins": [
     {
@@ -147,7 +147,7 @@
         "source": "github",
         "repo": "shuji-bonji/pdf-verify-mcp"
       },
-      "version": "0.7.0",
+      "version": "0.7.1",
       "description": "PDF 真正性検証 MCP server。電子署名の暗号学的検証 (CMS/PKCS#7)・改ざん検知・PAdES レベル判定・PDF/A 適合性検証を提供。npm @shuji-bonji/pdf-verify-mcp を npx で起動する。pdf-trust Skill の必須基盤。",
       "category": "pdf",
       "keywords": [
@@ -210,6 +210,32 @@
         "requirements"
       ],
       "homepage": "https://github.com/shuji-bonji/pdf-spec-mcp",
+      "license": "MIT",
+      "author": {
+        "name": "shuji-bonji",
+        "url": "https://github.com/shuji-bonji"
+      }
+    },
+    {
+      "name": "pdf-writer-mcp",
+      "source": {
+        "source": "github",
+        "repo": "shuji-bonji/pdf-writer-mcp"
+      },
+      "version": "0.14.1",
+      "description": "PDF 生成・編集 MCP server。テキスト/Markdown/表からの PDF 生成 (PDF/UA タグ付き)・ページ操作 (結合/分割/抽出/削除/並替/回転/ページ番号)・注釈/しおり/透かし・フォーム入力/平坦化・ファイル添付 (電帳法 PDF/A-3)・メタデータ編集・署名を壊さない増分更新を提供。pdf-lib + 自前増分エンジン。pdf-publish Skill の必須基盤。",
+      "category": "pdf",
+      "keywords": [
+        "pdf",
+        "mcp",
+        "mcp-server",
+        "pdf-generation",
+        "pdf-editing",
+        "pdf-ua",
+        "markdown-to-pdf",
+        "denchoho"
+      ],
+      "homepage": "https://github.com/shuji-bonji/pdf-writer-mcp",
       "license": "MIT",
       "author": {
         "name": "shuji-bonji",
