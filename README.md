@@ -27,7 +27,6 @@ graph TB
   pdf --> pverify["pdf-verify-mcp"]
   pdf --> hpdf["pdf-reader-mcp"]
   pdf --> pspec["pdf-spec-mcp"]
-  pdf --> pwrite["pdf-writer-mcp"]
 
   webspec --> rfcxml["rfcxml-mcp"]
   webspec --> w3c["w3c-mcp"]
@@ -43,7 +42,7 @@ graph TB
   domain --> ifc["ifc-core-mcp"]
 
   classDef live fill:#d4edda,stroke:#28a745
-  class hr,hegov,hnta,ppub,ptrust,pverify,hpdf,pspec,pwrite,rfcxml,w3c,webcompat,xcomet,deepl,fact,media,speccomp,epsg,ifc live
+  class hr,hegov,hnta,ppub,ptrust,pverify,hpdf,pspec,rfcxml,w3c,webcompat,xcomet,deepl,fact,media,speccomp,epsg,ifc live
 ```
 
 > 図は構成のみを示します。**version は下の一覧表と `.claude-plugin/marketplace.json` が出所**です（同じ数値を 3 か所に書くと必ず乖離するため、図からは外しています）。
@@ -55,12 +54,11 @@ graph TB
 | [houki-research](https://github.com/shuji-bonji/houki-research-skill) | Skill | houki | v0.1.0 | `shuji-bonji/houki-research-skill` |
 | [houki-egov-mcp](https://github.com/shuji-bonji/houki-egov-mcp) | MCP | houki | v0.3.1 | `shuji-bonji/houki-egov-mcp` |
 | [houki-nta-mcp](https://github.com/shuji-bonji/houki-nta-mcp) | MCP | houki | v0.9.5 | `shuji-bonji/houki-nta-mcp` |
-| [pdf-publish](https://github.com/shuji-bonji/pdf-publish-skill) | Skill | pdf | v0.2.0 | `shuji-bonji/pdf-publish-skill` |
+| [pdf-publish](https://github.com/shuji-bonji/pdf-publish-skill) | Skill | pdf | v0.3.0 | `shuji-bonji/pdf-publish-skill` |
 | [pdf-trust](https://github.com/shuji-bonji/pdf-trust-skill) | Skill | pdf | v0.2.0 | `shuji-bonji/pdf-trust-skill` |
-| [pdf-verify-mcp](https://github.com/shuji-bonji/pdf-verify-mcp) | MCP | pdf | v0.7.1 | `shuji-bonji/pdf-verify-mcp` |
+| [pdf-verify-mcp](https://github.com/shuji-bonji/pdf-verify-mcp) | MCP | pdf | v0.7.0 | `shuji-bonji/pdf-verify-mcp` |
 | [pdf-reader-mcp](https://github.com/shuji-bonji/pdf-reader-mcp) | MCP | pdf | v0.9.1 | `shuji-bonji/pdf-reader-mcp` |
 | [pdf-spec-mcp](https://github.com/shuji-bonji/pdf-spec-mcp) | MCP | pdf | v0.4.4 | `shuji-bonji/pdf-spec-mcp` |
-| [pdf-writer-mcp](https://github.com/shuji-bonji/pdf-writer-mcp) | MCP | pdf | v0.14.1 | `shuji-bonji/pdf-writer-mcp` |
 | [rfcxml-mcp](https://github.com/shuji-bonji/rfcxml-mcp) | MCP | web-spec | v0.5.4 | `shuji-bonji/rfcxml-mcp` |
 | [w3c-mcp](https://github.com/shuji-bonji/w3c-mcp) | MCP | web-spec | v0.1.12 | `shuji-bonji/w3c-mcp` |
 | [web-compat-mcp](https://github.com/shuji-bonji/web-compat-mcp) | MCP | web-spec | v0.1.5 | `shuji-bonji/web-compat-mcp` |
@@ -77,7 +75,8 @@ graph TB
 ### 利用上の注意
 
 - **pdf-spec-mcp**: ISO 32000 仕様 PDF は利用者が用意し、環境変数 `PDF_SPEC_DIR` で配置先を指定してください。
-- **pdf-writer-mcp**: 前提の設定は不要です（日本語フォント同梱。上書きは任意で環境変数 `PDF_WRITER_FONT`）。`pdf-publish` の必須基盤であり、`pdf-verify-mcp` と組んで read → write → read-back → verify の品質ループを構成します。`snake_case` の `_` が無警告で消える欠陥（B-17）は **v0.14.1 で修正・公開済み**。
+- **pdf-publish**: 前提の `pdf-writer-mcp` は **marketplace 未収録**です（`npx @shuji-bonji/pdf-writer-mcp` で接続してください）。なお v0.14.0 以前には、Markdown 生成時に `snake_case` の `_` が無警告で消える欠陥があります（[B-17](https://github.com/shuji-bonji/pdf-writer-mcp/blob/main/docs/TASKS.md)・**v0.14.1 で修正済み**）。古い版を掴んでいる場合は、関数名を含む技術文書で出力を確認してください。
+  また **PDF/A-3b の器付け（`ensure_pdfa`・B-8）は 2026-07-25 時点で未リリース**です（公開版 `latest` = 0.14.1 には無い）。PDF/A-3 案件では pdf-publish が Phase 0 で版数を確かめ、無い版なら「PDF/A は名乗らず添付付き PDF にする」か「更新を待つ」を選ばせます。
 - **xcomet-mcp**: xCOMET 推論用のローカル Python 環境が必要です（環境変数 `XCOMET_PYTHON_PATH`）。詳細は [repo の README](https://github.com/shuji-bonji/xcomet-mcp-server) を参照。
 
 ## インストール
@@ -96,7 +95,7 @@ graph TB
 /plugin install pdf-trust@shuji-bonji
 
 # 例: PDF 品質ゲート付き納品 = 送り出す PDF を保証する
-/plugin install pdf-writer-mcp@shuji-bonji
+#     pdf-writer-mcp は marketplace 未収録のため npx で接続する
 /plugin install pdf-publish@shuji-bonji
 /plugin install pdf-reader-mcp@shuji-bonji
 ```
