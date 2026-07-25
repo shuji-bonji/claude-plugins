@@ -57,10 +57,10 @@ graph TB
 | [houki-nta-mcp](https://github.com/shuji-bonji/houki-nta-mcp) | MCP | houki | v0.9.5 | `shuji-bonji/houki-nta-mcp` |
 | [pdf-publish](https://github.com/shuji-bonji/pdf-publish-skill) | Skill | pdf | v0.3.1 | `shuji-bonji/pdf-publish-skill` |
 | [pdf-trust](https://github.com/shuji-bonji/pdf-trust-skill) | Skill | pdf | v0.2.0 | `shuji-bonji/pdf-trust-skill` |
-| [pdf-writer-mcp](https://github.com/shuji-bonji/pdf-writer-mcp) | MCP | pdf | v0.15.0 | `shuji-bonji/pdf-writer-mcp` |
+| [pdf-writer-mcp](https://github.com/shuji-bonji/pdf-writer-mcp) | MCP | pdf | v0.15.1 | `shuji-bonji/pdf-writer-mcp` |
 | [pdf-verify-mcp](https://github.com/shuji-bonji/pdf-verify-mcp) | MCP | pdf | v0.7.0 | `shuji-bonji/pdf-verify-mcp` |
 | [pdf-reader-mcp](https://github.com/shuji-bonji/pdf-reader-mcp) | MCP | pdf | v0.9.1 | `shuji-bonji/pdf-reader-mcp` |
-| [pdf-spec-mcp](https://github.com/shuji-bonji/pdf-spec-mcp) | MCP | pdf | v0.4.4 | `shuji-bonji/pdf-spec-mcp` |
+| [pdf-spec-mcp](https://github.com/shuji-bonji/pdf-spec-mcp) | MCP | pdf | v0.4.5 | `shuji-bonji/pdf-spec-mcp` |
 | [rfcxml-mcp](https://github.com/shuji-bonji/rfcxml-mcp) | MCP | web-spec | v0.5.4 | `shuji-bonji/rfcxml-mcp` |
 | [w3c-mcp](https://github.com/shuji-bonji/w3c-mcp) | MCP | web-spec | v0.1.12 | `shuji-bonji/w3c-mcp` |
 | [web-compat-mcp](https://github.com/shuji-bonji/web-compat-mcp) | MCP | web-spec | v0.1.5 | `shuji-bonji/web-compat-mcp` |
