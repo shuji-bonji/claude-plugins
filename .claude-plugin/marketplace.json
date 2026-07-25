@@ -93,7 +93,7 @@
         "source": "github",
         "repo": "shuji-bonji/pdf-publish-skill"
       },
-      "version": "0.3.0",
+      "version": "0.3.1",
       "description": "PDF の生成・編集から納品までを品質ゲート付きで編成する出力パイプライン Skill。pdf-writer-mcp で書き、pdf-reader-mcp で読み戻し、pdf-verify-mcp (veraPDF) で機械採点する write → read-back → verify ループを回し、根拠付きの Publish Report を添えて納品する。PDF/UA-1 (アクセシブル PDF)・PDF/A-3 添付 (電帳法)・タグ付きフォーム修復に対応。pdf-trust (受入監査) の対になる送り出し側。pdf-writer-mcp が必須。",
       "category": "pdf",
       "keywords": [
@@ -135,6 +135,34 @@
         "denchoho"
       ],
       "homepage": "https://github.com/shuji-bonji/pdf-trust-skill",
+      "license": "MIT",
+      "author": {
+        "name": "shuji-bonji",
+        "url": "https://github.com/shuji-bonji"
+      }
+    },
+    {
+      "name": "pdf-writer-mcp",
+      "source": {
+        "source": "github",
+        "repo": "shuji-bonji/pdf-writer-mcp"
+      },
+      "version": "0.15.0",
+      "description": "PDF 生成・編集 MCP server。テキスト/Markdown/表からの PDF 生成、タグ付き PDF/UA-1 出力、ページ操作・しおり・注釈・添付・透かし・フォーム、署名を保持する増分更新、PDF/A-3b の器付け (ensure_pdfa) を提供。npm @shuji-bonji/pdf-writer-mcp を npx で起動する。pdf-publish Skill の必須基盤。",
+      "category": "pdf",
+      "keywords": [
+        "pdf",
+        "mcp",
+        "mcp-server",
+        "pdf-generation",
+        "pdf-editing",
+        "pdf-ua",
+        "accessibility",
+        "pdf-a",
+        "tagged-pdf",
+        "markdown-to-pdf"
+      ],
+      "homepage": "https://github.com/shuji-bonji/pdf-writer-mcp",
       "license": "MIT",
       "author": {
         "name": "shuji-bonji",
