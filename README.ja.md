@@ -2,17 +2,17 @@
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
-[日本語](./README.ja.md)
+[English](./README.md)
 
-A **marketplace of Claude extensions (Skills / MCP servers / slash commands / sub-agents)** published by [shuji-bonji](https://github.com/shuji-bonji). Everything here can be installed with `/plugin install` from both Claude Code and Cowork.
+[shuji-bonji](https://github.com/shuji-bonji) が公開する **Claude 拡張 (Skill / MCP server / slash command / sub-agent) の marketplace**。Claude Code と Cowork の両方から `/plugin install` で利用できます。
 
-> Same form factor as Anthropic's official [`anthropics/claude-plugins-official`](https://github.com/anthropics/claude-plugins-official). `.claude-plugin/marketplace.json` serves as the catalog, grouping multiple plugins by category.
+> Anthropic 公式の [`anthropics/claude-plugins-official`](https://github.com/anthropics/claude-plugins-official) と同じ form factor。`.claude-plugin/marketplace.json` を catalog として、複数 plugin を category 別にまとめています。
 
-## Where this fits
+## 立ち位置
 
 ```mermaid
 graph TB
-  user["User"] -->|"/plugin marketplace add<br/>shuji-bonji/claude-plugins"| mp[("shuji-bonji/claude-plugins<br/>(this repository)")]
+  user["利用者"] -->|"/plugin marketplace add<br/>shuji-bonji/claude-plugins"| mp[("shuji-bonji/claude-plugins<br/>(このリポジトリ)")]
 
   mp --> houki[houki category]
   mp --> pdf[pdf category]
@@ -49,11 +49,11 @@ graph TB
   class hr,hegov,hnta,pspecial,ppub,ptrust,pverify,hpdf,pspec,rfcxml,w3c,webcompat,xcomet,deepl,fact,media,speccomp,epsg,ifc live
 ```
 
-> The diagram shows structure only. **Versions come from the table below and `.claude-plugin/marketplace.json`** — writing the same number in three places guarantees drift, so the diagram omits them.
+> 図は構成のみを示します。**version は下の一覧表と `.claude-plugin/marketplace.json` が出所**です（同じ数値を 3 か所に書くと必ず乖離するため、図からは外しています）。
 
-## Included plugins
+## 収録済み plugin
 
-| plugin                                                                                  | type                | category        | version | repo                                     |
+| plugin                                                                                  | 種別                | category        | version | repo                                     |
 | --------------------------------------------------------------------------------------- | ------------------- | --------------- | ------- | ---------------------------------------- |
 | [houki-research](https://github.com/shuji-bonji/houki-research-skill)                   | Skill               | houki           | v0.1.0  | `shuji-bonji/houki-research-skill`       |
 | [houki-egov-mcp](https://github.com/shuji-bonji/houki-egov-mcp)                         | MCP                 | houki           | v0.3.1  | `shuji-bonji/houki-egov-mcp`             |
@@ -76,88 +76,88 @@ graph TB
 | [epsg-mcp](https://github.com/shuji-bonji/epsg-mcp)                                     | MCP                 | domain-specific | v0.9.10 | `shuji-bonji/epsg-mcp`                   |
 | [ifc-core-mcp](https://github.com/shuji-bonji/ifc-core-mcp)                             | MCP                 | domain-specific | v0.2.2  | `shuji-bonji/ifc-core-mcp`               |
 
-> `pdf-trust` (acceptance audit) requires `pdf-verify-mcp`, and `pdf-publish` (outbound delivery) requires `pdf-writer-mcp`, as prerequisite MCPs (both are already in the marketplace). The two Skills are a matched pair, so install whichever you need together with its required MCP.
+> `pdf-trust`（受入監査）は `pdf-verify-mcp` を、`pdf-publish`（送り出し）は `pdf-writer-mcp` を必須の前提 MCP とします（いずれも marketplace 収録済み）。対になる 2 つの Skill なので、用途に応じて必要な MCP と一緒に install してください。
 
-### Usage notes
+### 利用上の注意
 
-- **pdf-spec-mcp**: You must supply the ISO 32000 specification PDFs yourself and point the `PDF_SPEC_DIR` environment variable at their location.
-- **pdf-publish**: Its prerequisite `pdf-writer-mcp` is also in the marketplace (see the table above for the version). PDF/A-3b container support (`ensure_pdfa`) landed in **v0.15.0** and is available from that release onward. Note that v0.14.0 and earlier have a defect where `_` in `snake_case` is silently dropped during Markdown generation ([B-17](https://github.com/shuji-bonji/pdf-writer-mcp/blob/main/docs/TASKS.md) — **fixed in v0.14.1**). If you are pinned to an older release, check the output of any technical document that contains function names.
-- **xcomet-mcp**: Requires a local Python environment for xCOMET inference (environment variable `XCOMET_PYTHON_PATH`). See the [repo README](https://github.com/shuji-bonji/xcomet-mcp-server) for details.
+- **pdf-spec-mcp**: ISO 32000 仕様 PDF は利用者が用意し、環境変数 `PDF_SPEC_DIR` で配置先を指定してください。
+- **pdf-publish**: 前提の `pdf-writer-mcp` も marketplace に収録済みです（版は上の一覧表を参照）。PDF/A-3b の器付け（`ensure_pdfa`）が入ったのは **v0.15.0** で、この版から使えます。なお v0.14.0 以前には、Markdown 生成時に `snake_case` の `_` が無警告で消える欠陥があります（[B-17](https://github.com/shuji-bonji/pdf-writer-mcp/blob/main/docs/TASKS.md)・**v0.14.1 で修正済み**）。古い版を掴んでいる場合は、関数名を含む技術文書で出力を確認してください。
+- **xcomet-mcp**: xCOMET 推論用のローカル Python 環境が必要です（環境変数 `XCOMET_PYTHON_PATH`）。詳細は [repo の README](https://github.com/shuji-bonji/xcomet-mcp-server) を参照。
 
-## Installation
+## インストール
 
-### Claude Code (individual users)
+### Claude Code (個人ユーザー)
 
 ```bash
-# 1. Register the marketplace (first time only)
+# 1. marketplace を登録 (初回のみ)
 /plugin marketplace add shuji-bonji/claude-plugins
 
-# 2. Install a plugin
+# 2. plugin を install
 /plugin install houki-research@shuji-bonji
 
-# Example: PDF trust audit = audit PDFs you receive (pdf-verify-mcp required)
+# 例: PDF 信頼性監査 = 受け取った PDF を監査する (pdf-verify-mcp が必須)
 /plugin install pdf-verify-mcp@shuji-bonji
 /plugin install pdf-trust@shuji-bonji
 
-# Example: quality-gated PDF delivery = guarantee the PDFs you send out
+# 例: PDF 品質ゲート付き納品 = 送り出す PDF を保証する
 /plugin install pdf-writer-mcp@shuji-bonji
 /plugin install pdf-verify-mcp@shuji-bonji
 /plugin install pdf-publish@shuji-bonji
 /plugin install pdf-reader-mcp@shuji-bonji
 ```
 
-### Cowork (individual users)
+### Cowork (個人ユーザー)
 
-Individual Cowork has no UI for adding a marketplace URL, so upload each plugin's `.plugin` file directly.
+個人 Cowork は marketplace URL の追加 UI を持たないため、各 plugin の `.plugin` ファイルを直接アップロードしてください。
 
-1. Download the `.plugin` file from the Releases page of each plugin repository.
-   Example: [houki-research-skill releases](https://github.com/shuji-bonji/houki-research-skill/releases)
-2. Claude Desktop → Cowork tab → **Plugins** in the sidebar → select **"Upload plugin"**
-3. Enable it
+1. 各 plugin リポジトリの Releases から `.plugin` ファイルをダウンロード
+   例: [houki-research-skill releases](https://github.com/shuji-bonji/houki-research-skill/releases)
+2. Claude Desktop → Cowork タブ → サイドバーの **Plugins** → **「Upload plugin」** から選択
+3. 有効化
 
-### Cowork Enterprise (for organization administrators)
+### Cowork Enterprise (組織管理者向け)
 
-To distribute within an organization, you can register this marketplace URL in Organization Settings.
+組織内で配布する場合は、本 marketplace URL を Organization Settings に登録できます。
 
-1. Organization Settings → Plugins → **"Add plugin"** → Source: **GitHub**
+1. Organization Settings → Plugins → **「Add plugin」** → Source: **GitHub**
 2. URL: `https://github.com/shuji-bonji/claude-plugins`
-3. Configure per-user provisioning / auto-install for your team
+3. per-user provisioning / auto-install をチームに設定
 
-Details: [Manage Claude Cowork plugins for your organization](https://support.claude.com/en/articles/13837433-manage-claude-cowork-plugins-for-your-organization)
+詳細: [Manage Claude Cowork plugins for your organization](https://support.claude.com/en/articles/13837433-manage-claude-cowork-plugins-for-your-organization)
 
-## Category policy
+## category の方針
 
-| category          | purpose                                                     | examples                            |
-| ----------------- | ----------------------------------------------------------- | ----------------------------------- |
-| `houki`           | Japanese statutes, administrative notices, case law research | houki-research, houki-egov-mcp, etc. |
-| `pdf`             | PDF reading, authenticity verification, trust auditing       | pdf-trust, pdf-verify-mcp, etc.      |
-| `web-spec`        | Web standards and RFC reference                              | rfcxml-mcp, w3c-mcp, etc.            |
-| `quality-tools`   | Translation evaluation, fact checking, spec compliance       | xcomet-mcp, factcheck, etc.          |
-| `domain-specific` | Specific domains (geodesy, BIM)                              | epsg-mcp, ifc-core-mcp, etc.         |
+| category          | 用途                                 | 例                                |
+| ----------------- | ------------------------------------ | --------------------------------- |
+| `houki`           | 日本の法令・通達・判例調査           | houki-research, houki-egov-mcp 等 |
+| `pdf`             | PDF の読取・真正性検証・信頼性監査   | pdf-trust, pdf-verify-mcp 等      |
+| `web-spec`        | Web 標準・RFC の参照                 | rfcxml-mcp, w3c-mcp 等            |
+| `quality-tools`   | 翻訳評価・ファクトチェック・仕様準拠 | xcomet-mcp, factcheck 等          |
+| `domain-specific` | 特定ドメイン (測地・BIM)             | epsg-mcp, ifc-core-mcp 等         |
 
-## Directory layout
+## ディレクトリ構成
 
 ```
 claude-plugins/
 ├── .claude-plugin/
-│   └── marketplace.json    # plugin catalog (Anthropic standard format)
-├── README.md               # this file
+│   └── marketplace.json    # plugin catalog (Anthropic 標準仕様)
+├── README.md               # このファイル
 └── LICENSE                 # MIT
 ```
 
-The plugins themselves are **not contained in this repository**; each entry references its source repository (`source: { source: "github", repo: "..." }`). This way:
+各 plugin の実体は **本リポジトリには含めず**、元リポジトリ (`source: { source: "github", repo: "..." }`) を参照する形を取ります。これにより：
 
-- each plugin keeps an independent release cadence
-- the marketplace stays a thin catalog
-- a version bump only requires updating `version` in marketplace.json
+- 各 plugin のリリース粒度を独立に保てる
+- marketplace は薄い catalog として運用できる
+- バージョン更新は marketplace.json の version 更新だけで済む
 
-## Related links
+## 関連リンク
 
-- [Anthropic's official plugin marketplace documentation](https://code.claude.com/docs/en/plugin-marketplaces)
-- [`anthropics/claude-plugins-official`](https://github.com/anthropics/claude-plugins-official) — structural reference for the official marketplace
-- [shuji-bonji on GitHub](https://github.com/shuji-bonji)
-- [shuji-bonji on npm](https://www.npmjs.com/~shuji-bonji)
+- [Anthropic 公式の plugin marketplace ドキュメント](https://code.claude.com/docs/en/plugin-marketplaces)
+- [`anthropics/claude-plugins-official`](https://github.com/anthropics/claude-plugins-official) — 公式 marketplace の構造リファレンス
+- [shuji-bonji の GitHub](https://github.com/shuji-bonji)
+- [shuji-bonji の npm](https://www.npmjs.com/~shuji-bonji)
 
-## License
+## ライセンス
 
-This repository (the marketplace itself) is MIT licensed. For each plugin's license, see its source repository.
+このリポジトリ (marketplace 自体) は MIT ライセンス。各 plugin のライセンスは元リポジトリを参照してください。
