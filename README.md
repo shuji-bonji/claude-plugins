@@ -22,6 +22,7 @@ graph TB
   houki --> hegov["houki-egov-mcp"]
   houki --> hnta["houki-nta-mcp"]
 
+  pdf --> pspecial["pdf-specialist"]
   pdf --> ppub["pdf-publish"]
   pdf --> ptrust["pdf-trust"]
   pdf --> pwriter["pdf-writer-mcp"]
@@ -43,34 +44,35 @@ graph TB
   domain --> ifc["ifc-core-mcp"]
 
   classDef live fill:#d4edda,stroke:#28a745
-  class hr,hegov,hnta,ppub,ptrust,pverify,hpdf,pspec,rfcxml,w3c,webcompat,xcomet,deepl,fact,media,speccomp,epsg,ifc live
+  class hr,hegov,hnta,pspecial,ppub,ptrust,pverify,hpdf,pspec,rfcxml,w3c,webcompat,xcomet,deepl,fact,media,speccomp,epsg,ifc live
 ```
 
 > 図は構成のみを示します。**version は下の一覧表と `.claude-plugin/marketplace.json` が出所**です（同じ数値を 3 か所に書くと必ず乖離するため、図からは外しています）。
 
 ## 収録済み plugin
 
-| plugin | 種別 | category | version | repo |
-|---|---|---|---|---|
-| [houki-research](https://github.com/shuji-bonji/houki-research-skill) | Skill | houki | v0.1.0 | `shuji-bonji/houki-research-skill` |
-| [houki-egov-mcp](https://github.com/shuji-bonji/houki-egov-mcp) | MCP | houki | v0.3.1 | `shuji-bonji/houki-egov-mcp` |
-| [houki-nta-mcp](https://github.com/shuji-bonji/houki-nta-mcp) | MCP | houki | v0.9.5 | `shuji-bonji/houki-nta-mcp` |
-| [pdf-publish](https://github.com/shuji-bonji/pdf-publish-skill) | Skill | pdf | v0.3.1 | `shuji-bonji/pdf-publish-skill` |
-| [pdf-trust](https://github.com/shuji-bonji/pdf-trust-skill) | Skill | pdf | v0.2.1 | `shuji-bonji/pdf-trust-skill` |
-| [pdf-writer-mcp](https://github.com/shuji-bonji/pdf-writer-mcp) | MCP | pdf | v0.15.1 | `shuji-bonji/pdf-writer-mcp` |
-| [pdf-verify-mcp](https://github.com/shuji-bonji/pdf-verify-mcp) | MCP | pdf | v0.8.0 | `shuji-bonji/pdf-verify-mcp` |
-| [pdf-reader-mcp](https://github.com/shuji-bonji/pdf-reader-mcp) | MCP | pdf | v0.9.2 | `shuji-bonji/pdf-reader-mcp` |
-| [pdf-spec-mcp](https://github.com/shuji-bonji/pdf-spec-mcp) | MCP | pdf | v0.4.5 | `shuji-bonji/pdf-spec-mcp` |
-| [rfcxml-mcp](https://github.com/shuji-bonji/rfcxml-mcp) | MCP | web-spec | v0.5.4 | `shuji-bonji/rfcxml-mcp` |
-| [w3c-mcp](https://github.com/shuji-bonji/w3c-mcp) | MCP | web-spec | v0.1.12 | `shuji-bonji/w3c-mcp` |
-| [web-compat-mcp](https://github.com/shuji-bonji/web-compat-mcp) | MCP | web-spec | v0.1.5 | `shuji-bonji/web-compat-mcp` |
-| [xcomet-mcp](https://github.com/shuji-bonji/xcomet-mcp-server) | MCP | quality-tools | v0.6.2 | `shuji-bonji/xcomet-mcp-server` |
-| [deepl-glossary-translation](https://github.com/shuji-bonji/deepl-glossary-translation) | Skill | quality-tools | v0.1.0 | `shuji-bonji/deepl-glossary-translation` |
-| [factcheck](https://github.com/shuji-bonji/factcheck-skill) | Skill | quality-tools | v0.1.0 | `shuji-bonji/factcheck-skill` |
-| [media-literacy-check](https://github.com/shuji-bonji/media-literacycheck-skill) | Skill | quality-tools | v0.1.0 | `shuji-bonji/media-literacycheck-skill` |
-| [spec-compliance-skills](https://github.com/shuji-bonji/spec-compliance-skills) | Skill | quality-tools | v0.1.0 | `shuji-bonji/spec-compliance-skills` |
-| [epsg-mcp](https://github.com/shuji-bonji/epsg-mcp) | MCP | domain-specific | v0.9.10 | `shuji-bonji/epsg-mcp` |
-| [ifc-core-mcp](https://github.com/shuji-bonji/ifc-core-mcp) | MCP | domain-specific | v0.2.2 | `shuji-bonji/ifc-core-mcp` |
+| plugin                                                                                  | 種別                | category        | version | repo                                     |
+| --------------------------------------------------------------------------------------- | ------------------- | --------------- | ------- | ---------------------------------------- |
+| [houki-research](https://github.com/shuji-bonji/houki-research-skill)                   | Skill               | houki           | v0.1.0  | `shuji-bonji/houki-research-skill`       |
+| [houki-egov-mcp](https://github.com/shuji-bonji/houki-egov-mcp)                         | MCP                 | houki           | v0.3.1  | `shuji-bonji/houki-egov-mcp`             |
+| [houki-nta-mcp](https://github.com/shuji-bonji/houki-nta-mcp)                           | MCP                 | houki           | v0.9.5  | `shuji-bonji/houki-nta-mcp`              |
+| [pdf-specialist](https://github.com/shuji-bonji/pdf-specialist-plugin)                  | Agent + MCP + Skill | pdf             | v0.1.0  | `shuji-bonji/pdf-specialist-plugin`      |
+| [pdf-publish](https://github.com/shuji-bonji/pdf-publish-skill)                         | Skill               | pdf             | v0.3.1  | `shuji-bonji/pdf-publish-skill`          |
+| [pdf-trust](https://github.com/shuji-bonji/pdf-trust-skill)                             | Skill               | pdf             | v0.2.1  | `shuji-bonji/pdf-trust-skill`            |
+| [pdf-writer-mcp](https://github.com/shuji-bonji/pdf-writer-mcp)                         | MCP                 | pdf             | v0.15.1 | `shuji-bonji/pdf-writer-mcp`             |
+| [pdf-verify-mcp](https://github.com/shuji-bonji/pdf-verify-mcp)                         | MCP                 | pdf             | v0.9.0  | `shuji-bonji/pdf-verify-mcp`             |
+| [pdf-reader-mcp](https://github.com/shuji-bonji/pdf-reader-mcp)                         | MCP                 | pdf             | v0.9.2  | `shuji-bonji/pdf-reader-mcp`             |
+| [pdf-spec-mcp](https://github.com/shuji-bonji/pdf-spec-mcp)                             | MCP                 | pdf             | v0.4.5  | `shuji-bonji/pdf-spec-mcp`               |
+| [rfcxml-mcp](https://github.com/shuji-bonji/rfcxml-mcp)                                 | MCP                 | web-spec        | v0.5.4  | `shuji-bonji/rfcxml-mcp`                 |
+| [w3c-mcp](https://github.com/shuji-bonji/w3c-mcp)                                       | MCP                 | web-spec        | v0.1.12 | `shuji-bonji/w3c-mcp`                    |
+| [web-compat-mcp](https://github.com/shuji-bonji/web-compat-mcp)                         | MCP                 | web-spec        | v0.1.5  | `shuji-bonji/web-compat-mcp`             |
+| [xcomet-mcp](https://github.com/shuji-bonji/xcomet-mcp-server)                          | MCP                 | quality-tools   | v0.6.2  | `shuji-bonji/xcomet-mcp-server`          |
+| [deepl-glossary-translation](https://github.com/shuji-bonji/deepl-glossary-translation) | Skill               | quality-tools   | v0.1.0  | `shuji-bonji/deepl-glossary-translation` |
+| [factcheck](https://github.com/shuji-bonji/factcheck-skill)                             | Skill               | quality-tools   | v0.1.0  | `shuji-bonji/factcheck-skill`            |
+| [media-literacy-check](https://github.com/shuji-bonji/media-literacycheck-skill)        | Skill               | quality-tools   | v0.1.0  | `shuji-bonji/media-literacycheck-skill`  |
+| [spec-compliance-skills](https://github.com/shuji-bonji/spec-compliance-skills)         | Skill               | quality-tools   | v0.1.0  | `shuji-bonji/spec-compliance-skills`     |
+| [epsg-mcp](https://github.com/shuji-bonji/epsg-mcp)                                     | MCP                 | domain-specific | v0.9.10 | `shuji-bonji/epsg-mcp`                   |
+| [ifc-core-mcp](https://github.com/shuji-bonji/ifc-core-mcp)                             | MCP                 | domain-specific | v0.2.2  | `shuji-bonji/ifc-core-mcp`               |
 
 > `pdf-trust`（受入監査）は `pdf-verify-mcp` を、`pdf-publish`（送り出し）は `pdf-writer-mcp` を必須の前提 MCP とします（いずれも marketplace 収録済み）。対になる 2 つの Skill なので、用途に応じて必要な MCP と一緒に install してください。
 
@@ -123,13 +125,13 @@ graph TB
 
 ## category の方針
 
-| category | 用途 | 例 |
-|---|---|---|
-| `houki` | 日本の法令・通達・判例調査 | houki-research, houki-egov-mcp 等 |
-| `pdf` | PDF の読取・真正性検証・信頼性監査 | pdf-trust, pdf-verify-mcp 等 |
-| `web-spec` | Web 標準・RFC の参照 | rfcxml-mcp, w3c-mcp 等 |
-| `quality-tools` | 翻訳評価・ファクトチェック・仕様準拠 | xcomet-mcp, factcheck 等 |
-| `domain-specific` | 特定ドメイン (測地・BIM) | epsg-mcp, ifc-core-mcp 等 |
+| category          | 用途                                 | 例                                |
+| ----------------- | ------------------------------------ | --------------------------------- |
+| `houki`           | 日本の法令・通達・判例調査           | houki-research, houki-egov-mcp 等 |
+| `pdf`             | PDF の読取・真正性検証・信頼性監査   | pdf-trust, pdf-verify-mcp 等      |
+| `web-spec`        | Web 標準・RFC の参照                 | rfcxml-mcp, w3c-mcp 等            |
+| `quality-tools`   | 翻訳評価・ファクトチェック・仕様準拠 | xcomet-mcp, factcheck 等          |
+| `domain-specific` | 特定ドメイン (測地・BIM)             | epsg-mcp, ifc-core-mcp 等         |
 
 ## ディレクトリ構成
 
