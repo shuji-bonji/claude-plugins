@@ -93,7 +93,10 @@
         "source": "github",
         "repo": "shuji-bonji/pdf-publish-skill"
       },
-      "version": "0.3.1",
+      "version": "0.4.0",
+      "dependencies": [
+        "pdf-writer-mcp"
+      ],
       "description": "PDF の生成・編集から納品までを品質ゲート付きで編成する出力パイプライン Skill。pdf-writer-mcp で書き、pdf-reader-mcp で読み戻し、pdf-verify-mcp (veraPDF) で機械採点する write → read-back → verify ループを回し、根拠付きの Publish Report を添えて納品する。PDF/UA-1 (アクセシブル PDF)・PDF/A-3 添付 (電帳法)・タグ付きフォーム修復に対応。pdf-trust (受入監査) の対になる送り出し側。pdf-writer-mcp が必須。",
       "category": "pdf",
       "keywords": [
@@ -121,7 +124,10 @@
         "source": "github",
         "repo": "shuji-bonji/pdf-trust-skill"
       },
-      "version": "0.3.0",
+      "version": "0.4.0",
+      "dependencies": [
+        "pdf-verify-mcp"
+      ],
       "description": "PDF の信頼性監査オーケストレーション Skill。契約書・請求書・診療文書・行政文書などの PDF の真正性 (署名・改ざん・PAdES/PDF-A) を pdf-verify-mcp を軸に PDF family MCP を編成して判定し、ドメイン別プロファイルに基づく推奨判定付き Trust Report を返す。4 値判定は pdf-verify-mcp v0.7.0+ の evaluate_policy (決定論的ルールエンジン) に委譲し、Skill は解説・推奨アクション・法令根拠を担う。v0.10.0+ では署名後に変わったオブジェクトを pdf-reader-mcp locate_objects と組み合わせてページ・矩形まで特定する。pdf-verify-mcp plugin が必須。",
       "category": "pdf",
       "keywords": [
@@ -250,12 +256,16 @@
         "source": "github",
         "repo": "shuji-bonji/pdf-specialist-plugin"
       },
-      "version": "0.3.0",
+      "version": "0.4.0",
       "dependencies": [
         "pdf-trust",
-        "pdf-publish"
+        "pdf-publish",
+        "pdf-reader-mcp",
+        "pdf-spec-mcp",
+        "pdf-verify-mcp",
+        "pdf-writer-mcp"
       ],
-      "description": "PDF 専門家サブエージェント統合プラグイン。pdf-specialist エージェント（監査・検証・生成・仕様照会）に PDF Family 4 MCP サーバ（pdf-reader / pdf-spec / pdf-verify / pdf-writer）を同梱し、pdf-trust / pdf-publish Skill は dependencies で自動導入する。判定は evaluate_policy（決定論的ルールエンジン）と veraPDF が下し、エージェントは編成とナラティブのみを担う。1 プラグインで PDF 専門家が完成する。",
+      "description": "PDF 専門家サブエージェント統合プラグイン。pdf-specialist エージェント（監査・検証・生成・仕様照会）を提供し、PDF Family 4 MCP サーバ（pdf-reader / pdf-spec / pdf-verify / pdf-writer）と pdf-trust / pdf-publish Skill は dependencies で自動導入する（同梱物なし）。判定は evaluate_policy（決定論的ルールエンジン）と veraPDF が下し、エージェントは編成とナラティブのみを担う。1 プラグインで PDF 専門家が完成する。",
       "category": "pdf",
       "keywords": [
         "pdf",
