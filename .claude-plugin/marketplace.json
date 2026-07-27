@@ -250,8 +250,12 @@
         "source": "github",
         "repo": "shuji-bonji/pdf-specialist-plugin"
       },
-      "version": "0.2.0",
-      "description": "PDF 専門家サブエージェント統合プラグイン。pdf-specialist エージェント（監査・検証・生成・仕様照会）に PDF Family 4 MCP サーバ（pdf-reader / pdf-spec / pdf-verify / pdf-writer）と pdf-trust / pdf-publish Skill を同梱。判定は evaluate_policy（決定論的ルールエンジン）と veraPDF が下し、エージェントは編成とナラティブのみを担う。1 プラグインで PDF 専門家が完成する。",
+      "version": "0.3.0",
+      "dependencies": [
+        "pdf-trust",
+        "pdf-publish"
+      ],
+      "description": "PDF 専門家サブエージェント統合プラグイン。pdf-specialist エージェント（監査・検証・生成・仕様照会）に PDF Family 4 MCP サーバ（pdf-reader / pdf-spec / pdf-verify / pdf-writer）を同梱し、pdf-trust / pdf-publish Skill は dependencies で自動導入する。判定は evaluate_policy（決定論的ルールエンジン）と veraPDF が下し、エージェントは編成とナラティブのみを担う。1 プラグインで PDF 専門家が完成する。",
       "category": "pdf",
       "keywords": [
         "pdf",
