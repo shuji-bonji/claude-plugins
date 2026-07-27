@@ -68,7 +68,7 @@ graph TB
 | [rfcxml-mcp](https://github.com/shuji-bonji/rfcxml-mcp)                                 | MCP                 | web-spec        | v0.5.4  | `shuji-bonji/rfcxml-mcp`                 |
 | [w3c-mcp](https://github.com/shuji-bonji/w3c-mcp)                                       | MCP                 | web-spec        | v0.1.12 | `shuji-bonji/w3c-mcp`                    |
 | [web-compat-mcp](https://github.com/shuji-bonji/web-compat-mcp)                         | MCP                 | web-spec        | v0.1.5  | `shuji-bonji/web-compat-mcp`             |
-| [xcomet-mcp](https://github.com/shuji-bonji/xcomet-mcp-server)                          | MCP                 | quality-tools   | v0.6.2  | `shuji-bonji/xcomet-mcp-server`          |
+| [xcomet-mcp](https://github.com/shuji-bonji/xcomet-mcp-server)                          | MCP                 | quality-tools   | v0.6.3  | `shuji-bonji/xcomet-mcp-server`          |
 | [deepl-glossary-translation](https://github.com/shuji-bonji/deepl-glossary-translation) | Skill               | quality-tools   | v0.1.0  | `shuji-bonji/deepl-glossary-translation` |
 | [factcheck](https://github.com/shuji-bonji/factcheck-skill)                             | Skill               | quality-tools   | v0.1.0  | `shuji-bonji/factcheck-skill`            |
 | [media-literacy-check](https://github.com/shuji-bonji/media-literacycheck-skill)        | Skill               | quality-tools   | v0.1.0  | `shuji-bonji/media-literacycheck-skill`  |
@@ -82,7 +82,7 @@ graph TB
 
 - **pdf-spec-mcp**: You must supply the ISO 32000 specification PDFs yourself and point the `PDF_SPEC_DIR` environment variable at their location.
 - **pdf-publish**: Its prerequisite `pdf-writer-mcp` is also in the marketplace (see the table above for the version). PDF/A-3b container support (`ensure_pdfa`) landed in **v0.15.0** and is available from that release onward. Note that v0.14.0 and earlier have a defect where `_` in `snake_case` is silently dropped during Markdown generation ([B-17](https://github.com/shuji-bonji/pdf-writer-mcp/blob/main/docs/TASKS.md) — **fixed in v0.14.1**). If you are pinned to an older release, check the output of any technical document that contains function names.
-- **xcomet-mcp**: Requires a local Python environment for xCOMET inference (environment variable `XCOMET_PYTHON_PATH`). See the [repo README](https://github.com/shuji-bonji/xcomet-mcp-server) for details.
+- **xcomet-mcp**: Requires a local Python environment with xCOMET installed. `XCOMET_PYTHON_PATH` is **optional** as of **v0.6.3** — set it only when you use a venv or a non-default interpreter; otherwise the server auto-detects one. See the [repo README](https://github.com/shuji-bonji/xcomet-mcp-server) for details.
 
 ## Installation
 

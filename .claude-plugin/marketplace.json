@@ -8,7 +8,7 @@
   },
   "metadata": {
     "description": "shuji-bonji's Claude Plugins — Skill, MCP server, slash command などをまとめた個人 marketplace。日本の法令調査 (houki family)、PDF 真正性検証 (pdf family)、Web 仕様 (W3C/RFC)、品質ツール、ドメイン特化 MCP 等を category 別に提供。",
-    "version": "0.2.0"
+    "version": "0.2.1"
   },
   "plugins": [
     {
@@ -368,8 +368,8 @@
         "source": "github",
         "repo": "shuji-bonji/xcomet-mcp-server"
       },
-      "version": "0.6.2",
-      "description": "xCOMET による翻訳品質評価 MCP server。参照訳なしで翻訳をスコアリングし、エラースパンを検出。ローカル Python 環境 (XCOMET_PYTHON_PATH) が必要。",
+      "version": "0.6.3",
+      "description": "xCOMET による翻訳品質評価 MCP server。参照訳なしで翻訳をスコアリングし、エラースパンを検出。xCOMET を導入したローカル Python 環境が必要 (venv 等を使う場合は XCOMET_PYTHON_PATH で指定、未設定なら自動検出)。",
       "category": "quality-tools",
       "keywords": [
         "translation",
