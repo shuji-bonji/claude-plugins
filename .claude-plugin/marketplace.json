@@ -207,8 +207,8 @@
         "source": "github",
         "repo": "shuji-bonji/pdf-reader-mcp"
       },
-      "version": "0.10.0",
-      "description": "PDF 構造解析 MCP server。テキスト・画像・表の抽出、署名フィールド・フォント・注釈・タグ構造の inspect、オブジェクト番号から描画座標への変換 (locate_objects)、PDF/UA タグ検証を提供。",
+      "version": "0.11.1",
+      "description": "PDF 構造解析 MCP server。テキスト・画像・表の抽出、署名フィールド・フォント・注釈・タグ構造の inspect、描画座標への変換 (オブジェクト番号は locate_objects、構造要素は extract_structured_text の include_bbox。いずれも pdf-writer-mcp add_annotation がそのまま取る形)、PDF/UA タグ検証を提供。",
       "category": "pdf",
       "keywords": [
         "pdf",
@@ -256,7 +256,7 @@
         "source": "github",
         "repo": "shuji-bonji/pdf-specialist-plugin"
       },
-      "version": "0.4.0",
+      "version": "0.5.0",
       "dependencies": [
         "pdf-trust",
         "pdf-publish",
