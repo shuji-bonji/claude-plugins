@@ -93,7 +93,7 @@
         "source": "github",
         "repo": "shuji-bonji/pdf-publish-skill"
       },
-      "version": "0.4.0",
+      "version": "0.5.0",
       "dependencies": [
         "pdf-writer-mcp"
       ],
@@ -124,7 +124,7 @@
         "source": "github",
         "repo": "shuji-bonji/pdf-trust-skill"
       },
-      "version": "0.4.0",
+      "version": "0.5.0",
       "dependencies": [
         "pdf-verify-mcp"
       ],
@@ -153,8 +153,8 @@
         "source": "github",
         "repo": "shuji-bonji/pdf-writer-mcp"
       },
-      "version": "0.15.2",
-      "description": "PDF 生成・編集 MCP server。テキスト/Markdown/表からの PDF 生成、タグ付き PDF/UA-1 出力、ページ操作・しおり・注釈・添付・透かし・フォーム、署名を保持する増分更新、PDF/A-3b の器付け (ensure_pdfa) を提供。npm @shuji-bonji/pdf-writer-mcp を npx で起動する。pdf-publish Skill の必須基盤。",
+      "version": "0.16.0",
+      "description": "PDF 生成・編集 MCP server。テキスト/Markdown/表からの PDF 生成、タグ付き PDF/UA-1 出力、PDF 2.0 出力、ページ操作・しおり・注釈・添付・透かし・フォーム、署名を保持する増分更新、PDF/A-3b / PDF/A-4 / PDF/A-4f の器付け (ensure_pdfa) を提供。npm @shuji-bonji/pdf-writer-mcp を npx で起動する。pdf-publish Skill の必須基盤。",
       "category": "pdf",
       "keywords": [
         "pdf",
@@ -181,8 +181,8 @@
         "source": "github",
         "repo": "shuji-bonji/pdf-verify-mcp"
       },
-      "version": "0.10.0",
-      "description": "PDF 真正性検証 MCP server。電子署名の暗号学的検証 (CMS/PKCS#7)・改ざん検知 (リビジョン間のオブジェクト単位差分を含む)・PAdES レベル判定・PDF/A 適合性検証・ISO 32000 本体条文の制約検査を提供。npm @shuji-bonji/pdf-verify-mcp を npx で起動する。pdf-trust Skill の必須基盤。",
+      "version": "0.11.0",
+      "description": "PDF 真正性検証 MCP server。電子署名の暗号学的検証 (CMS/PKCS#7)・改ざん検知 (リビジョン間のオブジェクト単位差分を含む)・PAdES レベル判定・PDF/A 適合性検証 (PDF/A-1〜4)・ISO 32000 本体条文の制約検査を提供。npm @shuji-bonji/pdf-verify-mcp を npx で起動する。pdf-trust Skill の必須基盤。",
       "category": "pdf",
       "keywords": [
         "pdf",
@@ -256,7 +256,7 @@
         "source": "github",
         "repo": "shuji-bonji/pdf-specialist-plugin"
       },
-      "version": "0.5.0",
+      "version": "0.6.0",
       "dependencies": [
         "pdf-trust",
         "pdf-publish",
