@@ -153,7 +153,7 @@
         "source": "github",
         "repo": "shuji-bonji/pdf-writer-mcp"
       },
-      "version": "0.17.0",
+      "version": "0.18.0",
       "description": "PDF 生成・編集 MCP server。テキスト/Markdown/表からの PDF 生成、タグ付き PDF/UA-1 出力、PDF 2.0 出力、ページ操作・しおり・注釈・添付・透かし・フォーム、署名を保持する増分更新、PDF/A-3b / PDF/A-4 / PDF/A-4f の器付け (ensure_pdfa) を提供。**書けるのは「宣言」であって「適合」ではない** — 測ると落ちると分かっている宣言は declarationRisks として構造化して返す (v0.17.0)。npm @shuji-bonji/pdf-writer-mcp を npx で起動する。pdf-publish Skill の必須基盤。",
       "category": "pdf",
       "keywords": [

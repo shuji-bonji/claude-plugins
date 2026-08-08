@@ -11,7 +11,7 @@ A **marketplace of Claude extensions (Skills / MCP servers / slash commands / su
 ## Where this fits
 
 ```mermaid
-graph TB
+graph LR
   user["User"] -->|"/plugin marketplace add<br/>shuji-bonji/claude-plugins"| mp[("shuji-bonji/claude-plugins<br/>(this repository)")]
 
   mp --> houki[houki category]
@@ -61,7 +61,7 @@ graph TB
 | [pdf-specialist](https://github.com/shuji-bonji/pdf-specialist-plugin)                  | Agent + MCP + Skill | pdf             | v0.6.0  | `shuji-bonji/pdf-specialist-plugin`      |
 | [pdf-publish](https://github.com/shuji-bonji/pdf-publish-skill)                         | Skill               | pdf             | v0.5.0  | `shuji-bonji/pdf-publish-skill`          |
 | [pdf-trust](https://github.com/shuji-bonji/pdf-trust-skill)                             | Skill               | pdf             | v0.5.0  | `shuji-bonji/pdf-trust-skill`            |
-| [pdf-writer-mcp](https://github.com/shuji-bonji/pdf-writer-mcp)                         | MCP                 | pdf             | v0.17.0 | `shuji-bonji/pdf-writer-mcp`             |
+| [pdf-writer-mcp](https://github.com/shuji-bonji/pdf-writer-mcp)                         | MCP                 | pdf             | v0.18.0 | `shuji-bonji/pdf-writer-mcp`             |
 | [pdf-verify-mcp](https://github.com/shuji-bonji/pdf-verify-mcp)                         | MCP                 | pdf             | v0.14.0 | `shuji-bonji/pdf-verify-mcp`             |
 | [pdf-reader-mcp](https://github.com/shuji-bonji/pdf-reader-mcp)                         | MCP                 | pdf             | v0.11.1 | `shuji-bonji/pdf-reader-mcp`             |
 | [pdf-spec-mcp](https://github.com/shuji-bonji/pdf-spec-mcp)                             | MCP                 | pdf             | v0.4.5  | `shuji-bonji/pdf-spec-mcp`               |
@@ -127,8 +127,8 @@ Details: [Manage Claude Cowork plugins for your organization](https://support.cl
 
 ## Category policy
 
-| category          | purpose                                                     | examples                            |
-| ----------------- | ----------------------------------------------------------- | ----------------------------------- |
+| category          | purpose                                                      | examples                             |
+| ----------------- | ------------------------------------------------------------ | ------------------------------------ |
 | `houki`           | Japanese statutes, administrative notices, case law research | houki-research, houki-egov-mcp, etc. |
 | `pdf`             | PDF reading, authenticity verification, trust auditing       | pdf-trust, pdf-verify-mcp, etc.      |
 | `web-spec`        | Web standards and RFC reference                              | rfcxml-mcp, w3c-mcp, etc.            |
