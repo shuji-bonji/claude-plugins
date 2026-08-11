@@ -62,7 +62,7 @@ graph LR
 | [pdf-publish](https://github.com/shuji-bonji/pdf-publish-skill)                         | Skill               | pdf             | v0.5.0  | `shuji-bonji/pdf-publish-skill`          |
 | [pdf-trust](https://github.com/shuji-bonji/pdf-trust-skill)                             | Skill               | pdf             | v0.5.0  | `shuji-bonji/pdf-trust-skill`            |
 | [pdf-writer-mcp](https://github.com/shuji-bonji/pdf-writer-mcp)                         | MCP                 | pdf             | v0.18.0 | `shuji-bonji/pdf-writer-mcp`             |
-| [pdf-verify-mcp](https://github.com/shuji-bonji/pdf-verify-mcp)                         | MCP                 | pdf             | v0.14.0 | `shuji-bonji/pdf-verify-mcp`             |
+| [pdf-verify-mcp](https://github.com/shuji-bonji/pdf-verify-mcp)                         | MCP                 | pdf             | v0.14.1 | `shuji-bonji/pdf-verify-mcp`             |
 | [pdf-reader-mcp](https://github.com/shuji-bonji/pdf-reader-mcp)                         | MCP                 | pdf             | v0.11.1 | `shuji-bonji/pdf-reader-mcp`             |
 | [pdf-spec-mcp](https://github.com/shuji-bonji/pdf-spec-mcp)                             | MCP                 | pdf             | v0.4.5  | `shuji-bonji/pdf-spec-mcp`               |
 | [rfcxml-mcp](https://github.com/shuji-bonji/rfcxml-mcp)                                 | MCP                 | web-spec        | v0.5.4  | `shuji-bonji/rfcxml-mcp`                 |
@@ -81,6 +81,7 @@ graph LR
 ### Usage notes
 
 - **pdf-spec-mcp**: You must supply the ISO 32000 specification PDFs yourself and point the `PDF_SPEC_DIR` environment variable at their location.
+- **pdf-trust**: Its prerequisite `pdf-verify-mcp` had a defect in **v0.14.0 and earlier** where every document timestamp (ETSI.RFC3161) came back **INDETERMINATE** (**fixed in v0.14.1**; confirmed against three independent specimen families — pyHanko, esig/dss, and the Japanese official gazette). Run long-term-preservation audits (B-LTA, denchōhō) on v0.14.1 or later.
 - **pdf-publish**: Its prerequisite `pdf-writer-mcp` is also in the marketplace (see the table above for the version). PDF/A-3b container support (`ensure_pdfa`) landed in **v0.15.0**; **PDF/A-4 and PDF/A-4f, plus PDF 2.0 output, landed in v0.16.0** (a document carrying a CSV or JSON attachment has to be declared `pdfa-4f`, not `pdfa-4`). Since **v0.17.0** `ensure_pdfa` also reports `declarationRisks` — a claim that is already known to fail validation (today: fonts that are not embedded) is named, instead of being left inside the prose warning. Note that v0.14.0 and earlier have a defect where `_` in `snake_case` is silently dropped during Markdown generation ([B-17](https://github.com/shuji-bonji/pdf-writer-mcp/blob/main/docs/TASKS.md) — **fixed in v0.14.1**). If you are pinned to an older release, check the output of any technical document that contains function names.
 - **xcomet-mcp**: Requires a local Python environment with xCOMET installed. `XCOMET_PYTHON_PATH` is **optional** as of **v0.6.3** — set it only when you use a venv or a non-default interpreter; otherwise the server auto-detects one. See the [repo README](https://github.com/shuji-bonji/xcomet-mcp-server) for details.
 
