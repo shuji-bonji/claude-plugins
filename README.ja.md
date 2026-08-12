@@ -60,9 +60,9 @@ graph LR
 | [houki-nta-mcp](https://github.com/shuji-bonji/houki-nta-mcp)                           | MCP                 | houki           | v0.9.5  | `shuji-bonji/houki-nta-mcp`              |
 | [pdf-specialist](https://github.com/shuji-bonji/pdf-specialist-plugin)                  | Agent + MCP + Skill | pdf             | v0.6.0  | `shuji-bonji/pdf-specialist-plugin`      |
 | [pdf-publish](https://github.com/shuji-bonji/pdf-publish-skill)                         | Skill               | pdf             | v0.5.0  | `shuji-bonji/pdf-publish-skill`          |
-| [pdf-trust](https://github.com/shuji-bonji/pdf-trust-skill)                             | Skill               | pdf             | v0.5.0  | `shuji-bonji/pdf-trust-skill`            |
+| [pdf-trust](https://github.com/shuji-bonji/pdf-trust-skill)                             | Skill               | pdf             | v0.5.1  | `shuji-bonji/pdf-trust-skill`            |
 | [pdf-writer-mcp](https://github.com/shuji-bonji/pdf-writer-mcp)                         | MCP                 | pdf             | v0.18.0 | `shuji-bonji/pdf-writer-mcp`             |
-| [pdf-verify-mcp](https://github.com/shuji-bonji/pdf-verify-mcp)                         | MCP                 | pdf             | v0.14.2 | `shuji-bonji/pdf-verify-mcp`             |
+| [pdf-verify-mcp](https://github.com/shuji-bonji/pdf-verify-mcp)                         | MCP                 | pdf             | v0.15.0 | `shuji-bonji/pdf-verify-mcp`             |
 | [pdf-reader-mcp](https://github.com/shuji-bonji/pdf-reader-mcp)                         | MCP                 | pdf             | v0.11.1 | `shuji-bonji/pdf-reader-mcp`             |
 | [pdf-spec-mcp](https://github.com/shuji-bonji/pdf-spec-mcp)                             | MCP                 | pdf             | v0.4.5  | `shuji-bonji/pdf-spec-mcp`               |
 | [rfcxml-mcp](https://github.com/shuji-bonji/rfcxml-mcp)                                 | MCP                 | web-spec        | v0.5.4  | `shuji-bonji/rfcxml-mcp`                 |
@@ -82,6 +82,7 @@ graph LR
 
 - **pdf-spec-mcp**: ISO 32000 仕様 PDF は利用者が用意し、環境変数 `PDF_SPEC_DIR` で配置先を指定してください。
 - **pdf-trust**: 前提の `pdf-verify-mcp` **v0.14.0 以前**には、DocTimeStamp（ETSI.RFC3161）の検証が**一律 INDETERMINATE になる欠陥**があります（**v0.14.2 で修正済み**。pyHanko / esig-dss / 官報の 3 系統の検体で確認）。長期保存（B-LTA・電帳法）の受入監査は v0.14.2 以上で行ってください。
+- **pdf-trust（リビジョン履歴）**: 前提の `pdf-verify-mcp` **v0.14.2 以前**には、**追えない `/Prev` を「前のセクションは無い」と読み、リビジョンチェーンを完全なものとして報告する欠陥**があります（8 リビジョン 5 署名の検体が「1 リビジョン」と報告されました。**v0.15.0 で修正済み**）。**全履歴を約束する監査** — `legal` / `medical` プロファイル、および「署名後に本文が書き換えられたか」が争点の契約書 — は **v0.15.0 以上**で行ってください。旧版では、短くなった一覧を「一度も変更されていない文書」と見分けられません。
 - **pdf-publish**: 前提の `pdf-writer-mcp` も marketplace に収録済みです（版は上の一覧表を参照）。PDF/A-3b の器付け（`ensure_pdfa`）が入ったのは **v0.15.0**、**PDF/A-4 / PDF/A-4f と PDF 2.0 出力は v0.16.0** です（CSV や JSON を添付した文書は `pdfa-4` ではなく `pdfa-4f` を名乗る必要があります）。**v0.17.0** からは `ensure_pdfa` が `declarationRisks` を返し、**測ると落ちると分かっている宣言**（現状はフォント未埋め込み）を散文の警告に埋めずに名指しします。なお v0.14.0 以前には、Markdown 生成時に `snake_case` の `_` が無警告で消える欠陥があります（[B-17](https://github.com/shuji-bonji/pdf-writer-mcp/blob/main/docs/TASKS.md)・**v0.14.1 で修正済み**）。古い版を掴んでいる場合は、関数名を含む技術文書で出力を確認してください。
 - **xcomet-mcp**: xCOMET を導入したローカル Python 環境が必要です。環境変数 `XCOMET_PYTHON_PATH` は **v0.6.3 から任意**になりました（venv や既定以外のインタプリタを使う場合のみ指定、未設定なら自動検出）。詳細は [repo の README](https://github.com/shuji-bonji/xcomet-mcp-server) を参照。
 
