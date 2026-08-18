@@ -122,7 +122,7 @@
         "source": "github",
         "repo": "shuji-bonji/pdf-trust-skill"
       },
-      "version": "0.5.1",
+      "version": "0.6.0",
       "dependencies": ["pdf-verify-mcp"],
       "description": "PDF の信頼性監査オーケストレーション Skill。契約書・請求書・診療文書・行政文書などの PDF の真正性 (署名・改ざん・PAdES/PDF-A) を pdf-verify-mcp を軸に PDF family MCP を編成して判定し、ドメイン別プロファイルに基づく推奨判定付き Trust Report を返す。4 値判定は pdf-verify-mcp v0.7.0+ の evaluate_policy (決定論的ルールエンジン) に委譲し、Skill は解説・推奨アクション・法令根拠を担う。v0.10.0+ では署名後に変わったオブジェクトを pdf-reader-mcp locate_objects と組み合わせてページ・矩形まで特定する。pdf-verify-mcp plugin が必須。",
       "category": "pdf",
@@ -177,7 +177,7 @@
         "source": "github",
         "repo": "shuji-bonji/pdf-verify-mcp"
       },
-      "version": "0.15.2",
+      "version": "0.16.0",
       "description": "PDF 真正性検証 MCP server。電子署名の暗号学的検証 (CMS/PKCS#7)・改ざん検知 (リビジョン間のオブジェクト単位差分を含む)・DocMDP 証明署名の権限判定 (ISO 32000-2 Table 257 に沿って P=1/2/3 ごとに変更の種類を照合。判定できない場合は indeterminate = pass ではない)・PAdES レベル判定・PDF/A 適合性検証 (PDF/A-1〜4)・ISO 32000 本体条文の制約検査 (validate_clauses = フォント埋め込み / メタデータ / 注釈の 3 ドメイン・26 制約。veraPDF が見ない領域) を提供。npm @shuji-bonji/pdf-verify-mcp を npx で起動する。pdf-trust Skill の必須基盤。",
       "category": "pdf",
       "keywords": [
