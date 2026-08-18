@@ -177,7 +177,7 @@
         "source": "github",
         "repo": "shuji-bonji/pdf-verify-mcp"
       },
-      "version": "0.15.1",
+      "version": "0.15.2",
       "description": "PDF 真正性検証 MCP server。電子署名の暗号学的検証 (CMS/PKCS#7)・改ざん検知 (リビジョン間のオブジェクト単位差分を含む)・DocMDP 証明署名の権限判定 (ISO 32000-2 Table 257 に沿って P=1/2/3 ごとに変更の種類を照合。判定できない場合は indeterminate = pass ではない)・PAdES レベル判定・PDF/A 適合性検証 (PDF/A-1〜4)・ISO 32000 本体条文の制約検査 (validate_clauses = フォント埋め込み / メタデータ / 注釈の 3 ドメイン・26 制約。veraPDF が見ない領域) を提供。npm @shuji-bonji/pdf-verify-mcp を npx で起動する。pdf-trust Skill の必須基盤。",
       "category": "pdf",
       "keywords": [
