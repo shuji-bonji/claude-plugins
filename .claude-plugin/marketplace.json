@@ -8,7 +8,7 @@
   },
   "metadata": {
     "description": "shuji-bonji's Claude Plugins — Skill, MCP server, slash command などをまとめた個人 marketplace。日本の法令調査 (houki family)、PDF 真正性検証 (pdf family)、Web 仕様 (W3C/RFC)、品質ツール、ドメイン特化 MCP 等を category 別に提供。",
-    "version": "0.2.2"
+    "version": "0.3.0"
   },
   "plugins": [
     {
@@ -94,7 +94,9 @@
         "repo": "shuji-bonji/pdf-publish-skill"
       },
       "version": "0.5.0",
-      "dependencies": ["pdf-writer-mcp"],
+      "dependencies": [
+        "pdf-writer-mcp"
+      ],
       "description": "PDF の生成・編集から納品までを品質ゲート付きで編成する出力パイプライン Skill。pdf-writer-mcp で書き、pdf-reader-mcp で読み戻し、pdf-verify-mcp (veraPDF) で機械採点する write → read-back → verify ループを回し、根拠付きの Publish Report を添えて納品する。PDF/UA-1 (アクセシブル PDF)・PDF/A-3 添付 (電帳法)・タグ付きフォーム修復に対応。pdf-trust (受入監査) の対になる送り出し側。pdf-writer-mcp が必須。",
       "category": "pdf",
       "keywords": [
@@ -123,7 +125,9 @@
         "repo": "shuji-bonji/pdf-trust-skill"
       },
       "version": "0.7.0",
-      "dependencies": ["pdf-verify-mcp"],
+      "dependencies": [
+        "pdf-verify-mcp"
+      ],
       "description": "PDF の信頼性監査オーケストレーション Skill。契約書・請求書・診療文書・行政文書などの PDF の真正性 (署名・改ざん・PAdES/PDF-A) を pdf-verify-mcp を軸に PDF family MCP を編成して判定し、ドメイン別プロファイルに基づく推奨判定付き Trust Report を返す。4 値判定は pdf-verify-mcp v0.7.0+ の evaluate_policy (決定論的ルールエンジン) に委譲し、Skill は解説・推奨アクション・法令根拠を担う。v0.10.0+ では署名後に変わったオブジェクトを pdf-reader-mcp locate_objects と組み合わせてページ・矩形まで特定する。pdf-verify-mcp plugin が必須。",
       "category": "pdf",
       "keywords": [
@@ -137,6 +141,35 @@
         "denchoho"
       ],
       "homepage": "https://github.com/shuji-bonji/pdf-trust-skill",
+      "license": "MIT",
+      "author": {
+        "name": "shuji-bonji",
+        "url": "https://github.com/shuji-bonji"
+      }
+    },
+    {
+      "name": "pdf-read",
+      "source": {
+        "source": "github",
+        "repo": "shuji-bonji/pdf-read-skill"
+      },
+      "version": "0.1.0",
+      "dependencies": [
+        "pdf-reader-mcp"
+      ],
+      "description": "大きな PDF・読めない PDF から必要な箇所を取り出す読み取りオーケストレーション Skill。summarize で文書の性質 (ページ数・タグ・暗号化・ページごとのテキスト抽出可能性) を測ってから、構造経路 (extract_structured_text / extract_tables)・絞り込み経路 (search_text → pages 指定の read_text)・画像経路 (render_page = スキャン・図面・手書きを画像として読む) のいずれかで読み、読んだ範囲と読めなかった箇所を Read Report で申告する。空の抽出結果を「テキストが無い」と結論しないのが中核原則。pdf-trust (受入監査)・pdf-publish (納品) に対する 3 本目。pdf-reader-mcp v0.12.0+ が必須。",
+      "category": "pdf",
+      "keywords": [
+        "pdf",
+        "skill",
+        "read",
+        "extraction",
+        "text-extraction",
+        "scanned-pdf",
+        "tables",
+        "structured-text"
+      ],
+      "homepage": "https://github.com/shuji-bonji/pdf-read-skill",
       "license": "MIT",
       "author": {
         "name": "shuji-bonji",
@@ -203,17 +236,20 @@
         "source": "github",
         "repo": "shuji-bonji/pdf-reader-mcp"
       },
-      "version": "0.11.2",
-      "description": "PDF 構造解析 MCP server。テキスト・画像・表の抽出、署名フィールド・フォント・注釈・タグ構造の inspect、描画座標への変換 (オブジェクト番号は locate_objects、構造要素は extract_structured_text の include_bbox。いずれも pdf-writer-mcp add_annotation がそのまま取る形)、PDF/UA タグ検証を提供。",
+      "version": "0.12.0",
+      "description": "PDF 構造解析 MCP server (19 tools)。テキスト・画像・表の抽出、署名フィールド・フォント・注釈・タグ構造の inspect、描画座標への変換 (オブジェクト番号は locate_objects、構造要素は extract_structured_text の include_bbox。いずれも pdf-writer-mcp add_annotation がそのまま取る形)、PDF/UA タグ検証を提供。v0.12.0: テキストを返す全ツールがページごとの**テキスト抽出可能性** (extracted / no_text_layer / not_extractable / not_observed, ISO 32000-2 §9.10.1) を申告し、空の抽出結果が「テキストが無い」と取り違えられない。read_images は本物の PNG/JPEG を MCP image content block で返し (視覚モデルがそのまま読める)、render_page がページを画像として描画する (PDFium-WASM = optionalDependencies @hyzyla/pdfium。未導入でも他 18 ツールは動作)。summarize は観測から決まる次の一手 (next) を返す。",
       "category": "pdf",
       "keywords": [
-        "pdf",
+        "accessibility",
         "mcp",
         "mcp-server",
+        "pdf",
         "pdf-parser",
-        "accessibility",
         "pdf-ua",
-        "signature"
+        "render-page",
+        "scanned-pdf",
+        "signature",
+        "text-extractability"
       ],
       "homepage": "https://github.com/shuji-bonji/pdf-reader-mcp",
       "license": "MIT",
@@ -252,16 +288,17 @@
         "source": "github",
         "repo": "shuji-bonji/pdf-specialist-plugin"
       },
-      "version": "0.6.1",
+      "version": "0.7.0",
       "dependencies": [
         "pdf-trust",
         "pdf-publish",
+        "pdf-read",
         "pdf-reader-mcp",
         "pdf-spec-mcp",
         "pdf-verify-mcp",
         "pdf-writer-mcp"
       ],
-      "description": "PDF 専門家サブエージェント統合プラグイン。pdf-specialist エージェント（監査・検証・生成・仕様照会）を提供し、PDF Family 4 MCP サーバ（pdf-reader / pdf-spec / pdf-verify / pdf-writer）と pdf-trust / pdf-publish Skill は dependencies で自動導入する（同梱物なし）。判定は evaluate_policy（決定論的ルールエンジン）と veraPDF が下し、エージェントは編成とナラティブのみを担う。1 プラグインで PDF 専門家が完成する。",
+      "description": "PDF 専門家サブエージェント統合プラグイン。pdf-specialist エージェント（監査・検証・生成・読み取り・仕様照会）を提供し、PDF Family 4 MCP サーバ（pdf-reader / pdf-spec / pdf-verify / pdf-writer）と pdf-trust / pdf-publish / pdf-read Skill は dependencies で自動導入する（同梱物なし）。判定は evaluate_policy（決定論的ルールエンジン）と veraPDF が下し、エージェントは編成とナラティブのみを担う。1 プラグインで PDF 専門家が完成する。",
       "category": "pdf",
       "keywords": [
         "pdf",

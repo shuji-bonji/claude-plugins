@@ -27,6 +27,7 @@ graph LR
   pdf --> pspecial["pdf-specialist"]
   pdf --> ppub["pdf-publish"]
   pdf --> ptrust["pdf-trust"]
+  pdf --> pread["pdf-read"]
   pdf --> pwriter["pdf-writer-mcp"]
   pdf --> pverify["pdf-verify-mcp"]
   pdf --> hpdf["pdf-reader-mcp"]
@@ -58,12 +59,13 @@ graph LR
 | [houki-research](https://github.com/shuji-bonji/houki-research-skill)                   | Skill               | houki           | v0.1.0  | `shuji-bonji/houki-research-skill`       |
 | [houki-egov-mcp](https://github.com/shuji-bonji/houki-egov-mcp)                         | MCP                 | houki           | v0.3.1  | `shuji-bonji/houki-egov-mcp`             |
 | [houki-nta-mcp](https://github.com/shuji-bonji/houki-nta-mcp)                           | MCP                 | houki           | v0.9.5  | `shuji-bonji/houki-nta-mcp`              |
-| [pdf-specialist](https://github.com/shuji-bonji/pdf-specialist-plugin)                  | Agent + MCP + Skill | pdf             | v0.6.0  | `shuji-bonji/pdf-specialist-plugin`      |
+| [pdf-specialist](https://github.com/shuji-bonji/pdf-specialist-plugin)                  | Agent + MCP + Skill | pdf             | v0.7.0  | `shuji-bonji/pdf-specialist-plugin`      |
 | [pdf-publish](https://github.com/shuji-bonji/pdf-publish-skill)                         | Skill               | pdf             | v0.5.0  | `shuji-bonji/pdf-publish-skill`          |
-| [pdf-trust](https://github.com/shuji-bonji/pdf-trust-skill)                             | Skill               | pdf             | v0.6.0  | `shuji-bonji/pdf-trust-skill`            |
+| [pdf-trust](https://github.com/shuji-bonji/pdf-trust-skill)                             | Skill               | pdf             | v0.7.0  | `shuji-bonji/pdf-trust-skill`            |
+| [pdf-read](https://github.com/shuji-bonji/pdf-read-skill)                               | Skill               | pdf             | v0.1.0  | `shuji-bonji/pdf-read-skill`             |
 | [pdf-writer-mcp](https://github.com/shuji-bonji/pdf-writer-mcp)                         | MCP                 | pdf             | v0.20.1 | `shuji-bonji/pdf-writer-mcp`             |
-| [pdf-verify-mcp](https://github.com/shuji-bonji/pdf-verify-mcp)                         | MCP                 | pdf             | v0.16.0 | `shuji-bonji/pdf-verify-mcp`             |
-| [pdf-reader-mcp](https://github.com/shuji-bonji/pdf-reader-mcp)                         | MCP                 | pdf             | v0.11.2 | `shuji-bonji/pdf-reader-mcp`             |
+| [pdf-verify-mcp](https://github.com/shuji-bonji/pdf-verify-mcp)                         | MCP                 | pdf             | v0.17.0 | `shuji-bonji/pdf-verify-mcp`             |
+| [pdf-reader-mcp](https://github.com/shuji-bonji/pdf-reader-mcp)                         | MCP                 | pdf             | v0.12.0 | `shuji-bonji/pdf-reader-mcp`             |
 | [pdf-spec-mcp](https://github.com/shuji-bonji/pdf-spec-mcp)                             | MCP                 | pdf             | v0.4.6  | `shuji-bonji/pdf-spec-mcp`               |
 | [rfcxml-mcp](https://github.com/shuji-bonji/rfcxml-mcp)                                 | MCP                 | web-spec        | v0.5.4  | `shuji-bonji/rfcxml-mcp`                 |
 | [w3c-mcp](https://github.com/shuji-bonji/w3c-mcp)                                       | MCP                 | web-spec        | v0.1.12 | `shuji-bonji/w3c-mcp`                    |
@@ -76,7 +78,7 @@ graph LR
 | [epsg-mcp](https://github.com/shuji-bonji/epsg-mcp)                                     | MCP                 | domain-specific | v0.9.10 | `shuji-bonji/epsg-mcp`                   |
 | [ifc-core-mcp](https://github.com/shuji-bonji/ifc-core-mcp)                             | MCP                 | domain-specific | v0.2.2  | `shuji-bonji/ifc-core-mcp`               |
 
-> `pdf-trust` (acceptance audit) requires `pdf-verify-mcp`, and `pdf-publish` (outbound delivery) requires `pdf-writer-mcp`, as prerequisite MCPs (both are already in the marketplace). The two Skills are a matched pair, so install whichever you need together with its required MCP.
+> `pdf-trust` (acceptance audit) requires `pdf-verify-mcp`, `pdf-publish` (outbound delivery) requires `pdf-writer-mcp`, and `pdf-read` (reading pipeline) requires `pdf-reader-mcp` **v0.12.0+**, as prerequisite MCPs (all are already in the marketplace). The three Skills cover intake, delivery and reading, so install whichever you need together with its required MCP.
 
 ### Usage notes
 
@@ -107,6 +109,10 @@ graph LR
 /plugin install pdf-verify-mcp@shuji-bonji
 /plugin install pdf-publish@shuji-bonji
 /plugin install pdf-reader-mcp@shuji-bonji
+
+# Example: reading pipeline = pull what you need out of large or unreadable PDFs
+/plugin install pdf-reader-mcp@shuji-bonji   # required foundation (v0.12.0+)
+/plugin install pdf-read@shuji-bonji
 ```
 
 ### Cowork (individual users)
