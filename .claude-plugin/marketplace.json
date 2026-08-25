@@ -8,7 +8,7 @@
   },
   "metadata": {
     "description": "shuji-bonji's Claude Plugins — Skill, MCP server, slash command などをまとめた個人 marketplace。日本の法令調査 (houki family)、PDF 真正性検証 (pdf family)、Web 仕様 (W3C/RFC)、品質ツール、ドメイン特化 MCP 等を category 別に提供。",
-    "version": "0.3.0"
+    "version": "0.3.1"
   },
   "plugins": [
     {
@@ -264,8 +264,8 @@
         "source": "github",
         "repo": "shuji-bonji/pdf-spec-mcp"
       },
-      "version": "0.4.6",
-      "description": "ISO 32000 (PDF 仕様) の構造化参照 MCP server。条項検索・要求事項 (MUST/SHOULD) 抽出・定義取得・版間比較を提供。ISO 仕様 PDF は利用者が用意し PDF_SPEC_DIR で指定する。**本サーバは条文の参照であって適合判定器ではありません** — PDF ファイルの検査や適合判定は行わず、それは pdf-verify-mcp の役割です。",
+      "version": "0.5.0",
+      "description": "ISO 32000 (PDF 仕様) の構造化参照 MCP server。条項検索・要求事項 (MUST/SHOULD) 抽出・定義取得・版間比較を提供。ISO 仕様 PDF は利用者が用意し PDF_SPEC_DIR で指定する。v0.5.0: 検索索引と要件の全走査を初回構築後にディスクへキャッシュし (既定 ~/.cache/pdf-spec-mcp、PDF_SPEC_CACHE_DIR で変更・PDF_SPEC_CACHE=off で無効)、以後のプロセスは 1 秒未満で応答する。`--build-cache` CLI で全仕様を事前構築できる。**本サーバは条文の参照であって適合判定器ではありません** — PDF ファイルの検査や適合判定は行わず、それは pdf-verify-mcp の役割です。",
       "category": "pdf",
       "keywords": [
         "pdf",

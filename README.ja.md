@@ -66,7 +66,7 @@ graph LR
 | [pdf-writer-mcp](https://github.com/shuji-bonji/pdf-writer-mcp)                         | MCP                 | pdf             | v0.20.1 | `shuji-bonji/pdf-writer-mcp`             |
 | [pdf-verify-mcp](https://github.com/shuji-bonji/pdf-verify-mcp)                         | MCP                 | pdf             | v0.17.0 | `shuji-bonji/pdf-verify-mcp`             |
 | [pdf-reader-mcp](https://github.com/shuji-bonji/pdf-reader-mcp)                         | MCP                 | pdf             | v0.12.0 | `shuji-bonji/pdf-reader-mcp`             |
-| [pdf-spec-mcp](https://github.com/shuji-bonji/pdf-spec-mcp)                             | MCP                 | pdf             | v0.4.6  | `shuji-bonji/pdf-spec-mcp`               |
+| [pdf-spec-mcp](https://github.com/shuji-bonji/pdf-spec-mcp)                             | MCP                 | pdf             | v0.5.0  | `shuji-bonji/pdf-spec-mcp`               |
 | [rfcxml-mcp](https://github.com/shuji-bonji/rfcxml-mcp)                                 | MCP                 | web-spec        | v0.5.4  | `shuji-bonji/rfcxml-mcp`                 |
 | [w3c-mcp](https://github.com/shuji-bonji/w3c-mcp)                                       | MCP                 | web-spec        | v0.1.12 | `shuji-bonji/w3c-mcp`                    |
 | [web-compat-mcp](https://github.com/shuji-bonji/web-compat-mcp)                         | MCP                 | web-spec        | v0.1.5  | `shuji-bonji/web-compat-mcp`             |
@@ -82,7 +82,7 @@ graph LR
 
 ### 利用上の注意
 
-- **pdf-spec-mcp**: ISO 32000 仕様 PDF は利用者が用意し、環境変数 `PDF_SPEC_DIR` で配置先を指定してください。
+- **pdf-spec-mcp**: ISO 32000 仕様 PDF は利用者が用意し、環境変数 `PDF_SPEC_DIR` で配置先を指定してください。**v0.5.0** から、検索索引と要件の全走査は初回構築のあとディスクにキャッシュされます（`${XDG_CACHE_HOME:-~/.cache}/pdf-spec-mcp`、コーパス全体で約 18 MB。`PDF_SPEC_CACHE_DIR` で置き場所を変更、`PDF_SPEC_CACHE=off` で無効）。セッションごとに起動するサーバプロセスでも、`search_spec` は 6〜14 秒の再構築ではなく 1 秒未満で返ります。`npx -y @shuji-bonji/pdf-spec-mcp@latest --build-cache` で全仕様を事前構築できます。キャッシュは利用者の PDF から利用者の機械上に作る派生物で、配布はしません。
 - **pdf-trust**: 前提の `pdf-verify-mcp` **v0.14.0 以前**には、DocTimeStamp（ETSI.RFC3161）の検証が**一律 INDETERMINATE になる欠陥**があります（**v0.14.2 で修正済み**。pyHanko / esig-dss / 官報の 3 系統の検体で確認）。長期保存（B-LTA・電帳法）の受入監査は v0.14.2 以上で行ってください。
 - **pdf-trust（リビジョン履歴）**: 前提の `pdf-verify-mcp` **v0.14.2 以前**には、**追えない `/Prev` を「前のセクションは無い」と読み、リビジョンチェーンを完全なものとして報告する欠陥**があります（8 リビジョン 5 署名の検体が「1 リビジョン」と報告されました。**v0.15.0 で修正済み**）。**全履歴を約束する監査** — `legal` / `medical` プロファイル、および「署名後に本文が書き換えられたか」が争点の契約書 — は **v0.15.0 以上**で行ってください。旧版では、短くなった一覧を「一度も変更されていない文書」と見分けられません。
 - **pdf-trust（報告書に何を書けるか）**: `pdf-verify-mcp` の変更 3 件は、判定ではなく**書ける内容**に効きます。**v0.15.1** から、適合の判定を出した veraPDF の版が記録されます（`authoritativeValidation.version`）。規則の数（「146 / 146」など）は**同じビルドの実行どうしでしか比べられない**ので、それ以前の報告書は自分の数字を誰が出したのか言えません。**v0.15.2** では `verify_integrity` の説明を直しました —— 返ってきた `revisions` は**全履歴とは限りません**。**v0.16.0** でそれがフィールドになりました（`revisionChain: { status, missing }`）—— それまで信号は `notes` の英文だけで、Skill は「全履歴を約束してよいか」を**散文の照合**で決めていました。「一覧に出てこない = 行われていない」と書けるのは `status: 'complete'` のときだけです。チェーンが切れると残った 1 件が「元版」扱いになり、**機械が読めるフィールドは全部「何も足されていない」と言います**。**pdf-trust v0.6.0 がこのフィールドを読みます**（0.15.x 向けの散文による退避も残してあります）。3 件とも旧版の判定が誤っていたという話ではなく、**報告書に何を書けるか**が変わります。
