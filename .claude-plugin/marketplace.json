@@ -8,7 +8,7 @@
   },
   "metadata": {
     "description": "shuji-bonji's Claude Plugins — Skill, MCP server, slash command などをまとめた個人 marketplace。日本の法令調査 (houki family)、PDF 真正性検証 (pdf family)、Web 仕様 (W3C/RFC)、品質ツール、ドメイン特化 MCP 等を category 別に提供。",
-    "version": "0.3.1"
+    "version": "0.4.0"
   },
   "plugins": [
     {
@@ -182,7 +182,7 @@
         "source": "github",
         "repo": "shuji-bonji/pdf-writer-mcp"
       },
-      "version": "0.20.1",
+      "version": "0.21.0",
       "description": "PDF 生成・編集 MCP server。テキスト/Markdown/表からの PDF 生成、タグ付き PDF/UA-1 出力、PDF 2.0 出力、ページ操作・しおり・注釈・添付・透かし・フォーム、署名を保持する増分更新、PDF/A-3b / PDF/A-4 / PDF/A-4f の器付け (ensure_pdfa) を提供。**書けるのは「宣言」であって「適合」ではない** — 測ると落ちると分かっている宣言は declarationRisks として構造化して返す (v0.17.0)。npm @shuji-bonji/pdf-writer-mcp を npx で起動する。pdf-publish Skill の必須基盤。",
       "category": "pdf",
       "keywords": [
@@ -210,7 +210,7 @@
         "source": "github",
         "repo": "shuji-bonji/pdf-verify-mcp"
       },
-      "version": "0.17.0",
+      "version": "0.18.0",
       "description": "PDF 真正性検証 MCP server。電子署名の暗号学的検証 (CMS/PKCS#7)・改ざん検知 (リビジョン間のオブジェクト単位差分・リビジョン一覧が全履歴かの revisionChain・リビジョン数の食い違いに説明が付いているかの revisionCountAgreement を含む)・DocMDP 証明署名の権限判定 (ISO 32000-2 Table 257 に沿って P=1/2/3 ごとに変更の種類を照合。判定できない場合は indeterminate = pass ではない)・PAdES レベル判定・PDF/A 適合性検証 (PDF/A-1〜4)・ISO 32000 本体条文の制約検査 (validate_clauses = フォント埋め込み / メタデータ / 注釈の 3 ドメイン・26 制約。veraPDF が見ない領域) を提供。npm @shuji-bonji/pdf-verify-mcp を npx で起動する。pdf-trust Skill の必須基盤。",
       "category": "pdf",
       "keywords": [
@@ -236,7 +236,7 @@
         "source": "github",
         "repo": "shuji-bonji/pdf-reader-mcp"
       },
-      "version": "0.12.0",
+      "version": "0.13.0",
       "description": "PDF 構造解析 MCP server (19 tools)。テキスト・画像・表の抽出、署名フィールド・フォント・注釈・タグ構造の inspect、描画座標への変換 (オブジェクト番号は locate_objects、構造要素は extract_structured_text の include_bbox。いずれも pdf-writer-mcp add_annotation がそのまま取る形)、PDF/UA タグ検証を提供。v0.12.0: テキストを返す全ツールがページごとの**テキスト抽出可能性** (extracted / no_text_layer / not_extractable / not_observed, ISO 32000-2 §9.10.1) を申告し、空の抽出結果が「テキストが無い」と取り違えられない。read_images は本物の PNG/JPEG を MCP image content block で返し (視覚モデルがそのまま読める)、render_page がページを画像として描画する (PDFium-WASM = optionalDependencies @hyzyla/pdfium。未導入でも他 18 ツールは動作)。summarize は観測から決まる次の一手 (next) を返す。",
       "category": "pdf",
       "keywords": [
@@ -264,7 +264,7 @@
         "source": "github",
         "repo": "shuji-bonji/pdf-spec-mcp"
       },
-      "version": "0.5.0",
+      "version": "0.6.0",
       "description": "ISO 32000 (PDF 仕様) の構造化参照 MCP server。条項検索・要求事項 (MUST/SHOULD) 抽出・定義取得・版間比較を提供。ISO 仕様 PDF は利用者が用意し PDF_SPEC_DIR で指定する。v0.5.0: 検索索引と要件の全走査を初回構築後にディスクへキャッシュし (既定 ~/.cache/pdf-spec-mcp、PDF_SPEC_CACHE_DIR で変更・PDF_SPEC_CACHE=off で無効)、以後のプロセスは 1 秒未満で応答する。`--build-cache` CLI で全仕様を事前構築できる。**本サーバは条文の参照であって適合判定器ではありません** — PDF ファイルの検査や適合判定は行わず、それは pdf-verify-mcp の役割です。",
       "category": "pdf",
       "keywords": [

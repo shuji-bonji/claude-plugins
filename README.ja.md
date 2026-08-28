@@ -63,10 +63,10 @@ graph LR
 | [pdf-publish](https://github.com/shuji-bonji/pdf-publish-skill)                         | Skill               | pdf             | v0.5.0  | `shuji-bonji/pdf-publish-skill`          |
 | [pdf-trust](https://github.com/shuji-bonji/pdf-trust-skill)                             | Skill               | pdf             | v0.7.0  | `shuji-bonji/pdf-trust-skill`            |
 | [pdf-read](https://github.com/shuji-bonji/pdf-read-skill)                               | Skill               | pdf             | v0.1.0  | `shuji-bonji/pdf-read-skill`             |
-| [pdf-writer-mcp](https://github.com/shuji-bonji/pdf-writer-mcp)                         | MCP                 | pdf             | v0.20.1 | `shuji-bonji/pdf-writer-mcp`             |
-| [pdf-verify-mcp](https://github.com/shuji-bonji/pdf-verify-mcp)                         | MCP                 | pdf             | v0.17.0 | `shuji-bonji/pdf-verify-mcp`             |
-| [pdf-reader-mcp](https://github.com/shuji-bonji/pdf-reader-mcp)                         | MCP                 | pdf             | v0.12.0 | `shuji-bonji/pdf-reader-mcp`             |
-| [pdf-spec-mcp](https://github.com/shuji-bonji/pdf-spec-mcp)                             | MCP                 | pdf             | v0.5.0  | `shuji-bonji/pdf-spec-mcp`               |
+| [pdf-writer-mcp](https://github.com/shuji-bonji/pdf-writer-mcp)                         | MCP                 | pdf             | v0.21.0 | `shuji-bonji/pdf-writer-mcp`             |
+| [pdf-verify-mcp](https://github.com/shuji-bonji/pdf-verify-mcp)                         | MCP                 | pdf             | v0.18.0 | `shuji-bonji/pdf-verify-mcp`             |
+| [pdf-reader-mcp](https://github.com/shuji-bonji/pdf-reader-mcp)                         | MCP                 | pdf             | v0.13.0 | `shuji-bonji/pdf-reader-mcp`             |
+| [pdf-spec-mcp](https://github.com/shuji-bonji/pdf-spec-mcp)                             | MCP                 | pdf             | v0.6.0  | `shuji-bonji/pdf-spec-mcp`               |
 | [rfcxml-mcp](https://github.com/shuji-bonji/rfcxml-mcp)                                 | MCP                 | web-spec        | v0.5.4  | `shuji-bonji/rfcxml-mcp`                 |
 | [w3c-mcp](https://github.com/shuji-bonji/w3c-mcp)                                       | MCP                 | web-spec        | v0.1.12 | `shuji-bonji/w3c-mcp`                    |
 | [web-compat-mcp](https://github.com/shuji-bonji/web-compat-mcp)                         | MCP                 | web-spec        | v0.1.5  | `shuji-bonji/web-compat-mcp`             |
@@ -82,6 +82,7 @@ graph LR
 
 ### 利用上の注意
 
+- **PDF family の 4 MCP（2026-08-27 の版）**: `pdf-spec-mcp` v0.6.0 / `pdf-reader-mcp` v0.13.0 / `pdf-verify-mcp` v0.18.0 / `pdf-writer-mcp` v0.21.0 では、ツールは 1 つも増減せず出力も変わりませんが、**呼び方に届く変更が 3 つ**あります。(1) **宣言に無い引数を拒否します** —— それまでは黙って捨てられ、呼び出しは成功していました。(2) **知らないツール名は JSON-RPC エラーで返ります** —— それまではツール結果の `isError: true` でした。`isError` だけを見るクライアントには届かず、`await client.callTool(...)` は解決せずに例外を投げます。(3) `inputSchema` の `$schema` が JSON Schema 2020-12 になり、`pdf-writer-mcp` の `add_bookmarks` は `$ref` の指す先が `#/definitions/` から `#/$defs/` に移ります。加えて **`pdf-reader-mcp` は Node 20 以上が必要**になりました（v0.12.0 までは 18 でも動きました）。Skill 経由の利用（pdf-trust / pdf-publish / pdf-read）は、渡す引数がいずれも宣言済みであることを確認済みで、影響を受けません。
 - **pdf-spec-mcp**: ISO 32000 仕様 PDF は利用者が用意し、環境変数 `PDF_SPEC_DIR` で配置先を指定してください。**v0.5.0** から、検索索引と要件の全走査は初回構築のあとディスクにキャッシュされます（`${XDG_CACHE_HOME:-~/.cache}/pdf-spec-mcp`、コーパス全体で約 18 MB。`PDF_SPEC_CACHE_DIR` で置き場所を変更、`PDF_SPEC_CACHE=off` で無効）。セッションごとに起動するサーバプロセスでも、`search_spec` は 6〜14 秒の再構築ではなく 1 秒未満で返ります。`npx -y @shuji-bonji/pdf-spec-mcp@latest --build-cache` で全仕様を事前構築できます。キャッシュは利用者の PDF から利用者の機械上に作る派生物で、配布はしません。
 - **pdf-trust**: 前提の `pdf-verify-mcp` **v0.14.0 以前**には、DocTimeStamp（ETSI.RFC3161）の検証が**一律 INDETERMINATE になる欠陥**があります（**v0.14.2 で修正済み**。pyHanko / esig-dss / 官報の 3 系統の検体で確認）。長期保存（B-LTA・電帳法）の受入監査は v0.14.2 以上で行ってください。
 - **pdf-trust（リビジョン履歴）**: 前提の `pdf-verify-mcp` **v0.14.2 以前**には、**追えない `/Prev` を「前のセクションは無い」と読み、リビジョンチェーンを完全なものとして報告する欠陥**があります（8 リビジョン 5 署名の検体が「1 リビジョン」と報告されました。**v0.15.0 で修正済み**）。**全履歴を約束する監査** — `legal` / `medical` プロファイル、および「署名後に本文が書き換えられたか」が争点の契約書 — は **v0.15.0 以上**で行ってください。旧版では、短くなった一覧を「一度も変更されていない文書」と見分けられません。
