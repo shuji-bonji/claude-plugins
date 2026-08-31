@@ -1,0 +1,32 @@
+name: Marketplace version check
+
+# marketplace.json の版が、各 plugin repo の .claude-plugin/plugin.json と一致しているかを照合する。
+#
+# なぜ要るか: `/plugin install` が持ってくるのは GitHub 側の plugin.json であって、
+# marketplace.json の version ではない。両者がずれても install は成功する。
+# 一覧に 0.2.0 と出て、入るのは 0.1.0 —— これが落ちる所は今まで無かった
+# （このリポジトリには CI が無く、台帳は毎回手で直していた）。
+#
+# 落ちたら手元で: node scripts/marketplace-version-check.mjs --write → 差分を見て commit
+
+on:
+  schedule:
+    - cron: '0 21 * * 1' # 毎週月曜 06:00 JST
+  workflow_dispatch:
+  push:
+    branches: [main]
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      # 依存なし（raw.githubusercontent から plugin.json を読むだけ）。install 不要
+      - run: node scripts/marketplace-version-check.mjs
