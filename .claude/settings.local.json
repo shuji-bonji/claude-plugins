@@ -1,0 +1,9 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(python3 -c ' *)",
+      "Bash(bash /private/tmp/claude-501/-Users-bonji-workspace-shuji-bonji-claude-plugins/834e1023-0eae-4d5b-8165-49865be1c5a0/scratchpad/check.sh)",
+      "Bash(gh repo *)"
+    ]
+  }
+}

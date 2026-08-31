@@ -60,12 +60,12 @@ graph LR
 | [houki-egov-mcp](https://github.com/shuji-bonji/houki-egov-mcp)                         | MCP                 | houki           | v0.3.1  | `shuji-bonji/houki-egov-mcp`             |
 | [houki-nta-mcp](https://github.com/shuji-bonji/houki-nta-mcp)                           | MCP                 | houki           | v0.9.5  | `shuji-bonji/houki-nta-mcp`              |
 | [pdf-specialist](https://github.com/shuji-bonji/pdf-specialist-plugin)                  | Agent + MCP + Skill | pdf             | v0.7.0  | `shuji-bonji/pdf-specialist-plugin`      |
-| [pdf-publish](https://github.com/shuji-bonji/pdf-publish-skill)                         | Skill               | pdf             | v0.5.0  | `shuji-bonji/pdf-publish-skill`          |
-| [pdf-trust](https://github.com/shuji-bonji/pdf-trust-skill)                             | Skill               | pdf             | v0.7.0  | `shuji-bonji/pdf-trust-skill`            |
-| [pdf-read](https://github.com/shuji-bonji/pdf-read-skill)                               | Skill               | pdf             | v0.1.0  | `shuji-bonji/pdf-read-skill`             |
+| [pdf-publish](https://github.com/shuji-bonji/pdf-publish-skill)                         | Skill               | pdf             | v0.7.0  | `shuji-bonji/pdf-publish-skill`          |
+| [pdf-trust](https://github.com/shuji-bonji/pdf-trust-skill)                             | Skill               | pdf             | v0.8.0  | `shuji-bonji/pdf-trust-skill`            |
+| [pdf-read](https://github.com/shuji-bonji/pdf-read-skill)                               | Skill               | pdf             | v0.2.0  | `shuji-bonji/pdf-read-skill`             |
 | [pdf-writer-mcp](https://github.com/shuji-bonji/pdf-writer-mcp)                         | MCP                 | pdf             | v0.21.0 | `shuji-bonji/pdf-writer-mcp`             |
-| [pdf-verify-mcp](https://github.com/shuji-bonji/pdf-verify-mcp)                         | MCP                 | pdf             | v0.18.0 | `shuji-bonji/pdf-verify-mcp`             |
-| [pdf-reader-mcp](https://github.com/shuji-bonji/pdf-reader-mcp)                         | MCP                 | pdf             | v0.13.0 | `shuji-bonji/pdf-reader-mcp`             |
+| [pdf-verify-mcp](https://github.com/shuji-bonji/pdf-verify-mcp)                         | MCP                 | pdf             | v0.26.0 | `shuji-bonji/pdf-verify-mcp`             |
+| [pdf-reader-mcp](https://github.com/shuji-bonji/pdf-reader-mcp)                         | MCP                 | pdf             | v0.14.0 | `shuji-bonji/pdf-reader-mcp`             |
 | [pdf-spec-mcp](https://github.com/shuji-bonji/pdf-spec-mcp)                             | MCP                 | pdf             | v0.6.0  | `shuji-bonji/pdf-spec-mcp`               |
 | [rfcxml-mcp](https://github.com/shuji-bonji/rfcxml-mcp)                                 | MCP                 | web-spec        | v0.5.4  | `shuji-bonji/rfcxml-mcp`                 |
 | [w3c-mcp](https://github.com/shuji-bonji/w3c-mcp)                                       | MCP                 | web-spec        | v0.1.12 | `shuji-bonji/w3c-mcp`                    |
@@ -78,10 +78,11 @@ graph LR
 | [epsg-mcp](https://github.com/shuji-bonji/epsg-mcp)                                     | MCP                 | domain-specific | v0.9.10 | `shuji-bonji/epsg-mcp`                   |
 | [ifc-core-mcp](https://github.com/shuji-bonji/ifc-core-mcp)                             | MCP                 | domain-specific | v0.2.2  | `shuji-bonji/ifc-core-mcp`               |
 
-> `pdf-trust` (acceptance audit) requires `pdf-verify-mcp`, `pdf-publish` (outbound delivery) requires `pdf-writer-mcp`, and `pdf-read` (reading pipeline) requires `pdf-reader-mcp` **v0.12.0+**, as prerequisite MCPs (all are already in the marketplace). The three Skills cover intake, delivery and reading, so install whichever you need together with its required MCP.
+> `pdf-trust` (acceptance audit) requires `pdf-verify-mcp`, `pdf-publish` (outbound delivery) requires `pdf-writer-mcp`, and `pdf-read` (reading pipeline) requires `pdf-reader-mcp` (**v0.14.0+ recommended**), as prerequisite MCPs (all are already in the marketplace). The three Skills cover intake, delivery and reading, so install whichever you need together with its required MCP.
 
 ### Usage notes
 
+- **`pdf-reader-mcp` v0.14.0 changes the shape of what the text-returning tools return.** Taking the characters off a page and observing whether those characters have a route to Unicode (ISO 32000-2 §9.10.1) are separate readings that fail separately, so every such tool now carries `scope` saying which of them were done, and **a field whose reading did not happen is `null` — never `0`, `false` or `""`**. `read_text` and `read_url` return `{ scope, pages }` where they returned a bare array of pages. Two defects are fixed with it: `read_url` used to return an error for **every** input (the fetched bytes were handed to two readers, and the first took them away), and `render_page` could stop the server for good on a page whose tiling pattern asks for an astronomical number of tiles — it now runs off the main thread with a 20-second budget per page. Through the Skills this is handled for you: use `pdf-read` **v0.2.0+** and `pdf-publish` **v0.7.0+**, which read `scope`. On the older Skills against a 0.14.0 server, the stop for a password-protected document does not fire.
 - **The four PDF family MCP servers (the 2026-08-27 releases)**: `pdf-spec-mcp` v0.6.0, `pdf-reader-mcp` v0.13.0, `pdf-verify-mcp` v0.18.0 and `pdf-writer-mcp` v0.21.0 neither gain nor lose a tool, and no tool's output changed — but **three things reach callers**. (1) **An argument the input schema does not declare is now rejected**; until now it was silently dropped and the call ran. (2) **A call naming a tool the server does not have comes back as a JSON-RPC error**, where it used to be a tool result with `isError: true`; a client that only reads `isError` will not see it, and `await client.callTool(...)` throws instead of resolving. (3) `inputSchema` now declares `$schema` as JSON Schema 2020-12, and `pdf-writer-mcp`'s `add_bookmarks` moves its `$ref` target from `#/definitions/` to `#/$defs/`. `pdf-reader-mcp` also **requires Node 20 or later** now (v0.12.0 still ran on 18). Using them through the Skills (pdf-trust / pdf-publish / pdf-read) is unaffected — every argument those Skills pass was checked against the declared schemas.
 - **pdf-spec-mcp**: You must supply the ISO 32000 specification PDFs yourself and point the `PDF_SPEC_DIR` environment variable at their location. Since **v0.5.0** the search index and the full requirements scan are cached on disk after their first build (`${XDG_CACHE_HOME:-~/.cache}/pdf-spec-mcp`, about 18 MB for the whole corpus; `PDF_SPEC_CACHE_DIR` moves it, `PDF_SPEC_CACHE=off` disables it), so a server process started for a new session answers `search_spec` in well under a second instead of rebuilding for 6–14 s. `npx -y @shuji-bonji/pdf-spec-mcp@latest --build-cache` warms every spec up front. The cache is derived from your own copy of the PDFs and stays on your machine.
 - **pdf-trust**: Its prerequisite `pdf-verify-mcp` had a defect in **v0.14.0 and earlier** where every document timestamp (ETSI.RFC3161) came back **INDETERMINATE** (**fixed in v0.14.2**; confirmed against three independent specimen families — pyHanko, esig/dss, and the Japanese official gazette). Run long-term-preservation audits (B-LTA, denchōhō) on v0.14.2 or later.
@@ -112,7 +113,7 @@ graph LR
 /plugin install pdf-reader-mcp@shuji-bonji
 
 # Example: reading pipeline = pull what you need out of large or unreadable PDFs
-/plugin install pdf-reader-mcp@shuji-bonji   # required foundation (v0.12.0+)
+/plugin install pdf-reader-mcp@shuji-bonji   # required foundation (v0.14.0+ recommended)
 /plugin install pdf-read@shuji-bonji
 ```
 

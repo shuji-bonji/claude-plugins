@@ -60,12 +60,12 @@ graph LR
 | [houki-egov-mcp](https://github.com/shuji-bonji/houki-egov-mcp)                         | MCP                 | houki           | v0.3.1  | `shuji-bonji/houki-egov-mcp`             |
 | [houki-nta-mcp](https://github.com/shuji-bonji/houki-nta-mcp)                           | MCP                 | houki           | v0.9.5  | `shuji-bonji/houki-nta-mcp`              |
 | [pdf-specialist](https://github.com/shuji-bonji/pdf-specialist-plugin)                  | Agent + MCP + Skill | pdf             | v0.7.0  | `shuji-bonji/pdf-specialist-plugin`      |
-| [pdf-publish](https://github.com/shuji-bonji/pdf-publish-skill)                         | Skill               | pdf             | v0.5.0  | `shuji-bonji/pdf-publish-skill`          |
-| [pdf-trust](https://github.com/shuji-bonji/pdf-trust-skill)                             | Skill               | pdf             | v0.7.0  | `shuji-bonji/pdf-trust-skill`            |
-| [pdf-read](https://github.com/shuji-bonji/pdf-read-skill)                               | Skill               | pdf             | v0.1.0  | `shuji-bonji/pdf-read-skill`             |
+| [pdf-publish](https://github.com/shuji-bonji/pdf-publish-skill)                         | Skill               | pdf             | v0.7.0  | `shuji-bonji/pdf-publish-skill`          |
+| [pdf-trust](https://github.com/shuji-bonji/pdf-trust-skill)                             | Skill               | pdf             | v0.8.0  | `shuji-bonji/pdf-trust-skill`            |
+| [pdf-read](https://github.com/shuji-bonji/pdf-read-skill)                               | Skill               | pdf             | v0.2.0  | `shuji-bonji/pdf-read-skill`             |
 | [pdf-writer-mcp](https://github.com/shuji-bonji/pdf-writer-mcp)                         | MCP                 | pdf             | v0.21.0 | `shuji-bonji/pdf-writer-mcp`             |
-| [pdf-verify-mcp](https://github.com/shuji-bonji/pdf-verify-mcp)                         | MCP                 | pdf             | v0.18.0 | `shuji-bonji/pdf-verify-mcp`             |
-| [pdf-reader-mcp](https://github.com/shuji-bonji/pdf-reader-mcp)                         | MCP                 | pdf             | v0.13.0 | `shuji-bonji/pdf-reader-mcp`             |
+| [pdf-verify-mcp](https://github.com/shuji-bonji/pdf-verify-mcp)                         | MCP                 | pdf             | v0.26.0 | `shuji-bonji/pdf-verify-mcp`             |
+| [pdf-reader-mcp](https://github.com/shuji-bonji/pdf-reader-mcp)                         | MCP                 | pdf             | v0.14.0 | `shuji-bonji/pdf-reader-mcp`             |
 | [pdf-spec-mcp](https://github.com/shuji-bonji/pdf-spec-mcp)                             | MCP                 | pdf             | v0.6.0  | `shuji-bonji/pdf-spec-mcp`               |
 | [rfcxml-mcp](https://github.com/shuji-bonji/rfcxml-mcp)                                 | MCP                 | web-spec        | v0.5.4  | `shuji-bonji/rfcxml-mcp`                 |
 | [w3c-mcp](https://github.com/shuji-bonji/w3c-mcp)                                       | MCP                 | web-spec        | v0.1.12 | `shuji-bonji/w3c-mcp`                    |
@@ -78,10 +78,11 @@ graph LR
 | [epsg-mcp](https://github.com/shuji-bonji/epsg-mcp)                                     | MCP                 | domain-specific | v0.9.10 | `shuji-bonji/epsg-mcp`                   |
 | [ifc-core-mcp](https://github.com/shuji-bonji/ifc-core-mcp)                             | MCP                 | domain-specific | v0.2.2  | `shuji-bonji/ifc-core-mcp`               |
 
-> `pdf-trust`（受入監査）は `pdf-verify-mcp` を、`pdf-publish`（送り出し）は `pdf-writer-mcp` を、`pdf-read`（読み取り）は `pdf-reader-mcp` **v0.12.0+** を必須の前提 MCP とします（いずれも marketplace 収録済み）。受入・納品・読み取りを分担する 3 つの Skill なので、用途に応じて必要な MCP と一緒に install してください。
+> `pdf-trust`（受入監査）は `pdf-verify-mcp` を、`pdf-publish`（送り出し）は `pdf-writer-mcp` を、`pdf-read`（読み取り）は `pdf-reader-mcp`（**v0.14.0+ 推奨**）を必須の前提 MCP とします（いずれも marketplace 収録済み）。受入・納品・読み取りを分担する 3 つの Skill なので、用途に応じて必要な MCP と一緒に install してください。
 
 ### 利用上の注意
 
+- **`pdf-reader-mcp` v0.14.0 で、テキストを返すツールの出力の形が変わりました。** ページから文字を取り出すことと、その文字が Unicode に変換できるかを観測すること（ISO 32000-2 §9.10.1）は別々の読みで、別々に失敗します。そのため各ツールは **`scope`**（どちらの読みが行われたか）を載せるようになり、**行われなかった読みの項目は `null`（`0` でも `false` でも空文字でもない）**になりました。`read_text` と `read_url` は、ページの配列そのものではなく `{ scope, pages }` を返します。あわせて不具合を 2 つ直しています。`read_url` は**全入力でエラーを返していました**（取得したバイト列を 2 人の読み手に渡していて、先の 1 人が中身を持っていっていた）。`render_page` は、タイリングパターンが天文学的な枚数のタイルを要求するページでサーバごと止まることがありました（いまは別スレッドで 1 ページ 20 秒の予算を置きます）。Skill 経由なら対応済みです —— `pdf-read` **v0.2.0+** と `pdf-publish` **v0.7.0+** が `scope` を読みます。古い Skill を 0.14.0 のサーバに当てると、パスワード付き文書での停止が働きません。
 - **PDF family の 4 MCP（2026-08-27 の版）**: `pdf-spec-mcp` v0.6.0 / `pdf-reader-mcp` v0.13.0 / `pdf-verify-mcp` v0.18.0 / `pdf-writer-mcp` v0.21.0 では、ツールは 1 つも増減せず出力も変わりませんが、**呼び方に届く変更が 3 つ**あります。(1) **宣言に無い引数を拒否します** —— それまでは黙って捨てられ、呼び出しは成功していました。(2) **知らないツール名は JSON-RPC エラーで返ります** —— それまではツール結果の `isError: true` でした。`isError` だけを見るクライアントには届かず、`await client.callTool(...)` は解決せずに例外を投げます。(3) `inputSchema` の `$schema` が JSON Schema 2020-12 になり、`pdf-writer-mcp` の `add_bookmarks` は `$ref` の指す先が `#/definitions/` から `#/$defs/` に移ります。加えて **`pdf-reader-mcp` は Node 20 以上が必要**になりました（v0.12.0 までは 18 でも動きました）。Skill 経由の利用（pdf-trust / pdf-publish / pdf-read）は、渡す引数がいずれも宣言済みであることを確認済みで、影響を受けません。
 - **pdf-spec-mcp**: ISO 32000 仕様 PDF は利用者が用意し、環境変数 `PDF_SPEC_DIR` で配置先を指定してください。**v0.5.0** から、検索索引と要件の全走査は初回構築のあとディスクにキャッシュされます（`${XDG_CACHE_HOME:-~/.cache}/pdf-spec-mcp`、コーパス全体で約 18 MB。`PDF_SPEC_CACHE_DIR` で置き場所を変更、`PDF_SPEC_CACHE=off` で無効）。セッションごとに起動するサーバプロセスでも、`search_spec` は 6〜14 秒の再構築ではなく 1 秒未満で返ります。`npx -y @shuji-bonji/pdf-spec-mcp@latest --build-cache` で全仕様を事前構築できます。キャッシュは利用者の PDF から利用者の機械上に作る派生物で、配布はしません。
 - **pdf-trust**: 前提の `pdf-verify-mcp` **v0.14.0 以前**には、DocTimeStamp（ETSI.RFC3161）の検証が**一律 INDETERMINATE になる欠陥**があります（**v0.14.2 で修正済み**。pyHanko / esig-dss / 官報の 3 系統の検体で確認）。長期保存（B-LTA・電帳法）の受入監査は v0.14.2 以上で行ってください。
@@ -112,7 +113,7 @@ graph LR
 /plugin install pdf-reader-mcp@shuji-bonji
 
 # 例: 読み取りパイプライン = 大きな PDF・読めない PDF から必要な箇所を取り出す
-/plugin install pdf-reader-mcp@shuji-bonji   # 必須基盤 (v0.12.0+)
+/plugin install pdf-reader-mcp@shuji-bonji   # 必須基盤 (v0.14.0+ 推奨)
 /plugin install pdf-read@shuji-bonji
 ```
 
