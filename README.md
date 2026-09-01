@@ -42,12 +42,13 @@ graph LR
   quality --> fact["factcheck"]
   quality --> media["media-literacy-check"]
   quality --> speccomp["spec-compliance-skills"]
+  quality --> aidesign["ai-design-advisor"]
 
   domain --> epsg["epsg-mcp"]
   domain --> ifc["ifc-core-mcp"]
 
   classDef live fill:#d4edda,stroke:#28a745
-  class hr,hegov,hnta,pspecial,ppub,ptrust,pverify,hpdf,pspec,rfcxml,w3c,webcompat,xcomet,deepl,fact,media,speccomp,epsg,ifc live
+  class hr,hegov,hnta,pspecial,ppub,ptrust,pverify,hpdf,pspec,rfcxml,w3c,webcompat,xcomet,deepl,fact,media,speccomp,aidesign,epsg,ifc live
 ```
 
 > The diagram shows structure only. **Versions come from the table below and `.claude-plugin/marketplace.json`** — writing the same number in three places guarantees drift, so the diagram omits them.
@@ -75,6 +76,7 @@ graph LR
 | [factcheck](https://github.com/shuji-bonji/factcheck-skill)                             | Skill               | quality-tools   | v0.1.0  | `shuji-bonji/factcheck-skill`            |
 | [media-literacy-check](https://github.com/shuji-bonji/media-literacycheck-skill)        | Skill               | quality-tools   | v0.1.0  | `shuji-bonji/media-literacycheck-skill`  |
 | [spec-compliance-skills](https://github.com/shuji-bonji/spec-compliance-skills)         | Skill               | quality-tools   | v0.1.0  | `shuji-bonji/spec-compliance-skills`     |
+| [ai-design-advisor](https://github.com/shuji-bonji/ai-design-advisor)                   | Skill               | quality-tools   | v0.1.0  | `shuji-bonji/ai-design-advisor`          |
 | [epsg-mcp](https://github.com/shuji-bonji/epsg-mcp)                                     | MCP                 | domain-specific | v0.9.10 | `shuji-bonji/epsg-mcp`                   |
 | [ifc-core-mcp](https://github.com/shuji-bonji/ifc-core-mcp)                             | MCP                 | domain-specific | v0.2.2  | `shuji-bonji/ifc-core-mcp`               |
 
