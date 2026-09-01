@@ -517,7 +517,7 @@
         "source": "github",
         "repo": "shuji-bonji/ai-design-advisor"
       },
-      "version": "0.1.0",
+      "version": "0.1.1",
       "description": "生成AIシステムの設計判断を支援する Skill。決まっていないことを名指し、canonical の範囲だけ返す。入力が足りないときに発明しない。",
       "category": "quality-tools",
       "keywords": [
