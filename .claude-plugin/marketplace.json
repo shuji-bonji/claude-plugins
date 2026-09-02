@@ -8,7 +8,7 @@
   },
   "metadata": {
     "description": "shuji-bonji's Claude Plugins — Skill, MCP server, slash command などをまとめた個人 marketplace。日本の法令調査 (houki family)、PDF 真正性検証 (pdf family)、Web 仕様 (W3C/RFC)、品質ツール、ドメイン特化 MCP 等を category 別に提供。",
-    "version": "0.5.0"
+    "version": "0.6.0"
   },
   "plugins": [
     {
@@ -395,7 +395,7 @@
         "source": "github",
         "repo": "shuji-bonji/xcomet-mcp-server"
       },
-      "version": "0.6.3",
+      "version": "0.7.0",
       "description": "xCOMET による翻訳品質評価 MCP server。参照訳なしで翻訳をスコアリングし、エラースパンを検出。xCOMET を導入したローカル Python 環境が必要 (venv 等を使う場合は XCOMET_PYTHON_PATH で指定、未設定なら自動検出)。",
       "category": "quality-tools",
       "keywords": [
@@ -577,6 +577,34 @@
         "mcp-server"
       ],
       "homepage": "https://github.com/shuji-bonji/ifc-core-mcp",
+      "license": "MIT",
+      "author": {
+        "name": "shuji-bonji",
+        "url": "https://github.com/shuji-bonji"
+      }
+    },
+    {
+      "name": "rxjs-mcp",
+      "source": {
+        "source": "github",
+        "repo": "shuji-bonji/rxjs-mcp-server"
+      },
+      "version": "0.5.0",
+      "description": "RxJS ストリームの実行・可視化・検査を行う MCP server (6 tools)。execute_stream は RxJS しか持たない worker thread でスニペットを評価し、発行値・タイムライン・所要時間を返す (プロジェクトのコードは動かない)。generate_marble は ASCII マーブルダイアグラムを描く。analyze_operators / suggest_pattern は RxJS 7.8.2 に固定した同梱データを引き、rxjs.dev・GitHub ソース・バイリンガルガイドの 3 階層リンクを付ける。lint_rxjs は eslint-plugin-rxjs-x の recommended/strict ルールを正規表現で再実装したもので、ESLint を導入せずスニペット単体を検査できる。detect_memory_leak は takeUntilDestroyed / async pipe / useEffect cleanup 等の自動クリーンアップを認識する。**lint_rxjs と detect_memory_leak は型情報を持たない照合であり、プロジェクトでの ESLint 実行を置き換えるものではない**。npm @shuji-bonji/rxjs-mcp を npx で起動する。",
+      "category": "domain-specific",
+      "keywords": [
+        "rxjs",
+        "reactive",
+        "observable",
+        "stream",
+        "angular",
+        "marble-diagram",
+        "lint",
+        "memory-leak",
+        "mcp",
+        "mcp-server"
+      ],
+      "homepage": "https://github.com/shuji-bonji/rxjs-mcp-server",
       "license": "MIT",
       "author": {
         "name": "shuji-bonji",

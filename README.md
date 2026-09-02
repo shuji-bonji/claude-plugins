@@ -46,9 +46,10 @@ graph LR
 
   domain --> epsg["epsg-mcp"]
   domain --> ifc["ifc-core-mcp"]
+  domain --> rxjs["rxjs-mcp"]
 
   classDef live fill:#d4edda,stroke:#28a745
-  class hr,hegov,hnta,pspecial,ppub,ptrust,pverify,hpdf,pspec,rfcxml,w3c,webcompat,xcomet,deepl,fact,media,speccomp,aidesign,epsg,ifc live
+  class hr,hegov,hnta,pspecial,ppub,ptrust,pverify,hpdf,pspec,rfcxml,w3c,webcompat,xcomet,deepl,fact,media,speccomp,aidesign,epsg,ifc,rxjs live
 ```
 
 > The diagram shows structure only. **Versions come from the table below and `.claude-plugin/marketplace.json`** — writing the same number in three places guarantees drift, so the diagram omits them.
@@ -71,7 +72,7 @@ graph LR
 | [rfcxml-mcp](https://github.com/shuji-bonji/rfcxml-mcp)                                 | MCP                 | web-spec        | v0.5.4  | `shuji-bonji/rfcxml-mcp`                 |
 | [w3c-mcp](https://github.com/shuji-bonji/w3c-mcp)                                       | MCP                 | web-spec        | v0.1.12 | `shuji-bonji/w3c-mcp`                    |
 | [web-compat-mcp](https://github.com/shuji-bonji/web-compat-mcp)                         | MCP                 | web-spec        | v0.1.5  | `shuji-bonji/web-compat-mcp`             |
-| [xcomet-mcp](https://github.com/shuji-bonji/xcomet-mcp-server)                          | MCP                 | quality-tools   | v0.6.3  | `shuji-bonji/xcomet-mcp-server`          |
+| [xcomet-mcp](https://github.com/shuji-bonji/xcomet-mcp-server)                          | MCP                 | quality-tools   | v0.7.0  | `shuji-bonji/xcomet-mcp-server`          |
 | [deepl-glossary-translation](https://github.com/shuji-bonji/deepl-glossary-translation) | Skill               | quality-tools   | v0.1.0  | `shuji-bonji/deepl-glossary-translation` |
 | [factcheck](https://github.com/shuji-bonji/factcheck-skill)                             | Skill               | quality-tools   | v0.1.0  | `shuji-bonji/factcheck-skill`            |
 | [media-literacy-check](https://github.com/shuji-bonji/media-literacycheck-skill)        | Skill               | quality-tools   | v0.1.0  | `shuji-bonji/media-literacycheck-skill`  |
@@ -79,6 +80,7 @@ graph LR
 | [ai-design-advisor](https://github.com/shuji-bonji/ai-design-advisor)                   | Skill               | quality-tools   | v0.1.0  | `shuji-bonji/ai-design-advisor`          |
 | [epsg-mcp](https://github.com/shuji-bonji/epsg-mcp)                                     | MCP                 | domain-specific | v0.9.10 | `shuji-bonji/epsg-mcp`                   |
 | [ifc-core-mcp](https://github.com/shuji-bonji/ifc-core-mcp)                             | MCP                 | domain-specific | v0.2.2  | `shuji-bonji/ifc-core-mcp`               |
+| [rxjs-mcp](https://github.com/shuji-bonji/rxjs-mcp-server)                              | MCP                 | domain-specific | v0.5.0  | `shuji-bonji/rxjs-mcp-server`            |
 
 > `pdf-trust` (acceptance audit) requires `pdf-verify-mcp`, `pdf-publish` (outbound delivery) requires `pdf-writer-mcp`, and `pdf-read` (reading pipeline) requires `pdf-reader-mcp` (**v0.14.0+ recommended**), as prerequisite MCPs (all are already in the marketplace). The three Skills cover intake, delivery and reading, so install whichever you need together with its required MCP.
 
@@ -146,7 +148,7 @@ Details: [Manage Claude Cowork plugins for your organization](https://support.cl
 | `pdf`             | PDF reading, authenticity verification, trust auditing       | pdf-trust, pdf-verify-mcp, etc.      |
 | `web-spec`        | Web standards and RFC reference                              | rfcxml-mcp, w3c-mcp, etc.            |
 | `quality-tools`   | Translation evaluation, fact checking, spec compliance       | xcomet-mcp, factcheck, etc.          |
-| `domain-specific` | Specific domains (geodesy, BIM)                              | epsg-mcp, ifc-core-mcp, etc.         |
+| `domain-specific` | Specific domains (geodesy, BIM, RxJS)                        | epsg-mcp, ifc-core-mcp, rxjs-mcp     |
 
 ## Directory layout
 
