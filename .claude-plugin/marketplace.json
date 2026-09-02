@@ -319,7 +319,7 @@
         "source": "github",
         "repo": "shuji-bonji/rfcxml-mcp"
       },
-      "version": "0.6.2",
+      "version": "0.6.3",
       "description": "RFC 文書の構造化理解 MCP server。RFCXML 経由でセクション・規範的要求事項 (MUST/SHOULD/MAY)・依存 RFC・準拠チェックリストを取得。",
       "category": "web-spec",
       "keywords": [
