@@ -540,7 +540,7 @@
         "source": "github",
         "repo": "shuji-bonji/epsg-mcp"
       },
-      "version": "0.10.0",
+      "version": "0.10.1",
       "description": "測地系・座標参照系 (CRS) の専門知識 MCP server。EPSG コード検索・用途別推奨・座標変換提案・Country Pack (日本/US/UK)・トラブルシュートを提供。",
       "category": "domain-specific",
       "keywords": [
