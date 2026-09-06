@@ -124,7 +124,7 @@
       },
       "version": "0.8.0",
       "dependencies": ["pdf-verify-mcp"],
-      "description": "PDF の信頼性監査オーケストレーション Skill。契約書・請求書・診療文書・行政文書などの PDF の真正性 (署名・改ざん・PAdES/PDF-A) を pdf-verify-mcp を軸に PDF family MCP を編成して判定し、ドメイン別プロファイルに基づく推奨判定付き Trust Report を返す。4 値判定は pdf-verify-mcp v0.7.0+ の evaluate_policy (決定論的ルールエンジン) に委譲し、Skill は解説・推奨アクション・法令根拠を担う。v0.10.0+ では署名後に変わったオブジェクトを pdf-reader-mcp locate_objects と組み合わせてページ・矩形まで特定する。pdf-verify-mcp plugin が必須。",
+      "description": "PDF の信頼性監査オーケストレーション Skill。契約書・請求書・診療文書・行政文書などの PDF の真正性 (署名・改ざん・PAdES/PDF-A) を pdf-verify-mcp を軸に PDF family MCP を編成して判定し、ドメイン別プロファイルに基づく推奨判定付き Trust Report を返す。4 値判定は pdf-verify-mcp v0.7.0+ の evaluate_policy (決定論的ルールエンジン) に委譲し、Skill は解説・推奨アクション・法令根拠を担う。pdf-verify-mcp v0.10.0+ のリビジョン間オブジェクト単位差分と pdf-reader-mcp v0.10.0+ の locate_objects を組み合わせ、署名後に変わったオブジェクトをページ・矩形まで特定する。pdf-verify-mcp v0.21.0+ 推奨 (verify_signatures / detect_pades_level の最上位が配列から { scope, ... } になった版)。pdf-verify-mcp plugin が必須。",
       "category": "pdf",
       "keywords": [
         "pdf",
@@ -345,7 +345,7 @@
         "repo": "shuji-bonji/w3c-mcp"
       },
       "version": "0.3.0",
-      "description": "W3C Web 仕様参照 MCP server。仕様検索・WebIDL・CSS プロパティ・HTML 要素・PWA 関連仕様・仕様間依存の取得を提供。",
+      "description": "W3C Web 仕様参照 MCP server。仕様検索・WebIDL・CSS プロパティ・HTML 要素・PWA 関連仕様の取得を提供。仕様間依存を返す get_spec_dependencies は v0.2.0 で削除 (上流 web-specs に依存データが無い)。",
       "category": "web-spec",
       "keywords": [
         "w3c",
