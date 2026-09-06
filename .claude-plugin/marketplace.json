@@ -565,7 +565,7 @@
         "source": "github",
         "repo": "shuji-bonji/ifc-core-mcp"
       },
-      "version": "0.2.2",
+      "version": "0.3.0",
       "description": "IFC4.3 (BIM) 仕様参照 MCP server。IFC エンティティ定義・属性・継承階層・PropertySet の検索取得を提供。",
       "category": "domain-specific",
       "keywords": [
