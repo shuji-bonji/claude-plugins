@@ -370,7 +370,7 @@
         "source": "github",
         "repo": "shuji-bonji/web-compat-mcp"
       },
-      "version": "0.2.0",
+      "version": "0.3.0",
       "description": "ブラウザ互換性 MCP server。MDN BCD と W3C WebDX web-features (Baseline) に基づき、機能サポート状況の確認・比較・検索を提供。",
       "category": "web-spec",
       "keywords": [
