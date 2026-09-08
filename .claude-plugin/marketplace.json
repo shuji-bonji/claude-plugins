@@ -68,7 +68,7 @@
         "source": "github",
         "repo": "shuji-bonji/houki-nta-mcp"
       },
-      "version": "0.10.2",
+      "version": "0.10.3",
       "description": "国税庁 (NTA) の通達・質疑応答事例・タックスアンサー・文書回答事例・事務運営指針を取得する MCP server。v0.10.0 で MCP SDK v2 / Node 22+ に移行。houki-hub family の一員。",
       "category": "houki",
       "keywords": [
