@@ -58,7 +58,7 @@ graph LR
 
 | plugin                                                                                  | type                | category        | version | repo                                     |
 | --------------------------------------------------------------------------------------- | ------------------- | --------------- | ------- | ---------------------------------------- |
-| [houki-research](https://github.com/shuji-bonji/houki-research-skill)                   | Skill               | houki           | v0.3.0  | `shuji-bonji/houki-research-skill`       |
+| [houki-research](https://github.com/shuji-bonji/houki-research-skill)                   | Skill               | houki           | v0.4.0  | `shuji-bonji/houki-research-skill`       |
 | [houki-egov-mcp](https://github.com/shuji-bonji/houki-egov-mcp)                         | MCP                 | houki           | v0.5.3  | `shuji-bonji/houki-egov-mcp`             |
 | [houki-nta-mcp](https://github.com/shuji-bonji/houki-nta-mcp)                           | MCP                 | houki           | v0.11.0 | `shuji-bonji/houki-nta-mcp`              |
 | [pdf-specialist](https://github.com/shuji-bonji/pdf-specialist-plugin)                  | Agent + MCP + Skill | pdf             | v0.7.0  | `shuji-bonji/pdf-specialist-plugin`      |
