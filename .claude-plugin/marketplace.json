@@ -43,7 +43,7 @@
         "source": "github",
         "repo": "shuji-bonji/houki-egov-mcp"
       },
-      "version": "0.5.3",
+      "version": "0.5.4",
       "description": "日本の法令 (e-Gov 法令API v2) MCP server。法令検索・条文取得・略称解決・改正沿革の取得に加え、v0.5.x からローカル SQLite FTS5 による条文本文の横断全文検索 (search_fulltext) を提供。`npx @shuji-bonji/houki-egov-mcp --bulk-download-everything` で e-Gov の全法令 zip (約 290 MB) を ~/.cache/houki-egov-mcp/laws.db に取り込むと有効になり、未構築時は法令名検索にフォールバックする。「民法 不法行為」のように法令名 + 語で条に絞り込め、「民法 第709条」ならその条を直接返す。v0.4.0 で MCP SDK v2 / Node 22+ に移行。houki-hub family の一員。",
       "category": "houki",
       "keywords": [
