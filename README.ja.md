@@ -58,9 +58,9 @@ graph LR
 
 | plugin                                                                                  | 種別                | category        | version | repo                                     |
 | --------------------------------------------------------------------------------------- | ------------------- | --------------- | ------- | ---------------------------------------- |
-| [houki-research](https://github.com/shuji-bonji/houki-research-skill)                   | Skill               | houki           | v0.4.0  | `shuji-bonji/houki-research-skill`       |
+| [houki-research](https://github.com/shuji-bonji/houki-research-skill)                   | Skill               | houki           | v0.5.1  | `shuji-bonji/houki-research-skill`       |
 | [houki-egov-mcp](https://github.com/shuji-bonji/houki-egov-mcp)                         | MCP                 | houki           | v0.6.0  | `shuji-bonji/houki-egov-mcp`             |
-| [houki-nta-mcp](https://github.com/shuji-bonji/houki-nta-mcp)                           | MCP                 | houki           | v0.14.0 | `shuji-bonji/houki-nta-mcp`              |
+| [houki-nta-mcp](https://github.com/shuji-bonji/houki-nta-mcp)                           | MCP                 | houki           | v0.14.1 | `shuji-bonji/houki-nta-mcp`              |
 | [pdf-specialist](https://github.com/shuji-bonji/pdf-specialist-plugin)                  | Agent + MCP + Skill | pdf             | v0.7.0  | `shuji-bonji/pdf-specialist-plugin`      |
 | [pdf-publish](https://github.com/shuji-bonji/pdf-publish-skill)                         | Skill               | pdf             | v0.7.0  | `shuji-bonji/pdf-publish-skill`          |
 | [pdf-trust](https://github.com/shuji-bonji/pdf-trust-skill)                             | Skill               | pdf             | v0.8.0  | `shuji-bonji/pdf-trust-skill`            |

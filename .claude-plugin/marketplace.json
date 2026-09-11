@@ -17,7 +17,7 @@
         "source": "github",
         "repo": "shuji-bonji/houki-research-skill"
       },
-      "version": "0.5.0",
+      "version": "0.5.1",
       "description": "日本の全法規 (法律・政令・通達・判例・裁決・行政解釈) を houki-hub MCP family で横断調査するための Claude Skill。業法独占規定の注意喚起・citation 標準化・横断オーケストレーションを担う。",
       "category": "houki",
       "keywords": [
@@ -68,7 +68,7 @@
         "source": "github",
         "repo": "shuji-bonji/houki-nta-mcp"
       },
-      "version": "0.14.0",
+      "version": "0.14.1",
       "description": "国税庁 (NTA) の通達・質疑応答事例・タックスアンサー・文書回答事例・事務運営指針を取得する MCP server。v0.10.0 で MCP SDK v2 / Node 22+ に移行。houki-hub family の一員。",
       "category": "houki",
       "keywords": [
@@ -94,9 +94,7 @@
         "repo": "shuji-bonji/pdf-publish-skill"
       },
       "version": "0.7.0",
-      "dependencies": [
-        "pdf-writer-mcp"
-      ],
+      "dependencies": ["pdf-writer-mcp"],
       "description": "PDF の生成・編集から納品までを品質ゲート付きで編成する出力パイプライン Skill。pdf-writer-mcp で書き、pdf-reader-mcp で読み戻し、pdf-verify-mcp (veraPDF) で機械採点する write → read-back → verify ループを回し、根拠付きの Publish Report を添えて納品する。PDF/UA-1 (アクセシブル PDF)・PDF/A-3 添付 (電帳法)・タグ付きフォーム修復に対応。pdf-trust (受入監査) の対になる送り出し側。pdf-writer-mcp が必須。",
       "category": "pdf",
       "keywords": [
@@ -125,9 +123,7 @@
         "repo": "shuji-bonji/pdf-trust-skill"
       },
       "version": "0.8.0",
-      "dependencies": [
-        "pdf-verify-mcp"
-      ],
+      "dependencies": ["pdf-verify-mcp"],
       "description": "PDF の信頼性監査オーケストレーション Skill。契約書・請求書・診療文書・行政文書などの PDF の真正性 (署名・改ざん・PAdES/PDF-A) を pdf-verify-mcp を軸に PDF family MCP を編成して判定し、ドメイン別プロファイルに基づく推奨判定付き Trust Report を返す。4 値判定は pdf-verify-mcp v0.7.0+ の evaluate_policy (決定論的ルールエンジン) に委譲し、Skill は解説・推奨アクション・法令根拠を担う。pdf-verify-mcp v0.10.0+ のリビジョン間オブジェクト単位差分と pdf-reader-mcp v0.10.0+ の locate_objects を組み合わせ、署名後に変わったオブジェクトをページ・矩形まで特定する。pdf-verify-mcp v0.21.0+ 推奨 (verify_signatures / detect_pades_level の最上位が配列から { scope, ... } になった版)。pdf-verify-mcp plugin が必須。",
       "category": "pdf",
       "keywords": [
@@ -154,9 +150,7 @@
         "repo": "shuji-bonji/pdf-read-skill"
       },
       "version": "0.2.0",
-      "dependencies": [
-        "pdf-reader-mcp"
-      ],
+      "dependencies": ["pdf-reader-mcp"],
       "description": "大きな PDF・読めない PDF から必要な箇所を取り出す読み取りオーケストレーション Skill。summarize で文書の性質 (ページ数・タグ・暗号化・ページごとのテキスト抽出可能性) を測ってから、構造経路 (extract_structured_text / extract_tables)・絞り込み経路 (search_text → pages 指定の read_text)・画像経路 (render_page = スキャン・図面・手書きを画像として読む) のいずれかで読み、読んだ範囲と読めなかった箇所を Read Report で申告する。空の抽出結果を「テキストが無い」と結論しないのが中核原則。pdf-trust (受入監査)・pdf-publish (納品) に対する 3 本目。pdf-reader-mcp v0.14.0+ 推奨（v0.14.0 の scope で「行われなかった読み」を読み分ける。それ未満でも動くが、利用者パスワード付きの文書で暗号化の停止が働かない）。",
       "category": "pdf",
       "keywords": [
