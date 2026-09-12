@@ -60,7 +60,7 @@ graph LR
 | --------------------------------------------------------------------------------------- | ------------------- | --------------- | ------- | ---------------------------------------- |
 | [houki-research](https://github.com/shuji-bonji/houki-research-skill)                   | Skill               | houki           | v0.5.1  | `shuji-bonji/houki-research-skill`       |
 | [houki-egov-mcp](https://github.com/shuji-bonji/houki-egov-mcp)                         | MCP                 | houki           | v0.6.0  | `shuji-bonji/houki-egov-mcp`             |
-| [houki-nta-mcp](https://github.com/shuji-bonji/houki-nta-mcp)                           | MCP                 | houki           | v0.14.2 | `shuji-bonji/houki-nta-mcp`              |
+| [houki-nta-mcp](https://github.com/shuji-bonji/houki-nta-mcp)                           | MCP                 | houki           | v0.15.0 | `shuji-bonji/houki-nta-mcp`              |
 | [pdf-specialist](https://github.com/shuji-bonji/pdf-specialist-plugin)                  | Agent + MCP + Skill | pdf             | v0.7.0  | `shuji-bonji/pdf-specialist-plugin`      |
 | [pdf-publish](https://github.com/shuji-bonji/pdf-publish-skill)                         | Skill               | pdf             | v0.7.0  | `shuji-bonji/pdf-publish-skill`          |
 | [pdf-trust](https://github.com/shuji-bonji/pdf-trust-skill)                             | Skill               | pdf             | v0.8.0  | `shuji-bonji/pdf-trust-skill`            |
@@ -92,11 +92,11 @@ install の前に確認することと、plugin ごとの前提条件・既知�
 
 - **Node.js の版で起動できるかどうかが決まります**（MCP server は `npx` で起動するため）。
 
-  | 必要な Node | 対象 |
-  | ----------- | ---- |
-  | 20 以上 | `pdf-reader-mcp` / `pdf-verify-mcp` / `pdf-writer-mcp` / `pdf-spec-mcp` |
-  | 22 以上 | `houki-egov-mcp` / `houki-nta-mcp` / `rfcxml-mcp` / `w3c-mcp` / `web-compat-mcp` / `xcomet-mcp` / `epsg-mcp` / `rxjs-mcp` |
-  | 22.12 以上 | `ifc-core-mcp` |
+  | 必要な Node | 対象                                                                                                                      |
+  | ----------- | ------------------------------------------------------------------------------------------------------------------------- |
+  | 20 以上     | `pdf-reader-mcp` / `pdf-verify-mcp` / `pdf-writer-mcp` / `pdf-spec-mcp`                                                   |
+  | 22 以上     | `houki-egov-mcp` / `houki-nta-mcp` / `rfcxml-mcp` / `w3c-mcp` / `web-compat-mcp` / `xcomet-mcp` / `epsg-mcp` / `rxjs-mcp` |
+  | 22.12 以上  | `ifc-core-mcp`                                                                                                            |
 
   Node 20 は 2026-04-30 に EOL を迎えています。Node 22 以上を要件とする 9 本は Node 20 では起動しません。
 
