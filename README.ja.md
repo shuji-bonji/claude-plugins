@@ -59,8 +59,8 @@ graph LR
 | plugin                                                                                  | 種別                | category        | version | repo                                     |
 | --------------------------------------------------------------------------------------- | ------------------- | --------------- | ------- | ---------------------------------------- |
 | [houki-research](https://github.com/shuji-bonji/houki-research-skill)                   | Skill               | houki           | v0.7.0  | `shuji-bonji/houki-research-skill`       |
-| [houki-egov-mcp](https://github.com/shuji-bonji/houki-egov-mcp)                         | MCP                 | houki           | v0.6.0  | `shuji-bonji/houki-egov-mcp`             |
-| [houki-nta-mcp](https://github.com/shuji-bonji/houki-nta-mcp)                           | MCP                 | houki           | v0.18.0 | `shuji-bonji/houki-nta-mcp`              |
+| [houki-egov-mcp](https://github.com/shuji-bonji/houki-egov-mcp)                         | MCP                 | houki           | v0.6.1  | `shuji-bonji/houki-egov-mcp`             |
+| [houki-nta-mcp](https://github.com/shuji-bonji/houki-nta-mcp)                           | MCP                 | houki           | v0.18.1 | `shuji-bonji/houki-nta-mcp`              |
 | [pdf-specialist](https://github.com/shuji-bonji/pdf-specialist-plugin)                  | Agent + MCP + Skill | pdf             | v0.7.0  | `shuji-bonji/pdf-specialist-plugin`      |
 | [pdf-publish](https://github.com/shuji-bonji/pdf-publish-skill)                         | Skill               | pdf             | v0.7.1  | `shuji-bonji/pdf-publish-skill`          |
 | [pdf-trust](https://github.com/shuji-bonji/pdf-trust-skill)                             | Skill               | pdf             | v0.8.2  | `shuji-bonji/pdf-trust-skill`            |
@@ -190,7 +190,7 @@ install の前に確認することと、plugin ごとの前提条件・既知�
 
 | category          | 用途                                 | 例                                |
 | ----------------- | ------------------------------------ | --------------------------------- |
-| `houki`           | 日本の法令・通達・判例調査           | houki-research, houki-egov-mcp 等 |
+| `houki`           | 実装する前に、その仕様が法令のどこに触れるかを条文で確かめる | houki-research, houki-egov-mcp 等 |
 | `pdf`             | PDF の読取・真正性検証・信頼性監査   | pdf-trust, pdf-verify-mcp 等      |
 | `web-spec`        | Web 標準・RFC の参照                 | rfcxml-mcp, w3c-mcp 等            |
 | `quality-tools`   | 翻訳評価・ファクトチェック・仕様準拠 | xcomet-mcp, factcheck 等          |
