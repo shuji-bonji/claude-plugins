@@ -60,7 +60,7 @@ graph LR
 | --------------------------------------------------------------------------------------- | ------------------- | --------------- | ------- | ---------------------------------------- |
 | [houki-research](https://github.com/shuji-bonji/houki-research-skill)                   | Skill               | houki           | v0.7.0  | `shuji-bonji/houki-research-skill`       |
 | [houki-egov-mcp](https://github.com/shuji-bonji/houki-egov-mcp)                         | MCP                 | houki           | v0.6.0  | `shuji-bonji/houki-egov-mcp`             |
-| [houki-nta-mcp](https://github.com/shuji-bonji/houki-nta-mcp)                           | MCP                 | houki           | v0.17.0 | `shuji-bonji/houki-nta-mcp`              |
+| [houki-nta-mcp](https://github.com/shuji-bonji/houki-nta-mcp)                           | MCP                 | houki           | v0.18.0 | `shuji-bonji/houki-nta-mcp`              |
 | [pdf-specialist](https://github.com/shuji-bonji/pdf-specialist-plugin)                  | Agent + MCP + Skill | pdf             | v0.7.0  | `shuji-bonji/pdf-specialist-plugin`      |
 | [pdf-publish](https://github.com/shuji-bonji/pdf-publish-skill)                         | Skill               | pdf             | v0.7.1  | `shuji-bonji/pdf-publish-skill`          |
 | [pdf-trust](https://github.com/shuji-bonji/pdf-trust-skill)                             | Skill               | pdf             | v0.8.2  | `shuji-bonji/pdf-trust-skill`            |
@@ -149,6 +149,8 @@ install の前に確認することと、plugin ごとの前提条件・既知�
 # 例: 日本の法令調査 = 条文と通達を 1 回の導入で引く
 #     houki-research v0.7.0 以上は houki-egov-mcp と houki-nta-mcp も一緒に入ります
 /plugin install houki-research@shuji-bonji
+#     入れたあと、通達を数分で試すなら別ターミナルで（全部入りは約 100 分）:
+#       npx -y @shuji-bonji/houki-nta-mcp --quickstart
 
 # 例: PDF 信頼性監査 = 受け取った PDF を監査する (pdf-verify-mcp が必須)
 /plugin install pdf-verify-mcp@shuji-bonji

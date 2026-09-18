@@ -60,7 +60,7 @@ graph LR
 | --------------------------------------------------------------------------------------- | ------------------- | --------------- | ------- | ---------------------------------------- |
 | [houki-research](https://github.com/shuji-bonji/houki-research-skill)                   | Skill               | houki           | v0.7.0  | `shuji-bonji/houki-research-skill`       |
 | [houki-egov-mcp](https://github.com/shuji-bonji/houki-egov-mcp)                         | MCP                 | houki           | v0.6.0  | `shuji-bonji/houki-egov-mcp`             |
-| [houki-nta-mcp](https://github.com/shuji-bonji/houki-nta-mcp)                           | MCP                 | houki           | v0.17.0 | `shuji-bonji/houki-nta-mcp`              |
+| [houki-nta-mcp](https://github.com/shuji-bonji/houki-nta-mcp)                           | MCP                 | houki           | v0.18.0 | `shuji-bonji/houki-nta-mcp`              |
 | [pdf-specialist](https://github.com/shuji-bonji/pdf-specialist-plugin)                  | Agent + MCP + Skill | pdf             | v0.7.0  | `shuji-bonji/pdf-specialist-plugin`      |
 | [pdf-publish](https://github.com/shuji-bonji/pdf-publish-skill)                         | Skill               | pdf             | v0.7.1  | `shuji-bonji/pdf-publish-skill`          |
 | [pdf-trust](https://github.com/shuji-bonji/pdf-trust-skill)                             | Skill               | pdf             | v0.8.2  | `shuji-bonji/pdf-trust-skill`            |
@@ -149,6 +149,8 @@ What to check before installing, plus the prerequisites and known defects of eac
 # Example: Japanese statute research = statutes and administrative notices in one install
 #          houki-research v0.7.0+ also pulls in houki-egov-mcp and houki-nta-mcp
 /plugin install houki-research@shuji-bonji
+#          To try the NTA notices in a few minutes (the full load takes ~100 min), run in another terminal:
+#            npx -y @shuji-bonji/houki-nta-mcp --quickstart
 
 # Example: PDF trust audit = audit PDFs you receive (pdf-verify-mcp required)
 /plugin install pdf-verify-mcp@shuji-bonji
