@@ -59,8 +59,8 @@ graph LR
 | plugin                                                                                  | type                | category        | version | repo                                     |
 | --------------------------------------------------------------------------------------- | ------------------- | --------------- | ------- | ---------------------------------------- |
 | [houki-research](https://github.com/shuji-bonji/houki-research-skill)                   | Skill               | houki           | v0.7.0  | `shuji-bonji/houki-research-skill`       |
-| [houki-egov-mcp](https://github.com/shuji-bonji/houki-egov-mcp)                         | MCP                 | houki           | v0.6.0  | `shuji-bonji/houki-egov-mcp`             |
-| [houki-nta-mcp](https://github.com/shuji-bonji/houki-nta-mcp)                           | MCP                 | houki           | v0.18.0 | `shuji-bonji/houki-nta-mcp`              |
+| [houki-egov-mcp](https://github.com/shuji-bonji/houki-egov-mcp)                         | MCP                 | houki           | v0.6.1  | `shuji-bonji/houki-egov-mcp`             |
+| [houki-nta-mcp](https://github.com/shuji-bonji/houki-nta-mcp)                           | MCP                 | houki           | v0.18.1 | `shuji-bonji/houki-nta-mcp`              |
 | [pdf-specialist](https://github.com/shuji-bonji/pdf-specialist-plugin)                  | Agent + MCP + Skill | pdf             | v0.7.0  | `shuji-bonji/pdf-specialist-plugin`      |
 | [pdf-publish](https://github.com/shuji-bonji/pdf-publish-skill)                         | Skill               | pdf             | v0.7.1  | `shuji-bonji/pdf-publish-skill`          |
 | [pdf-trust](https://github.com/shuji-bonji/pdf-trust-skill)                             | Skill               | pdf             | v0.8.2  | `shuji-bonji/pdf-trust-skill`            |
@@ -190,7 +190,7 @@ Details: [Manage Claude Cowork plugins for your organization](https://support.cl
 
 | category          | purpose                                                      | examples                             |
 | ----------------- | ------------------------------------------------------------ | ------------------------------------ |
-| `houki`           | Japanese statutes, administrative notices, case law research | houki-research, houki-egov-mcp, etc. |
+| `houki`           | Check which Japanese statutes and notices a spec touches, before you build | houki-research, houki-egov-mcp, etc. |
 | `pdf`             | PDF reading, authenticity verification, trust auditing       | pdf-trust, pdf-verify-mcp, etc.      |
 | `web-spec`        | Web standards and RFC reference                              | rfcxml-mcp, w3c-mcp, etc.            |
 | `quality-tools`   | Translation evaluation, fact checking, spec compliance       | xcomet-mcp, factcheck, etc.          |
