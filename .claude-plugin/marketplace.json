@@ -18,10 +18,7 @@
         "repo": "shuji-bonji/houki-research-skill"
       },
       "version": "0.8.1",
-      "dependencies": [
-        "houki-egov-mcp",
-        "houki-nta-mcp"
-      ],
+      "dependencies": ["houki-egov-mcp", "houki-nta-mcp"],
       "description": "日本の全法規 (法律・政令・通達・判例・裁決・行政解釈) を houki-hub MCP family (houki-egov-mcp / houki-nta-mcp) で横断調査するための Claude Skill。実装する前に仕様が法令のどこに触れるかを条文で確かめる、通達・Q&A から根拠条文へ戻る、改正がいつからかを見る、の各手順を問いの形で選び、出典をどう書き、「法律で決まっている」と「通達でそうなっている」を混ぜずに答え、業法の独占業務にどこで注意するかを LLM に指示する。v0.7.0 から 2 つの MCP を dependencies に宣言しており、この plugin を入れれば条文と通達の両方が揃う。",
       "category": "houki",
       "keywords": [
@@ -47,7 +44,7 @@
         "source": "github",
         "repo": "shuji-bonji/houki-egov-mcp"
       },
-      "version": "0.7.0",
+      "version": "0.8.0",
       "description": "実装する前に、その仕様が法令のどこに触れるかを条文で確かめるための MCP server。日本の法令 (憲法・法律・政令・省令・規則) を e-Gov 法令API v2 から条・項・号の単位で、法令番号と URL を添えて返す。7 ツールのうち 6 つはローカル DB なしで動く。v0.5.x からローカル SQLite FTS5 による条文本文の横断全文検索 (search_fulltext) を提供。`npx @shuji-bonji/houki-egov-mcp --bulk-download-everything` で e-Gov の全法令 zip (約 290 MB) を ~/.cache/houki-egov-mcp/laws.db に取り込むと有効になり、未構築時は法令名検索にフォールバックする。「民法 不法行為」のように法令名 + 語で条に絞り込め、「民法 第709条」ならその条を直接返す。v0.4.0 で MCP SDK v2 / Node 22+ に移行。houki-hub family の一員。",
       "category": "houki",
       "keywords": [
@@ -98,9 +95,7 @@
         "repo": "shuji-bonji/pdf-publish-skill"
       },
       "version": "0.7.1",
-      "dependencies": [
-        "pdf-writer-mcp"
-      ],
+      "dependencies": ["pdf-writer-mcp"],
       "description": "PDF の生成・編集から納品までを品質ゲート付きで編成する出力パイプライン Skill。pdf-writer-mcp で書き、pdf-reader-mcp で読み戻し、pdf-verify-mcp (veraPDF) で機械採点する write → read-back → verify ループを回し、根拠付きの Publish Report を添えて納品する。PDF/UA-1 (アクセシブル PDF)・PDF/A-3 添付 (電帳法)・タグ付きフォーム修復に対応。pdf-trust (受入監査) の対になる送り出し側。pdf-writer-mcp が必須。",
       "category": "pdf",
       "keywords": [
@@ -129,9 +124,7 @@
         "repo": "shuji-bonji/pdf-trust-skill"
       },
       "version": "0.8.2",
-      "dependencies": [
-        "pdf-verify-mcp"
-      ],
+      "dependencies": ["pdf-verify-mcp"],
       "description": "PDF の信頼性監査オーケストレーション Skill。契約書・請求書・診療文書・行政文書などの PDF の真正性 (署名・改ざん・PAdES/PDF-A) を pdf-verify-mcp を軸に PDF family MCP を編成して判定し、ドメイン別プロファイルに基づく推奨判定付き Trust Report を返す。4 値判定は pdf-verify-mcp v0.7.0+ の evaluate_policy (決定論的ルールエンジン) に委譲し、Skill は解説・推奨アクション・法令根拠を担う。pdf-verify-mcp v0.10.0+ のリビジョン間オブジェクト単位差分と pdf-reader-mcp v0.10.0+ の locate_objects を組み合わせ、署名後に変わったオブジェクトをページ・矩形まで特定する。pdf-verify-mcp v0.21.0+ 推奨 (verify_signatures / detect_pades_level の最上位が配列から { scope, ... } になった版)。pdf-verify-mcp plugin が必須。",
       "category": "pdf",
       "keywords": [
@@ -158,9 +151,7 @@
         "repo": "shuji-bonji/pdf-read-skill"
       },
       "version": "0.2.2",
-      "dependencies": [
-        "pdf-reader-mcp"
-      ],
+      "dependencies": ["pdf-reader-mcp"],
       "description": "大きな PDF・読めない PDF から必要な箇所を取り出す読み取りオーケストレーション Skill。summarize で文書の性質 (ページ数・タグ・暗号化・ページごとのテキスト抽出可能性) を測ってから、構造経路 (extract_structured_text / extract_tables)・絞り込み経路 (search_text → pages 指定の read_text)・画像経路 (render_page = スキャン・図面・手書きを画像として読む) のいずれかで読み、読んだ範囲と読めなかった箇所を Read Report で申告する。空の抽出結果を「テキストが無い」と結論しないのが中核原則。pdf-trust (受入監査)・pdf-publish (納品) に対する 3 本目。pdf-reader-mcp v0.14.0+ 推奨（v0.14.0 の scope で「行われなかった読み」を読み分ける。それ未満でも動くが、利用者パスワード付きの文書で暗号化の停止が働かない）。",
       "category": "pdf",
       "keywords": [
