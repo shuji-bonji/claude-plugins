@@ -67,7 +67,7 @@ graph LR
 | [pdf-read](https://github.com/shuji-bonji/pdf-read-skill)                               | Skill               | pdf             | v0.2.2  | `shuji-bonji/pdf-read-skill`             |
 | [pdf-writer-mcp](https://github.com/shuji-bonji/pdf-writer-mcp)                         | MCP                 | pdf             | v0.21.1 | `shuji-bonji/pdf-writer-mcp`             |
 | [pdf-verify-mcp](https://github.com/shuji-bonji/pdf-verify-mcp)                         | MCP                 | pdf             | v0.29.0 | `shuji-bonji/pdf-verify-mcp`             |
-| [pdf-reader-mcp](https://github.com/shuji-bonji/pdf-reader-mcp)                         | MCP                 | pdf             | v0.15.1 | `shuji-bonji/pdf-reader-mcp`             |
+| [pdf-reader-mcp](https://github.com/shuji-bonji/pdf-reader-mcp)                         | MCP                 | pdf             | v0.15.4 | `shuji-bonji/pdf-reader-mcp`             |
 | [pdf-spec-mcp](https://github.com/shuji-bonji/pdf-spec-mcp)                             | MCP                 | pdf             | v0.6.0  | `shuji-bonji/pdf-spec-mcp`               |
 | [rfcxml-mcp](https://github.com/shuji-bonji/rfcxml-mcp)                                 | MCP                 | web-spec        | v0.6.53 | `shuji-bonji/rfcxml-mcp`                 |
 | [w3c-mcp](https://github.com/shuji-bonji/w3c-mcp)                                       | MCP                 | web-spec        | v0.3.0  | `shuji-bonji/w3c-mcp`                    |
@@ -188,13 +188,13 @@ install の前に確認することと、plugin ごとの前提条件・既知�
 
 ## category の方針
 
-| category          | 用途                                 | 例                                |
-| ----------------- | ------------------------------------ | --------------------------------- |
+| category          | 用途                                                         | 例                                |
+| ----------------- | ------------------------------------------------------------ | --------------------------------- |
 | `houki`           | 実装する前に、その仕様が法令のどこに触れるかを条文で確かめる | houki-research, houki-egov-mcp 等 |
-| `pdf`             | PDF の読取・真正性検証・信頼性監査   | pdf-trust, pdf-verify-mcp 等      |
-| `web-spec`        | Web 標準・RFC の参照                 | rfcxml-mcp, w3c-mcp 等            |
-| `quality-tools`   | 翻訳評価・ファクトチェック・仕様準拠 | xcomet-mcp, factcheck 等          |
-| `domain-specific` | 特定ドメイン (測地・BIM・RxJS)       | epsg-mcp, ifc-core-mcp, rxjs-mcp  |
+| `pdf`             | PDF の読取・真正性検証・信頼性監査                           | pdf-trust, pdf-verify-mcp 等      |
+| `web-spec`        | Web 標準・RFC の参照                                         | rfcxml-mcp, w3c-mcp 等            |
+| `quality-tools`   | 翻訳評価・ファクトチェック・仕様準拠                         | xcomet-mcp, factcheck 等          |
+| `domain-specific` | 特定ドメイン (測地・BIM・RxJS)                               | epsg-mcp, ifc-core-mcp, rxjs-mcp  |
 
 ## ディレクトリ構成
 

@@ -67,7 +67,7 @@ graph LR
 | [pdf-read](https://github.com/shuji-bonji/pdf-read-skill)                               | Skill               | pdf             | v0.2.2  | `shuji-bonji/pdf-read-skill`             |
 | [pdf-writer-mcp](https://github.com/shuji-bonji/pdf-writer-mcp)                         | MCP                 | pdf             | v0.21.1 | `shuji-bonji/pdf-writer-mcp`             |
 | [pdf-verify-mcp](https://github.com/shuji-bonji/pdf-verify-mcp)                         | MCP                 | pdf             | v0.29.0 | `shuji-bonji/pdf-verify-mcp`             |
-| [pdf-reader-mcp](https://github.com/shuji-bonji/pdf-reader-mcp)                         | MCP                 | pdf             | v0.15.1 | `shuji-bonji/pdf-reader-mcp`             |
+| [pdf-reader-mcp](https://github.com/shuji-bonji/pdf-reader-mcp)                         | MCP                 | pdf             | v0.15.4 | `shuji-bonji/pdf-reader-mcp`             |
 | [pdf-spec-mcp](https://github.com/shuji-bonji/pdf-spec-mcp)                             | MCP                 | pdf             | v0.6.0  | `shuji-bonji/pdf-spec-mcp`               |
 | [rfcxml-mcp](https://github.com/shuji-bonji/rfcxml-mcp)                                 | MCP                 | web-spec        | v0.6.53 | `shuji-bonji/rfcxml-mcp`                 |
 | [w3c-mcp](https://github.com/shuji-bonji/w3c-mcp)                                       | MCP                 | web-spec        | v0.3.0  | `shuji-bonji/w3c-mcp`                    |
@@ -188,13 +188,13 @@ Details: [Manage Claude Cowork plugins for your organization](https://support.cl
 
 ## Category policy
 
-| category          | purpose                                                      | examples                             |
-| ----------------- | ------------------------------------------------------------ | ------------------------------------ |
+| category          | purpose                                                                    | examples                             |
+| ----------------- | -------------------------------------------------------------------------- | ------------------------------------ |
 | `houki`           | Check which Japanese statutes and notices a spec touches, before you build | houki-research, houki-egov-mcp, etc. |
-| `pdf`             | PDF reading, authenticity verification, trust auditing       | pdf-trust, pdf-verify-mcp, etc.      |
-| `web-spec`        | Web standards and RFC reference                              | rfcxml-mcp, w3c-mcp, etc.            |
-| `quality-tools`   | Translation evaluation, fact checking, spec compliance       | xcomet-mcp, factcheck, etc.          |
-| `domain-specific` | Specific domains (geodesy, BIM, RxJS)                        | epsg-mcp, ifc-core-mcp, rxjs-mcp     |
+| `pdf`             | PDF reading, authenticity verification, trust auditing                     | pdf-trust, pdf-verify-mcp, etc.      |
+| `web-spec`        | Web standards and RFC reference                                            | rfcxml-mcp, w3c-mcp, etc.            |
+| `quality-tools`   | Translation evaluation, fact checking, spec compliance                     | xcomet-mcp, factcheck, etc.          |
+| `domain-specific` | Specific domains (geodesy, BIM, RxJS)                                      | epsg-mcp, ifc-core-mcp, rxjs-mcp     |
 
 ## Directory layout
 
