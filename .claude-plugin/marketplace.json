@@ -17,7 +17,7 @@
         "source": "github",
         "repo": "shuji-bonji/houki-research-skill"
       },
-      "version": "0.9.0",
+      "version": "0.10.0",
       "dependencies": ["houki-egov-mcp", "houki-nta-mcp"],
       "description": "日本の全法規 (法律・政令・通達・判例・裁決・行政解釈) を houki-hub MCP family (houki-egov-mcp / houki-nta-mcp) で横断調査するための Claude Skill。実装する前に仕様が法令のどこに触れるかを条文で確かめる、通達・Q&A から根拠条文へ戻る、改正がいつからかを見る、の各手順を問いの形で選び、出典をどう書き、「法律で決まっている」と「通達でそうなっている」を混ぜずに答え、業法の独占業務にどこで注意するかを LLM に指示する。v0.7.0 から 2 つの MCP を dependencies に宣言しており、この plugin を入れれば条文と通達の両方が揃う。",
       "category": "houki",
@@ -44,7 +44,7 @@
         "source": "github",
         "repo": "shuji-bonji/houki-egov-mcp"
       },
-      "version": "0.11.0",
+      "version": "0.12.0",
       "description": "実装する前に、その仕様が法令のどこに触れるかを条文で確かめるための MCP server。日本の法令 (憲法・法律・政令・省令・規則) を e-Gov 法令API v2 から条・項・号の単位で、法令番号と URL を添えて返す。7 ツールのうち 6 つはローカル DB なしで動く。v0.5.x からローカル SQLite FTS5 による条文本文の横断全文検索 (search_fulltext) を提供。`npx @shuji-bonji/houki-egov-mcp --bulk-download-everything` で e-Gov の全法令 zip (約 290 MB) を ~/.cache/houki-egov-mcp/laws.db に取り込むと有効になり、未構築時は法令名検索にフォールバックする。「民法 不法行為」のように法令名 + 語で条に絞り込め、「民法 第709条」ならその条を直接返す。v0.4.0 で MCP SDK v2 / Node 22+ に移行。houki-hub family の一員。",
       "category": "houki",
       "keywords": [
