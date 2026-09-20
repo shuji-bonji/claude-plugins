@@ -17,7 +17,7 @@
         "source": "github",
         "repo": "shuji-bonji/houki-research-skill"
       },
-      "version": "0.11.0",
+      "version": "0.12.0",
       "dependencies": ["houki-egov-mcp", "houki-nta-mcp"],
       "description": "日本の全法規 (法律・政令・通達・判例・裁決・行政解釈) を houki-hub MCP family (houki-egov-mcp / houki-nta-mcp) で横断調査するための Claude Skill。実装する前に仕様が法令のどこに触れるかを条文で確かめる、通達・Q&A から根拠条文へ戻る、改正がいつからかを見る、の各手順を問いの形で選び、出典をどう書き、「法律で決まっている」と「通達でそうなっている」を混ぜずに答え、業法の独占業務にどこで注意するかを LLM に指示する。v0.7.0 から 2 つの MCP を dependencies に宣言しており、この plugin を入れれば条文と通達の両方が揃う。",
       "category": "houki",
