@@ -49,7 +49,7 @@ graph LR
   domain --> rxjs["rxjs-mcp"]
 
   classDef live fill:#d4edda,stroke:#28a745
-  class hr,hegov,hnta,pspecial,ppub,ptrust,pverify,hpdf,pspec,rfcxml,w3c,webcompat,xcomet,deepl,fact,media,speccomp,aidesign,epsg,ifc,rxjs live
+  class hr,hegov,hnta,pspecial,ppub,ptrust,pread,pwriter,pverify,hpdf,pspec,rfcxml,w3c,webcompat,xcomet,deepl,fact,media,speccomp,aidesign,epsg,ifc,rxjs live
 ```
 
 > 図は構成のみを示します。**version は下の一覧表と `.claude-plugin/marketplace.json` が出所**です（同じ数値を 3 か所に書くと必ず乖離するため、図からは外しています）。
@@ -82,7 +82,7 @@ graph LR
 | [ifc-core-mcp](https://github.com/shuji-bonji/ifc-core-mcp)                             | MCP                 | domain-specific | v0.3.0  | `shuji-bonji/ifc-core-mcp`               |
 | [rxjs-mcp](https://github.com/shuji-bonji/rxjs-mcp-server)                              | MCP                 | domain-specific | v0.5.3  | `shuji-bonji/rxjs-mcp-server`            |
 
-> `pdf-trust`（受入監査）は `pdf-verify-mcp` を、`pdf-publish`（送り出し）は `pdf-writer-mcp` を、`pdf-read`（読み取り）は `pdf-reader-mcp`（**v0.14.0+ 推奨**）を必須の前提 MCP とします（いずれも marketplace 収録済み）。受入・納品・読み取りを分担する 3 つの Skill なので、用途に応じて必要な MCP と一緒に install してください。
+> `pdf-trust`（受入監査）は `pdf-verify-mcp` を、`pdf-publish`（送り出し）は `pdf-writer-mcp` を、`pdf-read`（読み取り）は `pdf-reader-mcp`（**v0.15.1+ 推奨**）を必須の前提 MCP とします（いずれも marketplace 収録済み）。受入・納品・読み取りを分担する 3 つの Skill なので、用途に応じて必要な MCP と一緒に install してください。
 
 ### 利用上の注意
 
@@ -119,9 +119,10 @@ install の前に確認することと、plugin ごとの前提条件・既知�
 
 #### pdf-read（読み取り・前提は `pdf-reader-mcp`）
 
-- **`pdf-reader-mcp` は v0.14.0 以上、Skill は `pdf-read` v0.2.0 以上**を推奨します。
+- **`pdf-reader-mcp` は v0.15.1 以上、Skill は `pdf-read` v0.2.0 以上**を推奨します。
 - v0.14.0 でテキストを返すツールの出力の形が変わりました（`scope` の追加、`read_text` / `read_url` は `{ scope, pages }` を返す）。`read_url` の全入力エラーと `render_page` のハングもここで直っています。`pdf-read` v0.2.0 以上・`pdf-publish` v0.7.0 以上なら対応済みです。
 - v0.15.0 で `inspect_structure` の `objectStats.byType` と `catalog[].type` が pdf-lib のクラス名から COS 型名に変わりました。この値を読んでいる呼び出し側は直してください。
+- v0.15.0 から、鍵が導ける暗号化文書は復号して読みます。v0.15.1 で、`summarize` が返す次の一手（`next`）の助言が観測と一致するようになりました。
 
 #### pdf-spec-mcp
 
@@ -163,7 +164,7 @@ install の前に確認することと、plugin ごとの前提条件・既知�
 /plugin install pdf-reader-mcp@shuji-bonji
 
 # 例: 読み取りパイプライン = 大きな PDF・読めない PDF から必要な箇所を取り出す
-/plugin install pdf-reader-mcp@shuji-bonji   # 必須基盤 (v0.14.0+ 推奨)
+/plugin install pdf-reader-mcp@shuji-bonji   # 必須基盤 (v0.15.1+ 推奨)
 /plugin install pdf-read@shuji-bonji
 ```
 
@@ -188,13 +189,13 @@ install の前に確認することと、plugin ごとの前提条件・既知�
 
 ## category の方針
 
-| category          | 用途                                                         | 例                                |
-| ----------------- | ------------------------------------------------------------ | --------------------------------- |
-| `houki`           | 実装する前に、その仕様が法令のどこに触れるかを条文で確かめる | houki-research, houki-egov-mcp 等 |
-| `pdf`             | PDF の読取・真正性検証・信頼性監査                           | pdf-trust, pdf-verify-mcp 等      |
-| `web-spec`        | Web 標準・RFC の参照                                         | rfcxml-mcp, w3c-mcp 等            |
-| `quality-tools`   | 翻訳評価・ファクトチェック・仕様準拠                         | xcomet-mcp, factcheck 等          |
-| `domain-specific` | 特定ドメイン (測地・BIM・RxJS)                               | epsg-mcp, ifc-core-mcp, rxjs-mcp  |
+| category          | 用途                                                                       | 例                                |
+| ----------------- | -------------------------------------------------------------------------- | --------------------------------- |
+| `houki`           | 日本の法令・通達を出典つきで引く（税務・労務の下調べ、実装前の法令の確認） | houki-research, houki-egov-mcp 等 |
+| `pdf`             | PDF の読み取り・生成と納品・真正性検証・信頼性監査                         | pdf-trust, pdf-verify-mcp 等      |
+| `web-spec`        | Web 標準・RFC の参照                                                       | rfcxml-mcp, w3c-mcp 等            |
+| `quality-tools`   | 翻訳評価・ファクトチェック・仕様準拠                                       | xcomet-mcp, factcheck 等          |
+| `domain-specific` | 特定ドメイン (測地・BIM・RxJS)                                             | epsg-mcp, ifc-core-mcp, rxjs-mcp  |
 
 ## ディレクトリ構成
 

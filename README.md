@@ -49,7 +49,7 @@ graph LR
   domain --> rxjs["rxjs-mcp"]
 
   classDef live fill:#d4edda,stroke:#28a745
-  class hr,hegov,hnta,pspecial,ppub,ptrust,pverify,hpdf,pspec,rfcxml,w3c,webcompat,xcomet,deepl,fact,media,speccomp,aidesign,epsg,ifc,rxjs live
+  class hr,hegov,hnta,pspecial,ppub,ptrust,pread,pwriter,pverify,hpdf,pspec,rfcxml,w3c,webcompat,xcomet,deepl,fact,media,speccomp,aidesign,epsg,ifc,rxjs live
 ```
 
 > The diagram shows structure only. **Versions come from the table below and `.claude-plugin/marketplace.json`** — writing the same number in three places guarantees drift, so the diagram omits them.
@@ -82,7 +82,7 @@ graph LR
 | [ifc-core-mcp](https://github.com/shuji-bonji/ifc-core-mcp)                             | MCP                 | domain-specific | v0.3.0  | `shuji-bonji/ifc-core-mcp`               |
 | [rxjs-mcp](https://github.com/shuji-bonji/rxjs-mcp-server)                              | MCP                 | domain-specific | v0.5.3  | `shuji-bonji/rxjs-mcp-server`            |
 
-> `pdf-trust` (acceptance audit) requires `pdf-verify-mcp`, `pdf-publish` (outbound delivery) requires `pdf-writer-mcp`, and `pdf-read` (reading pipeline) requires `pdf-reader-mcp` (**v0.14.0+ recommended**), as prerequisite MCPs (all are already in the marketplace). The three Skills cover intake, delivery and reading, so install whichever you need together with its required MCP.
+> `pdf-trust` (acceptance audit) requires `pdf-verify-mcp`, `pdf-publish` (outbound delivery) requires `pdf-writer-mcp`, and `pdf-read` (reading pipeline) requires `pdf-reader-mcp` (**v0.15.1+ recommended**), as prerequisite MCPs (all are already in the marketplace). The three Skills cover intake, delivery and reading, so install whichever you need together with its required MCP.
 
 ### Usage notes
 
@@ -119,9 +119,10 @@ What to check before installing, plus the prerequisites and known defects of eac
 
 #### pdf-read (reading pipeline, requires `pdf-reader-mcp`)
 
-- **Use `pdf-reader-mcp` v0.14.0 or later with `pdf-read` v0.2.0 or later.**
+- **Use `pdf-reader-mcp` v0.15.1 or later with `pdf-read` v0.2.0 or later.**
 - v0.14.0 changed the shape of what the text-returning tools return (`scope` was added; `read_text` / `read_url` return `{ scope, pages }`). It also fixes `read_url` erroring on every input and `render_page` hanging the server. `pdf-read` v0.2.0+ and `pdf-publish` v0.7.0+ already read `scope`.
 - v0.15.0 changed `objectStats.byType` and `catalog[].type` in `inspect_structure` from pdf-lib class names to COS type names. Callers that read those values have to be updated.
+- From v0.15.0, an encrypted document is decrypted and read when its key can be derived. v0.15.1 makes the next-step advice (`next`) returned by `summarize` agree with what was observed.
 
 #### pdf-spec-mcp
 
@@ -163,7 +164,7 @@ What to check before installing, plus the prerequisites and known defects of eac
 /plugin install pdf-reader-mcp@shuji-bonji
 
 # Example: reading pipeline = pull what you need out of large or unreadable PDFs
-/plugin install pdf-reader-mcp@shuji-bonji   # required foundation (v0.14.0+ recommended)
+/plugin install pdf-reader-mcp@shuji-bonji   # required foundation (v0.15.1+ recommended)
 /plugin install pdf-read@shuji-bonji
 ```
 
@@ -188,13 +189,13 @@ Details: [Manage Claude Cowork plugins for your organization](https://support.cl
 
 ## Category policy
 
-| category          | purpose                                                                    | examples                             |
-| ----------------- | -------------------------------------------------------------------------- | ------------------------------------ |
-| `houki`           | Check which Japanese statutes and notices a spec touches, before you build | houki-research, houki-egov-mcp, etc. |
-| `pdf`             | PDF reading, authenticity verification, trust auditing                     | pdf-trust, pdf-verify-mcp, etc.      |
-| `web-spec`        | Web standards and RFC reference                                            | rfcxml-mcp, w3c-mcp, etc.            |
-| `quality-tools`   | Translation evaluation, fact checking, spec compliance                     | xcomet-mcp, factcheck, etc.          |
-| `domain-specific` | Specific domains (geodesy, BIM, RxJS)                                      | epsg-mcp, ifc-core-mcp, rxjs-mcp     |
+| category          | purpose                                                                                                                  | examples                             |
+| ----------------- | ------------------------------------------------------------------------------------------------------------------------ | ------------------------------------ |
+| `houki`           | Look up Japanese statutes and tax notices with sources — for tax and labor research, or checking a spec before you build | houki-research, houki-egov-mcp, etc. |
+| `pdf`             | PDF reading, generation and delivery, authenticity verification, trust auditing                                          | pdf-trust, pdf-verify-mcp, etc.      |
+| `web-spec`        | Web standards and RFC reference                                                                                          | rfcxml-mcp, w3c-mcp, etc.            |
+| `quality-tools`   | Translation evaluation, fact checking, spec compliance                                                                   | xcomet-mcp, factcheck, etc.          |
+| `domain-specific` | Specific domains (geodesy, BIM, RxJS)                                                                                    | epsg-mcp, ifc-core-mcp, rxjs-mcp     |
 
 ## Directory layout
 
