@@ -8,7 +8,7 @@
   },
   "metadata": {
     "description": "shuji-bonji's Claude Plugins — Skill, MCP server, slash command などをまとめた個人 marketplace。日本の法令調査 (houki family)、PDF 真正性検証 (pdf family)、Web 仕様 (W3C/RFC)、品質ツール、ドメイン特化 MCP 等を category 別に提供。",
-    "version": "0.6.1"
+    "version": "0.6.2"
   },
   "plugins": [
     {
@@ -148,7 +148,7 @@
       "dependencies": [
         "pdf-verify-mcp"
       ],
-      "description": "PDF の信頼性監査オーケストレーション Skill。契約書・請求書・診療文書・行政文書などの PDF の真正性 (署名・改ざん・PAdES/PDF-A) を pdf-verify-mcp を軸に PDF family MCP を編成して判定し、ドメイン別プロファイルに基づく推奨判定付き Trust Report を返す。4 値判定は pdf-verify-mcp v0.7.0+ の evaluate_policy (決定論的ルールエンジン) に委譲し、Skill は解説・推奨アクション・法令根拠を担う。pdf-verify-mcp v0.10.0+ のリビジョン間オブジェクト単位差分と pdf-reader-mcp v0.10.0+ の locate_objects を組み合わせ、署名後に変わったオブジェクトをページ・矩形まで特定する。pdf-verify-mcp v0.21.0+ 推奨 (verify_signatures / detect_pades_level の最上位が配列から { scope, ... } になった版)。pdf-verify-mcp plugin が必須。",
+      "description": "PDF の信頼性監査オーケストレーション Skill。契約書・請求書・診療文書・行政文書などの PDF の真正性 (署名・改ざん・PAdES/PDF-A) を pdf-verify-mcp を軸に PDF family MCP を編成して判定し、ドメイン別プロファイルに基づく推奨判定付き Trust Report を返す。4 値判定は pdf-verify-mcp v0.7.0+ の evaluate_policy (決定論的ルールエンジン) に委譲し、Skill は解説・推奨アクション・法令根拠を担う。pdf-verify-mcp v0.10.0+ のリビジョン間オブジェクト単位差分と pdf-reader-mcp v0.10.0+ の locate_objects を組み合わせ、署名後に変わったオブジェクトをページ・矩形まで特定する。pdf-verify-mcp v0.21.0+ 推奨 (verify_signatures / detect_pades_level の最上位が配列から { scope, ... } になった版)。pdf-verify-mcp v0.27.0〜v0.28.0 で変わった失効と検証時刻の判定 (POL-CAUTION-REVOKED-AFTER-SIGNING・revocation_freshness) は pdf-trust v0.8.1 から、v0.29.0 の件数上限 (xxxTruncated) は v0.8.2 から読み分ける。pdf-verify-mcp plugin が必須。",
       "category": "pdf",
       "keywords": [
         "pdf",
@@ -207,7 +207,7 @@
         "repo": "shuji-bonji/pdf-writer-mcp"
       },
       "version": "0.21.2",
-      "description": "PDF 生成・編集 MCP server。テキスト/Markdown/表からの PDF 生成、タグ付き PDF/UA-1 出力、PDF 2.0 出力、ページ操作・しおり・注釈・添付・透かし・フォーム、署名を保持する増分更新、PDF/A-3b / PDF/A-4 / PDF/A-4f の器付け (ensure_pdfa) を提供。**書けるのは「宣言」であって「適合」ではない** — 測ると落ちると分かっている宣言は declarationRisks として構造化して返す (v0.17.0)。npm @shuji-bonji/pdf-writer-mcp を npx で起動する。pdf-publish Skill の必須基盤。",
+      "description": "PDF 生成・編集 MCP server。テキスト/Markdown/表からの PDF 生成、タグ付き PDF/UA-1 出力、PDF 2.0 出力、ページ操作・しおり・注釈・添付・透かし・フォーム、署名を保持する増分更新、PDF/A-3b / PDF/A-4 / PDF/A-4f の器付け (ensure_pdfa) を提供。**書けるのは「宣言」であって「適合」ではない** — 測ると落ちると分かっている宣言は declarationRisks として構造化して返す (v0.17.0)。ensure_pdfa と ensure_tagged は成功時にも、宣言を書いただけで適合は測っていないことを warnings で返す (ensure_tagged は v0.21.1 から)。npm @shuji-bonji/pdf-writer-mcp を npx で起動する。pdf-publish Skill の必須基盤。",
       "category": "pdf",
       "keywords": [
         "pdf",
@@ -236,7 +236,7 @@
         "repo": "shuji-bonji/pdf-verify-mcp"
       },
       "version": "0.29.1",
-      "description": "PDF 真正性検証 MCP server。電子署名の暗号学的検証 (CMS/PKCS#7)・改ざん検知 (リビジョン間のオブジェクト単位差分・リビジョン一覧が全履歴かの revisionChain・リビジョン数の食い違いに説明が付いているかの revisionCountAgreement を含む)・DocMDP 証明署名の権限判定 (ISO 32000-2 Table 257 に沿って P=1/2/3 ごとに変更の種類を照合。判定できない場合は indeterminate = pass ではない)・PAdES レベル判定・PDF/A 適合性検証 (PDF/A-1〜4)・ISO 32000 本体条文の制約検査 (validate_clauses = フォント埋め込み / メタデータ / 注釈の 3 ドメイン・26 制約。veraPDF が見ない領域) を提供。npm @shuji-bonji/pdf-verify-mcp を npx で起動する。pdf-trust Skill の必須基盤。",
+      "description": "PDF 真正性検証 MCP server (7 tools)。電子署名の暗号学的検証 (CMS/PKCS#7)・改ざん検知 (リビジョン間のオブジェクト単位差分・リビジョン一覧が全履歴かの revisionChain・リビジョン数の食い違いに説明が付いているかの revisionCountAgreement を含む)・DocMDP 証明署名の権限判定 (ISO 32000-2 Table 257 に沿って P=1/2/3 ごとに変更の種類を照合。判定できない場合は indeterminate = pass ではない)・PAdES レベル判定 (B-B/B-T/B-LT/B-LTA)・PDF/A (PDF/A-1〜4) と PDF/UA (PDF/UA-1/2) の適合性検証・ISO 32000 本体条文の制約検査 (validate_clauses = フォント埋め込み / メタデータ / 注釈の 3 ドメイン・26 制約。veraPDF が見ない領域)・決定論的ルールエンジンによる 4 値判定 (evaluate_policy) を提供。v0.27.0 から、証明書の有効期間と失効の判定に使う時刻を署名タイムスタンプ → 文書タイムスタンプ → 現在時刻の順で選び (ISO 32000-2 §12.8.3.4.5・§12.8.3.4.6)、失効した署名者証明書はタイムスタンプが失効より前を示すときだけ revoked_after_validation_time、それ以外は verdict: indeterminate になる。v0.28.0 から、失効情報は既定 24 時間より古ければ good の根拠にしない (revocation_freshness)。v0.29.0 から、JSON の応答を文字数で切らず、配列ごとの件数上限を超えたときは xxxTruncated: { returned, total } を添える。npm @shuji-bonji/pdf-verify-mcp を npx で起動する。pdf-trust Skill の必須基盤。",
       "category": "pdf",
       "keywords": [
         "pdf",
@@ -264,7 +264,7 @@
         "repo": "shuji-bonji/pdf-reader-mcp"
       },
       "version": "0.15.5",
-      "description": "PDF 構造解析 MCP server (19 tools)。テキスト・画像・表の抽出、署名フィールド・フォント・注釈・タグ構造の inspect、描画座標への変換 (オブジェクト番号は locate_objects、構造要素は extract_structured_text の include_bbox。いずれも pdf-writer-mcp add_annotation がそのまま取る形)、PDF/UA タグ検証を提供。v0.12.0: テキストを返す全ツールがページごとの**テキスト抽出可能性** (extracted / no_text_layer / not_extractable / not_observed, ISO 32000-2 §9.10.1) を申告し、空の抽出結果が「テキストが無い」と取り違えられない。read_images は本物の PNG/JPEG を MCP image content block で返し (視覚モデルがそのまま読める)、render_page がページを画像として描画する (PDFium-WASM = optionalDependencies @hyzyla/pdfium。未導入でも他 18 ツールは動作)。summarize は観測から決まる次の一手 (next) を返す。 v0.14.0: テキストを返す全ツールが **scope**（その答えの背後にある 2 つの読み——ページから文字を取り出すこと・その文字が Unicode に変換できるかの観測——のどちらが行われたか）を申告し、行われなかった読みの項目は `0` や `false` や空文字ではなく **null** になる。「読んでいない」が「読んで無かった」の顔をしない。read_url は取得したバイト列を 2 人の読み手に配るようになり（v0.13.0 までは全件が失敗していた）、render_page は 1 ページ 20 秒の予算を別スレッドで置くので、ラスタライズが終わらないページがあってもサーバは応答を返し続ける。",
+      "description": "PDF 構造解析 MCP server (19 tools)。テキスト・画像・表の抽出、署名フィールド・フォント・注釈・タグ構造の inspect、描画座標への変換 (オブジェクト番号は locate_objects、構造要素は extract_structured_text の include_bbox。いずれも pdf-writer-mcp add_annotation がそのまま取る形)、PDF/UA タグ検証を提供。v0.12.0: テキストを返す全ツールがページごとの**テキスト抽出可能性** (extracted / no_text_layer / not_extractable / not_observed, ISO 32000-2 §9.10.1) を申告し、空の抽出結果が「テキストが無い」と取り違えられない。read_images は本物の PNG/JPEG を MCP image content block で返し (視覚モデルがそのまま読める)、render_page がページを画像として描画する (PDFium-WASM = optionalDependencies @hyzyla/pdfium。未導入でも他 18 ツールは動作)。summarize は観測から決まる次の一手 (next) を返す。 v0.14.0: テキストを返す全ツールが **scope**（その答えの背後にある 2 つの読み——ページから文字を取り出すこと・その文字が Unicode に変換できるかの観測——のどちらが行われたか）を申告し、行われなかった読みの項目は `0` や `false` や空文字ではなく **null** になる。「読んでいない」が「読んで無かった」の顔をしない。read_url は取得したバイト列を 2 人の読み手に配るようになり（v0.13.0 までは全件が失敗していた）、render_page は 1 ページ 20 秒の予算を別スレッドで置くので、ラスタライズが終わらないページがあってもサーバは応答を返し続ける。 v0.15.0: pdf-lib を外し、読み取りは @normativepdf/recover を通る。空のユーザーパスワードで鍵が導ける暗号化文書は復号して読み、inspect_structure の objectStats.byType / catalog[].type は pdf-lib のクラス名ではなく COS 型名 (ISO 32000-2 §7.3) を返す。",
       "category": "pdf",
       "keywords": [
         "accessibility",
@@ -292,7 +292,7 @@
         "repo": "shuji-bonji/pdf-spec-mcp"
       },
       "version": "0.6.1",
-      "description": "ISO 32000 (PDF 仕様) の構造化参照 MCP server。条項検索・要求事項 (MUST/SHOULD) 抽出・定義取得・版間比較を提供。ISO 仕様 PDF は利用者が用意し PDF_SPEC_DIR で指定する。v0.5.0: 検索索引と要件の全走査を初回構築後にディスクへキャッシュし (既定 ~/.cache/pdf-spec-mcp、PDF_SPEC_CACHE_DIR で変更・PDF_SPEC_CACHE=off で無効)、以後のプロセスは 1 秒未満で応答する。`--build-cache` CLI で全仕様を事前構築できる。**本サーバは条文の参照であって適合判定器ではありません** — PDF ファイルの検査や適合判定は行わず、それは pdf-verify-mcp の役割です。",
+      "description": "ISO 32000 (PDF 仕様) の構造化参照 MCP server。条項検索・要求事項 (MUST/SHOULD) 抽出・定義取得・版間比較を提供。ISO 仕様 PDF は利用者が用意し PDF_SPEC_DIR で指定する。収録対象は ISO 32000-1/-2 を中心とする PDF 関連 17 文書で、PDF/A (ISO 19005) と PAdES (ETSI EN 319 142) は対象外 (list_specs の coverage.gaps)。検索が当たらないことは「要件が無い」ではなく「ここでは答えられない」を意味する。v0.5.0: 検索索引と要件の全走査を初回構築後にディスクへキャッシュし (既定 ~/.cache/pdf-spec-mcp、PDF_SPEC_CACHE_DIR で変更・PDF_SPEC_CACHE=off で無効)、以後のプロセスは 1 秒未満で応答する。`--build-cache` CLI で全仕様を事前構築できる。**本サーバは条文の参照であって適合判定器ではありません** — PDF ファイルの検査や適合判定は行わず、それは pdf-verify-mcp の役割です。",
       "category": "pdf",
       "keywords": [
         "pdf",

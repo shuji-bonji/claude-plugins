@@ -109,11 +109,15 @@ What to check before installing, plus the prerequisites and known defects of eac
 - In v0.14.2 and earlier an incomplete revision chain is reported as complete (fixed in v0.15.0). Any audit that promises the full revision history (the `legal` and `medical` profiles, or a contract dispute over changes made after signing) needs v0.15.0 or later.
 - v0.15.1 to v0.16.0 change **what a report can claim**, not the verdicts. pdf-trust v0.6.0 and later handle it.
 - v0.21.0 changed the top level of the `verify_signatures` and `detect_pades_level` JSON from an array to an object. Direct callers have to go through `.signatures` / `.levels`.
+- From v0.26.1, PDF/A validation of an encrypted document is not handed to veraPDF and returns `ENCRYPTED_PDF` (it used to be `INTERNAL_ERROR`). When veraPDF returns no result, the code is `VERAPDF_NO_RESULT`.
+- **v0.27.0 and v0.28.0 change the verdicts of `verify_signatures` and `evaluate_policy`.** A revoked signer certificate becomes `revoked_after_validation_time` (`use_with_caution`) only when a timestamp proves the signature predates the revocation; otherwise the verdict is `indeterminate`, not `invalid`. From v0.28.0, revocation information older than 24 hours (by default) no longer counts as evidence for `good`. pdf-trust v0.8.1 and later handle this.
+- From v0.29.0 JSON responses are no longer cut at a character count. Each array has a count limit instead, and when it is exceeded a `{ returned, total }` field such as `signaturesTruncated` appears next to it. pdf-trust v0.8.2 and later read these fields.
 
 #### pdf-publish (outbound delivery, requires `pdf-writer-mcp`)
 
 - PDF/A-3b containers (`ensure_pdfa`) landed in v0.15.0; PDF/A-4, PDF/A-4f and PDF 2.0 output in v0.16.0 (a document carrying a CSV or JSON attachment must be declared `pdfa-4f`, not `pdfa-4`).
 - Since v0.17.0 `ensure_pdfa` returns `declarationRisks`, naming a claim already known to fail validation (today: fonts that are not embedded).
+- From v0.21.1, `ensure_tagged` also returns a warning on success, in `warnings`, saying that it wrote a PDF/UA-1 declaration and did not measure conformance. Check conformance with `validate_conformance` in `pdf-verify-mcp` (`flavour: "pdfua-1"`).
 - v0.14.0 and earlier silently drop the `_` of `snake_case` during Markdown generation (fixed in v0.14.1).
 - v0.18.0 and earlier write a damaged file when `preserveSignatures: true` is applied to input that does not begin with `%PDF-` at byte 0 (fixed in v0.19.0).
 
@@ -127,6 +131,7 @@ What to check before installing, plus the prerequisites and known defects of eac
 #### pdf-spec-mcp
 
 - You supply the ISO 32000 specification PDFs yourself and point `PDF_SPEC_DIR` at them.
+- The corpus covers 17 PDF-related documents. PDF/A (ISO 19005) and PAdES (ETSI EN 319 142) are not included (see `coverage.gaps` in `list_specs`). A search that finds nothing on those two does not mean the requirement does not exist.
 - Since v0.5.0 the search index is cached on disk (about 18 MB; `PDF_SPEC_CACHE_DIR` moves it, `PDF_SPEC_CACHE=off` disables it). `npx -y @shuji-bonji/pdf-spec-mcp@latest --build-cache` warms it up front.
 
 #### xcomet-mcp

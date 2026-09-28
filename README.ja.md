@@ -109,11 +109,15 @@ install の前に確認することと、plugin ごとの前提条件・既知�
 - v0.14.2 以前はリビジョンチェーンを完全なものとして報告します（v0.15.0 で修正）。全履歴を約束する監査（`legal` / `medical` プロファイル、署名後の改変が争点の契約書）は v0.15.0 以上で行ってください。
 - v0.15.1〜v0.16.0 は判定ではなく**報告書に書ける内容**が変わります。pdf-trust は v0.6.0 以上が対応済みです。
 - v0.21.0 で `verify_signatures` と `detect_pades_level` の JSON の最上位が配列から辞書になりました。直接呼んでいる場合は `.signatures` / `.levels` を挟んでください。
+- v0.26.1 から、暗号化された文書の PDF/A 検証は veraPDF に渡さず `ENCRYPTED_PDF` を返します（それまでは `INTERNAL_ERROR`）。veraPDF が結果を返さなかったときは `VERAPDF_NO_RESULT` です。
+- **v0.27.0 と v0.28.0 で `verify_signatures` と `evaluate_policy` の判定が変わります。** 失効した署名者証明書は、タイムスタンプが失効より前を示すときだけ `revoked_after_validation_time`（`use_with_caution`）になり、それ以外は `invalid` ではなく `indeterminate` になります。v0.28.0 からは、既定で 24 時間より古い失効情報を `good` の根拠にしません。pdf-trust は v0.8.1 以上が対応済みです。
+- v0.29.0 から JSON の応答を文字数で切らなくなりました。代わりに配列ごとに件数の上限があり、超えたときは `signaturesTruncated` などの `{ returned, total }` が付きます。pdf-trust は v0.8.2 以上が読み分けます。
 
 #### pdf-publish（送り出し・前提は `pdf-writer-mcp`）
 
 - PDF/A-3b の器付け（`ensure_pdfa`）は v0.15.0 から、PDF/A-4・PDF/A-4f と PDF 2.0 出力は v0.16.0 からです（CSV や JSON を添付した文書は `pdfa-4` ではなく `pdfa-4f` を名乗ります）。
 - v0.17.0 から `ensure_pdfa` が `declarationRisks` を返し、測ると落ちると分かっている宣言（現状はフォント未埋め込み）を名指しします。
+- v0.21.1 から、`ensure_tagged` は成功したときにも「PDF/UA-1 の宣言を書いただけで、適合は測っていない」という警告を `warnings` に入れて返します。適合の判定は `pdf-verify-mcp` の `validate_conformance`（`flavour: "pdfua-1"`）で行ってください。
 - v0.14.0 以前は Markdown 生成時に `snake_case` の `_` が無警告で消えます（v0.14.1 で修正）。
 - v0.18.0 以前は、`%PDF-` が 0 バイト目から始まらない入力に `preserveSignatures: true` を掛けると壊れたファイルを書きます（v0.19.0 で修正）。
 
@@ -127,6 +131,7 @@ install の前に確認することと、plugin ごとの前提条件・既知�
 #### pdf-spec-mcp
 
 - ISO 32000 仕様 PDF は利用者が用意し、環境変数 `PDF_SPEC_DIR` で配置先を指定してください。
+- 収録対象は PDF 関連の 17 文書です。PDF/A（ISO 19005）と PAdES（ETSI EN 319 142）は収録していません（`list_specs` の `coverage.gaps`）。この 2 つについて検索が当たらなくても、要件が無いという意味ではありません。
 - v0.5.0 から検索索引をディスクにキャッシュします（約 18 MB。`PDF_SPEC_CACHE_DIR` で移動、`PDF_SPEC_CACHE=off` で無効）。`npx -y @shuji-bonji/pdf-spec-mcp@latest --build-cache` で事前構築できます。
 
 #### xcomet-mcp

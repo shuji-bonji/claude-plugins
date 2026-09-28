@@ -46,13 +46,25 @@ MCP server は `npx` で起動するため、手元の Node.js の版で起動�
 
 `pdf-verify-mcp` **v0.21.0** で `verify_signatures` と `detect_pades_level` の JSON は、最上位が配列から辞書になりました（`[ {...} ]` → `{ scope, signatures: [ {...} ] }` / `{ scope, levels: [ {...} ] }`。一覧の中身は 1 鍵も変わっていません）。配列を直接読んでいる呼び出し側は `.signatures` / `.levels` を挟んでください。形を変えた理由は `scope` です —— 相互参照表を組み直した文書（`scope.reconstructed: true`）では組み直しに入らなかった署名が一覧に出ないので、一覧と同じ場所で読んだ範囲を見られる必要があります。v0.20.0 では、条文を名指しして読めなかった場合の `code` が `INTERNAL_ERROR` から `PARSE_FAILED` に分かれました。**pdf-trust v0.8.0** は判定の前に `scope` を読む手順（Phase 1.5）を持ち、`PARSE_FAILED` を「未実施項目」に入れません。pdf-trust の README は **pdf-verify-mcp v0.21.0 以上**を推奨しています。
 
+### v0.26.1〜v0.29.0 — 暗号化文書の PDF/A・失効と検証時刻・応答の切り詰め
+
+**v0.26.1** から、`validate_conformance` は `/Encrypt` を持つ文書の PDF/A 検証を veraPDF に渡さず、`ENCRYPTED_PDF` を返します（それまでは veraPDF が空の報告を返し、`INTERNAL_ERROR` になっていました）。PDF/A は暗号化そのものを認めていません（ISO 19005-1 6.1.3）。veraPDF の報告に結果が無いときは `VERAPDF_NO_RESULT` です。どちらも pass ではありません。
+
+**v0.27.0** で、`verify_signatures` と `evaluate_policy` の**判定が変わりました**（ISO 32000-2 §12.8.3.4.5・§12.8.3.4.6）。証明書の有効期間と失効を判定する時刻は、検証できた署名タイムスタンプ → その署名を覆う文書タイムスタンプ → 現在時刻の順で選ばれ、各署名の `validationTime` に出ます。CMS の `signingTime` 属性は署名者が書く値なので使いません。失効した署名者証明書は、タイムスタンプが失効より前を示すときだけ `revocation.status: revoked_after_validation_time`（`evaluate_policy` は `POL-CAUTION-REVOKED-AFTER-SIGNING` = `use_with_caution`）になり、それ以外は `verdict: indeterminate` になります（それまでは一律 `invalid`）。署名を検証できない失効情報と、`nextUpdate` が過ぎた失効情報は `unknown` です。`check_revocation: "none"` では `revocation.status: not_checked` が返ります。
+
+**v0.28.0** で引数が 2 つ増えました。`revocation_freshness`（秒、既定 86400）より古い失効情報は `good` の根拠にしません。`trusted_ocsp_responders` で、信頼する OCSP 応答者の証明書を渡せます。中間 CA ごとの失効確認の結果は `trust.chainRevocation` に出ます。公開検体 209 件で、24 時間を超える失効情報だけで `good` になっていた 3 署名が `unknown` に変わりました。
+
+**v0.29.0** から、`response_format: "json"` の応答を文字数で切らなくなりました。0.28.0 までは 25,000 文字で切っていて、JSON が構造の途中で切れたまま `isError: false` で届いていました。代わりに配列ごとの件数上限（署名・リビジョンは 32 件、違反・結果は 200 件）があり、超えたときは配列の隣に `signaturesTruncated` / `levelsTruncated` / `revisionsTruncated` / `violationsTruncated` / `resultsTruncated`（`{ returned, total }`）が付きます。`verify_signatures` は 33 件目以降の署名を検証しませんが、`evaluate_policy` は全署名を検証して判定し、一覧だけを切ります。markdown の上限は 50,000 文字になりました。
+
+**pdf-trust v0.8.1 以上**が 0.27.0〜0.28.0 の失効の扱いを、**v0.8.2 以上**が 0.29.0 の `xxxTruncated` を読み分けます。
+
 ## pdf-writer-mcp（pdf-publish の前提）
 
-前提の `pdf-writer-mcp` も marketplace に収録済みです（版は上の一覧表を参照）。PDF/A-3b の器付け（`ensure_pdfa`）が入ったのは **v0.15.0**、**PDF/A-4 / PDF/A-4f と PDF 2.0 出力は v0.16.0** です（CSV や JSON を添付した文書は `pdfa-4` ではなく `pdfa-4f` を名乗る必要があります）。**v0.17.0** からは `ensure_pdfa` が `declarationRisks` を返し、**測ると落ちると分かっている宣言**（現状はフォント未埋め込み）を散文の警告に埋めずに名指しします。なお v0.14.0 以前には、Markdown 生成時に `snake_case` の `_` が無警告で消える欠陥があります（[B-17](https://github.com/shuji-bonji/pdf-writer-mcp/blob/main/docs/TASKS.md)・**v0.14.1 で修正済み**）。古い版を掴んでいる場合は、関数名を含む技術文書で出力を確認してください。また v0.18.0 以前には、`%PDF-` が 0 バイト目から始まらない入力に `preserveSignatures: true` を掛けると壊れたファイルを書く欠陥があります（ISO 32000-2 §7.5.2 が認める合法な形で、前置バイトを足す道具の出力がこれに当たります。[B-22](https://github.com/shuji-bonji/pdf-writer-mcp/blob/main/docs/TASKS.md)・**v0.19.0 で修正済み**）。
+前提の `pdf-writer-mcp` も marketplace に収録済みです（版は上の一覧表を参照）。PDF/A-3b の器付け（`ensure_pdfa`）が入ったのは **v0.15.0**、**PDF/A-4 / PDF/A-4f と PDF 2.0 出力は v0.16.0** です（CSV や JSON を添付した文書は `pdfa-4` ではなく `pdfa-4f` を名乗る必要があります）。**v0.17.0** からは `ensure_pdfa` が `declarationRisks` を返し、**測ると落ちると分かっている宣言**（現状はフォント未埋め込み）を散文の警告に埋めずに名指しします。なお v0.14.0 以前には、Markdown 生成時に `snake_case` の `_` が無警告で消える欠陥があります（[B-17](https://github.com/shuji-bonji/pdf-writer-mcp/blob/main/docs/TASKS.md)・**v0.14.1 で修正済み**）。古い版を掴んでいる場合は、関数名を含む技術文書で出力を確認してください。また v0.18.0 以前には、`%PDF-` が 0 バイト目から始まらない入力に `preserveSignatures: true` を掛けると壊れたファイルを書く欠陥があります（ISO 32000-2 §7.5.2 が認める合法な形で、前置バイトを足す道具の出力がこれに当たります。[B-22](https://github.com/shuji-bonji/pdf-writer-mcp/blob/main/docs/TASKS.md)・**v0.19.0 で修正済み**）。**v0.21.1** から、`ensure_tagged` は成功したときにも「PDF/UA-1 の宣言（`pdfuaid:part=1`）を書いただけで、適合は測っていない」という警告を `warnings` に入れて返します。0.21.0 までは他に警告が無いとこの 1 行が落ち、タグ付けの成功を PDF/UA の判定と読み違えることがありました（`ensure_pdfa` は以前から返しています）。
 
 ## pdf-spec-mcp
 
-ISO 32000 仕様 PDF は利用者が用意し、環境変数 `PDF_SPEC_DIR` で配置先を指定してください。**v0.5.0** から、検索索引と要件の全走査は初回構築のあとディスクにキャッシュされます（`${XDG_CACHE_HOME:-~/.cache}/pdf-spec-mcp`、コーパス全体で約 18 MB。`PDF_SPEC_CACHE_DIR` で置き場所を変更、`PDF_SPEC_CACHE=off` で無効）。セッションごとに起動するサーバプロセスでも、`search_spec` は 6〜14 秒の再構築ではなく 1 秒未満で返ります。`npx -y @shuji-bonji/pdf-spec-mcp@latest --build-cache` で全仕様を事前構築できます。キャッシュは利用者の PDF から利用者の機械上に作る派生物で、配布はしません。
+ISO 32000 仕様 PDF は利用者が用意し、環境変数 `PDF_SPEC_DIR` で配置先を指定してください。**v0.5.0** から、検索索引と要件の全走査は初回構築のあとディスクにキャッシュされます（`${XDG_CACHE_HOME:-~/.cache}/pdf-spec-mcp`、コーパス全体で約 18 MB。`PDF_SPEC_CACHE_DIR` で置き場所を変更、`PDF_SPEC_CACHE=off` で無効）。セッションごとに起動するサーバプロセスでも、`search_spec` は 6〜14 秒の再構築ではなく 1 秒未満で返ります。`npx -y @shuji-bonji/pdf-spec-mcp@latest --build-cache` で全仕様を事前構築できます。キャッシュは利用者の PDF から利用者の機械上に作る派生物で、配布はしません。収録対象は PDF 関連の 17 文書で、PDF/A（ISO 19005）と PAdES（ETSI EN 319 142）は収録していません（`list_specs` の `coverage.gaps`）。この 2 つについて検索が当たらないことは「要件が無い」ではなく「このサーバーでは答えられない」を意味します。
 
 ## xcomet-mcp
 
