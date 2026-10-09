@@ -17,7 +17,7 @@
         "source": "github",
         "repo": "shuji-bonji/houki-research-skill"
       },
-      "version": "0.19.1",
+      "version": "0.20.0",
       "dependencies": ["houki-egov-mcp", "houki-nta-mcp"],
       "description": "日本の全法規 (法律・政令・通達・判例・裁決・行政解釈) を houki-hub MCP family で横断調査するための Claude Skill。実装する前に仕様が法令のどこに触れるかを条文で確かめる、通達・Q&A から根拠条文へ戻る、改正がいつからかを見る、の各手順を問いの形で選び、「法律で決まっている」と「通達でそうなっている」を混ぜずに答える。業法独占規定 (税理士法 52 条 / 弁護士法 72 条 / 司法書士法 3 条 / 社労士法 27 条) への注意喚起・citation 標準化・横断オーケストレーション・各 MCP のエラーの code の一覧と、受け取ったときの解釈を持つ。 v0.7.0 から 2 つの MCP を dependencies に宣言しており、この plugin を入れれば条文と通達の両方が揃う。",
       "category": "houki",
