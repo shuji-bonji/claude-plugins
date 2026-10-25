@@ -291,7 +291,7 @@
         "source": "github",
         "repo": "shuji-bonji/pdf-spec-mcp"
       },
-      "version": "0.9.0",
+      "version": "0.10.0",
       "description": "ISO 32000 (PDF 仕様) の構造化参照 MCP server。条項検索・要求事項 (MUST/SHOULD) 抽出・定義取得・版間比較を提供。ISO 仕様 PDF は利用者が用意し PDF_SPEC_DIR で指定する。収録対象は ISO 32000-1/-2 を中心とする PDF 関連 17 文書で、PDF/A (ISO 19005) と PAdES (ETSI EN 319 142) は対象外 (list_specs の coverage.gaps)。検索が当たらないことは「要件が無い」ではなく「ここでは答えられない」を意味する。v0.5.0: 検索索引と要件の全走査を初回構築後にディスクへキャッシュし (既定 ~/.cache/pdf-spec-mcp、PDF_SPEC_CACHE_DIR で変更・PDF_SPEC_CACHE=off で無効)、以後のプロセスは 1 秒未満で応答する。`--build-cache` CLI で全仕様を事前構築できる。**本サーバは条文の参照であって適合判定器ではありません** — PDF ファイルの検査や適合判定は行わず、それは pdf-verify-mcp の役割です。",
       "category": "pdf",
       "keywords": [
