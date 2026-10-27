@@ -86,9 +86,9 @@ graph LR
 | [epsg-mcp](https://github.com/shuji-bonji/epsg-mcp)                                     | MCP                 | domain-specific | v0.10.1 | `shuji-bonji/epsg-mcp`                   |
 | [ifc-core-mcp](https://github.com/shuji-bonji/ifc-core-mcp)                             | MCP                 | domain-specific | v0.3.0  | `shuji-bonji/ifc-core-mcp`               |
 | [rxjs-mcp](https://github.com/shuji-bonji/rxjs-mcp-server)                              | MCP                 | domain-specific | v0.5.3  | `shuji-bonji/rxjs-mcp-server`            |
-| [s1000d-brex-mcp](https://github.com/shuji-bonji/s1000d-brex-mcp)                      | MCP                 | s1000d          | v0.3.0  | `shuji-bonji/s1000d-brex-mcp`            |
-| [s1000d-verify-mcp](https://github.com/shuji-bonji/s1000d-verify-mcp)                  | MCP                 | s1000d          | v0.4.0  | `shuji-bonji/s1000d-verify-mcp`          |
-| [s1000d-reader-mcp](https://github.com/shuji-bonji/s1000d-reader-mcp)                  | MCP                 | s1000d          | v0.4.0  | `shuji-bonji/s1000d-reader-mcp`          |
+| [s1000d-brex-mcp](https://github.com/shuji-bonji/s1000d-brex-mcp)                      | MCP                 | s1000d          | v0.4.0  | `shuji-bonji/s1000d-brex-mcp`            |
+| [s1000d-verify-mcp](https://github.com/shuji-bonji/s1000d-verify-mcp)                  | MCP                 | s1000d          | v0.5.0  | `shuji-bonji/s1000d-verify-mcp`          |
+| [s1000d-reader-mcp](https://github.com/shuji-bonji/s1000d-reader-mcp)                  | MCP                 | s1000d          | v0.5.0  | `shuji-bonji/s1000d-reader-mcp`          |
 
 > `pdf-trust`（受入監査）は `pdf-verify-mcp` を、`pdf-publish`（送り出し）は `pdf-writer-mcp` を、`pdf-read`（読み取り）は `pdf-reader-mcp`（**v0.15.1+ 推奨**）を必須の前提 MCP とします（いずれも marketplace 収録済み）。受入・納品・読み取りを分担する 3 つの Skill なので、用途に応じて必要な MCP と一緒に install してください。
 
