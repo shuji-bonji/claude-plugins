@@ -86,9 +86,9 @@ graph LR
 | [epsg-mcp](https://github.com/shuji-bonji/epsg-mcp)                                     | MCP                 | domain-specific | v0.10.1 | `shuji-bonji/epsg-mcp`                   |
 | [ifc-core-mcp](https://github.com/shuji-bonji/ifc-core-mcp)                             | MCP                 | domain-specific | v0.3.0  | `shuji-bonji/ifc-core-mcp`               |
 | [rxjs-mcp](https://github.com/shuji-bonji/rxjs-mcp-server)                              | MCP                 | domain-specific | v0.5.3  | `shuji-bonji/rxjs-mcp-server`            |
-| [s1000d-brex-mcp](https://github.com/shuji-bonji/s1000d-brex-mcp)                      | MCP                 | s1000d          | v0.2.0  | `shuji-bonji/s1000d-brex-mcp`            |
-| [s1000d-verify-mcp](https://github.com/shuji-bonji/s1000d-verify-mcp)                  | MCP                 | s1000d          | v0.2.0  | `shuji-bonji/s1000d-verify-mcp`          |
-| [s1000d-reader-mcp](https://github.com/shuji-bonji/s1000d-reader-mcp)                  | MCP                 | s1000d          | v0.2.0  | `shuji-bonji/s1000d-reader-mcp`          |
+| [s1000d-brex-mcp](https://github.com/shuji-bonji/s1000d-brex-mcp)                      | MCP                 | s1000d          | v0.3.0  | `shuji-bonji/s1000d-brex-mcp`            |
+| [s1000d-verify-mcp](https://github.com/shuji-bonji/s1000d-verify-mcp)                  | MCP                 | s1000d          | v0.3.0  | `shuji-bonji/s1000d-verify-mcp`          |
+| [s1000d-reader-mcp](https://github.com/shuji-bonji/s1000d-reader-mcp)                  | MCP                 | s1000d          | v0.3.0  | `shuji-bonji/s1000d-reader-mcp`          |
 
 > `pdf-trust`（受入監査）は `pdf-verify-mcp` を、`pdf-publish`（送り出し）は `pdf-writer-mcp` を、`pdf-read`（読み取り）は `pdf-reader-mcp`（**v0.15.1+ 推奨**）を必須の前提 MCP とします（いずれも marketplace 収録済み）。受入・納品・読み取りを分担する 3 つの Skill なので、用途に応じて必要な MCP と一緒に install してください。
 
@@ -112,7 +112,7 @@ install の前に確認することと、plugin ごとの前提条件・既知�
 
 #### s1000d-brex-mcp / s1000d-verify-mcp / s1000d-reader-mcp（S1000D Stack）
 
-- S1000D® の仕様書・XML スキーマ（XSD）・既定 BREX・公式サンプルは、利用条件により再配布できないため同梱していません。利用者ご自身で [s1000d.org](https://s1000d.org/) から配布物を入手し、展開したフォルダー（XML Schema Package の zip も展開しておく）を環境変数 `S1000D_SPEC_DIR` で、プロジェクトの CSDB（データモジュールのフォルダー）を `S1000D_CSDB_DIR` で指定してから使ってください。plugin の `mcpServers` は環境変数を設定しないので、Claude Code を起動するシェルの環境変数が子プロセスに引き継がれる形で渡ります。
+- S1000D® の仕様書・XML スキーマ（XSD）・既定 BREX・公式サンプルは、利用条件により再配布できないため同梱していません。利用者ご自身で [s1000d.org](https://s1000d.org/) から配布物を入手し、展開したフォルダー（XML Schema Package の zip も展開しておく）を環境変数 `S1000D_SPEC_DIR` で、プロジェクトの CSDB（データモジュールのフォルダー）を `S1000D_CSDB_DIR` で指定してから使ってください。plugin の `mcpServers` は環境変数を設定しません。Claude Code は起動したシェルの環境変数を引き継いで渡しますが、Claude Desktop は plugin のサーバーに環境変数を渡しません。その場合は `~/.config/s1000d-stack/config.json` に `{"specDir": "/絶対パス", "csdbDirs": ["/絶対パス"]}` と書いてください。環境変数が無いとき、サーバーはこの設定ファイルを読みます（0.3.0 以降）。
 - 3 本の分担は、BREX の説明と照合が `s1000d-brex-mcp`、XSD 検証・BREX 照合・参照の解決を 1 つの検証状態にまとめるのが `s1000d-verify-mcp`、本文を構造として読み適用性を判定するのが `s1000d-reader-mcp` です。どれも S1000D への準拠は判定しません。使い方は [学習サイト](https://shuji-bonji.github.io/s1000d-stack/ja/)（日本語）を参照してください。
 
 #### pdf-trust（受入監査・前提は `pdf-verify-mcp`）

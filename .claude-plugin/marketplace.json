@@ -652,7 +652,7 @@
         "source": "github",
         "repo": "shuji-bonji/s1000d-brex-mcp"
       },
-      "version": "0.2.0",
+      "version": "0.3.0",
       "description": "S1000D® の BREX（Business Rules Exchange）データモジュールを LLM が読み、データモジュールを BREX に照合する MCP server（5 tools）。プロジェクトや組織が BREX に書いた「使ってよい要素・属性」「許可する値とその意味」「SNS の意味」「使ってよい図の形式」を人が読める形で返し（explain_brex / lookup_sns / lookup_value / list_notations）、データモジュールが brexDmRef の連鎖（プロジェクト → 組織 → 既定 BREX）に従っているかを箇所付きで報告する（check_against_brex）。XSD 検証と S1000D への準拠の判定はしない（XSD は s1000d-verify-mcp）。S1000D の仕様書・XSD・既定 BREX・公式サンプルは利用条件により同梱していないので、利用者が s1000d.org から入手した配布物の展開先を環境変数 S1000D_SPEC_DIR で、プロジェクトの CSDB を S1000D_CSDB_DIR で指定してから使う。ASD とは無関係の個人プロジェクト。",
       "category": "s1000d",
       "keywords": [
@@ -679,7 +679,7 @@
         "source": "github",
         "repo": "shuji-bonji/s1000d-verify-mcp"
       },
-      "version": "0.2.0",
+      "version": "0.3.0",
       "description": "S1000D® のデータモジュールを「どこまで確認済みか」根拠付きで知るための MCP server（5 tools）。利用者が入手した公式 XSD による検証、BREX（Business Rules Exchange）の連鎖への照合、参照（dmRef・pmRef・ICN・internalRef・applicRefId）の解決の 3 つを行い、1 つの検証状態（verification）にまとめて返す（verify_data_module / validate_schema / check_references / verify_csdb / list_schemas）。S1000D への準拠の判定、BREX ルールの説明（s1000d-brex-mcp）、適用性の判定（s1000d-reader-mcp）はしない。仕様書・XSD・既定 BREX は同梱していないので、s1000d.org から入手した配布物（XML Schema Package の zip も展開しておく）の展開先を環境変数 S1000D_SPEC_DIR で、CSDB を S1000D_CSDB_DIR で指定してから使う。ASD とは無関係の個人プロジェクト。",
       "category": "s1000d",
       "keywords": [
@@ -708,7 +708,7 @@
         "source": "github",
         "repo": "shuji-bonji/s1000d-reader-mcp"
       },
-      "version": "0.2.0",
+      "version": "0.3.0",
       "description": "S1000D® のデータモジュールとパブリケーションモジュールを、LLM が XML ではなく構造として読むための MCP server（6 tools）。見出しの階層・番号付きの手順・警告・図（ICN）・表・参照先の題名を保ったまま返し（read_data_module / read_publication_module）、CSDB の一覧と参照の解決（list_data_modules / resolve_reference）、適用性の語彙（describe_applicability）、ICN メタデータ（read_icn_metadata）を提供する。どの製品に当てはまるか（適用性）はサーバーが判定して結果だけを渡し、すべての応答に検証状態（verification）が付く。要約・翻訳・S1000D への準拠の判定はしない。XSD 検証を行うには、s1000d.org から入手した配布物の展開先を環境変数 S1000D_SPEC_DIR で、CSDB を S1000D_CSDB_DIR で指定してから使う。ASD とは無関係の個人プロジェクト。",
       "category": "s1000d",
       "keywords": [

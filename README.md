@@ -86,9 +86,9 @@ graph LR
 | [epsg-mcp](https://github.com/shuji-bonji/epsg-mcp)                                     | MCP                 | domain-specific | v0.10.1 | `shuji-bonji/epsg-mcp`                   |
 | [ifc-core-mcp](https://github.com/shuji-bonji/ifc-core-mcp)                             | MCP                 | domain-specific | v0.3.0  | `shuji-bonji/ifc-core-mcp`               |
 | [rxjs-mcp](https://github.com/shuji-bonji/rxjs-mcp-server)                              | MCP                 | domain-specific | v0.5.3  | `shuji-bonji/rxjs-mcp-server`            |
-| [s1000d-brex-mcp](https://github.com/shuji-bonji/s1000d-brex-mcp)                      | MCP                 | s1000d          | v0.2.0  | `shuji-bonji/s1000d-brex-mcp`            |
-| [s1000d-verify-mcp](https://github.com/shuji-bonji/s1000d-verify-mcp)                  | MCP                 | s1000d          | v0.2.0  | `shuji-bonji/s1000d-verify-mcp`          |
-| [s1000d-reader-mcp](https://github.com/shuji-bonji/s1000d-reader-mcp)                  | MCP                 | s1000d          | v0.2.0  | `shuji-bonji/s1000d-reader-mcp`          |
+| [s1000d-brex-mcp](https://github.com/shuji-bonji/s1000d-brex-mcp)                      | MCP                 | s1000d          | v0.3.0  | `shuji-bonji/s1000d-brex-mcp`            |
+| [s1000d-verify-mcp](https://github.com/shuji-bonji/s1000d-verify-mcp)                  | MCP                 | s1000d          | v0.3.0  | `shuji-bonji/s1000d-verify-mcp`          |
+| [s1000d-reader-mcp](https://github.com/shuji-bonji/s1000d-reader-mcp)                  | MCP                 | s1000d          | v0.3.0  | `shuji-bonji/s1000d-reader-mcp`          |
 
 > `pdf-trust` (acceptance audit) requires `pdf-verify-mcp`, `pdf-publish` (outbound delivery) requires `pdf-writer-mcp`, and `pdf-read` (reading pipeline) requires `pdf-reader-mcp` (**v0.15.1+ recommended**), as prerequisite MCPs (all are already in the marketplace). The three Skills cover intake, delivery and reading, so install whichever you need together with its required MCP.
 
@@ -112,7 +112,7 @@ What to check before installing, plus the prerequisites and known defects of eac
 
 #### s1000d-brex-mcp / s1000d-verify-mcp / s1000d-reader-mcp (S1000D Stack)
 
-- The S1000D® specification, XML schemas (XSD), default BREX and official samples are not included, because their terms of use do not grant redistribution. Obtain the distribution from [s1000d.org](https://s1000d.org/) yourself, extract it (including the XML Schema Package zip inside), and point the `S1000D_SPEC_DIR` environment variable at that folder and `S1000D_CSDB_DIR` at the folder that holds your project's data modules. The plugin's `mcpServers` entry sets no environment variables; the servers receive them from the shell that starts Claude Code.
+- The S1000D® specification, XML schemas (XSD), default BREX and official samples are not included, because their terms of use do not grant redistribution. Obtain the distribution from [s1000d.org](https://s1000d.org/) yourself, extract it (including the XML Schema Package zip inside), and point the `S1000D_SPEC_DIR` environment variable at that folder and `S1000D_CSDB_DIR` at the folder that holds your project's data modules. The plugin's `mcpServers` entry sets no environment variables. Claude Code passes them on from the shell that starts it, but Claude Desktop does not pass environment variables to plugin servers; in that case write `{"specDir": "/absolute/path", "csdbDirs": ["/absolute/path"]}` to `~/.config/s1000d-stack/config.json`, which the servers read when the environment variables are not set (0.3.0 and later).
 - The three servers divide the work: `s1000d-brex-mcp` explains and checks against BREX, `s1000d-verify-mcp` combines XSD validation, the BREX check and reference resolution into one verification status, and `s1000d-reader-mcp` reads the content as structure and evaluates applicability. None of them decides conformance to S1000D. See the [documentation site](https://shuji-bonji.github.io/s1000d-stack/) for how to use them.
 
 #### pdf-trust (acceptance audit, requires `pdf-verify-mcp`)
