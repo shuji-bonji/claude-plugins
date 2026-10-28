@@ -52,6 +52,7 @@ graph LR
   s1000d --> sbrex["s1000d-brex-mcp"]
   s1000d --> sverify["s1000d-verify-mcp"]
   s1000d --> sreader["s1000d-reader-mcp"]
+  s1000d --> swriter["s1000d-writer-mcp"]
 
   classDef live fill:#d4edda,stroke:#28a745
   class hr,hegov,hnta,pspecial,ppub,ptrust,pread,pwriter,pverify,hpdf,pspec,rfcxml,w3c,webcompat,xcomet,deepl,fact,media,speccomp,aidesign,epsg,ifc,rxjs,sbrex,sverify,sreader live
@@ -89,6 +90,7 @@ graph LR
 | [s1000d-brex-mcp](https://github.com/shuji-bonji/s1000d-brex-mcp)                      | MCP                 | s1000d          | v0.4.0  | `shuji-bonji/s1000d-brex-mcp`            |
 | [s1000d-verify-mcp](https://github.com/shuji-bonji/s1000d-verify-mcp)                  | MCP                 | s1000d          | v0.6.0  | `shuji-bonji/s1000d-verify-mcp`          |
 | [s1000d-reader-mcp](https://github.com/shuji-bonji/s1000d-reader-mcp)                  | MCP                 | s1000d          | v0.7.0  | `shuji-bonji/s1000d-reader-mcp`          |
+| [s1000d-writer-mcp](https://github.com/shuji-bonji/s1000d-writer-mcp)                  | MCP                 | s1000d          | v0.1.0  | `shuji-bonji/s1000d-writer-mcp`          |
 
 > `pdf-trust` (acceptance audit) requires `pdf-verify-mcp`, `pdf-publish` (outbound delivery) requires `pdf-writer-mcp`, and `pdf-read` (reading pipeline) requires `pdf-reader-mcp` (**v0.15.1+ recommended**), as prerequisite MCPs (all are already in the marketplace). The three Skills cover intake, delivery and reading, so install whichever you need together with its required MCP.
 
@@ -103,17 +105,17 @@ What to check before installing, plus the prerequisites and known defects of eac
   | Node required  | Servers                                                                                                                   |
   | -------------- | ------------------------------------------------------------------------------------------------------------------------- |
   | 20 or later    | `pdf-reader-mcp` / `pdf-verify-mcp` / `pdf-writer-mcp` / `pdf-spec-mcp`                                                   |
-  | 22 or later    | `houki-egov-mcp` / `houki-nta-mcp` / `rfcxml-mcp` / `w3c-mcp` / `web-compat-mcp` / `xcomet-mcp` / `epsg-mcp` / `rxjs-mcp` / `s1000d-brex-mcp` / `s1000d-verify-mcp` / `s1000d-reader-mcp` |
+  | 22 or later    | `houki-egov-mcp` / `houki-nta-mcp` / `rfcxml-mcp` / `w3c-mcp` / `web-compat-mcp` / `xcomet-mcp` / `epsg-mcp` / `rxjs-mcp` / `s1000d-brex-mcp` / `s1000d-verify-mcp` / `s1000d-reader-mcp` / `s1000d-writer-mcp` |
   | 22.12 or later | `ifc-core-mcp`                                                                                                            |
 
   Node 20 reached end of life on 2026-04-30. The twelve servers that require Node 22 do not start on Node 20.
 
 - **The migration to MCP SDK v2 finished on 2026-09-07 across all thirteen servers.** As long as you pass tool names and arguments as declared, nothing changes for `npx` users. If you call the servers from your own client, argument validation and the shape of errors changed — see [docs/NOTES.md](./docs/NOTES.md#migration-to-mcp-sdk-v2).
 
-#### s1000d-brex-mcp / s1000d-verify-mcp / s1000d-reader-mcp (S1000D Stack)
+#### s1000d-brex-mcp / s1000d-verify-mcp / s1000d-reader-mcp / s1000d-writer-mcp (S1000D Stack)
 
 - The S1000D® specification, XML schemas (XSD), default BREX and official samples are not included, because their terms of use do not grant redistribution. Obtain the distribution from [s1000d.org](https://s1000d.org/) yourself, extract it (including the XML Schema Package zip inside), and point the `S1000D_SPEC_DIR` environment variable at that folder and `S1000D_CSDB_DIR` at the folder that holds your project's data modules. The plugin's `mcpServers` entry sets no environment variables. Claude Code passes them on from the shell that starts it, but Claude Desktop does not pass environment variables to plugin servers; in that case write `{"specDir": "/absolute/path", "csdbDirs": ["/absolute/path"]}` to `~/.config/s1000d-stack/config.json`, which the servers read when the environment variables are not set (0.3.0 and later).
-- The three servers divide the work: `s1000d-brex-mcp` explains and checks against BREX, `s1000d-verify-mcp` combines XSD validation, the BREX check and reference resolution into one verification status, and `s1000d-reader-mcp` reads the content as structure and evaluates applicability. None of them decides conformance to S1000D. See the [documentation site](https://shuji-bonji.github.io/s1000d-stack/) for how to use them.
+- The four servers divide the work: `s1000d-brex-mcp` explains and checks against BREX, `s1000d-verify-mcp` combines XSD validation, the BREX check and reference resolution into one verification status, `s1000d-reader-mcp` reads the content as structure and evaluates applicability, and `s1000d-writer-mcp` builds data modules from a structured draft without letting the LLM write XML, verifies them and applies only the fixes with exactly one candidate (it writes nothing unless `write: true` is passed). None of them decides conformance to S1000D. See the [documentation site](https://shuji-bonji.github.io/s1000d-stack/) for how to use them.
 
 #### pdf-trust (acceptance audit, requires `pdf-verify-mcp`)
 
@@ -214,7 +216,7 @@ Details: [Manage Claude Cowork plugins for your organization](https://support.cl
 | `web-spec`        | Web standards and RFC reference                                                                                          | rfcxml-mcp, w3c-mcp, etc.            |
 | `quality-tools`   | Translation evaluation, fact checking, spec compliance                                                                   | xcomet-mcp, factcheck, etc.          |
 | `domain-specific` | Specific domains (geodesy, BIM, RxJS)                                                                                    | epsg-mcp, ifc-core-mcp, rxjs-mcp     |
-| `s1000d`          | Read S1000D® technical publications, check them against BREX and verify them ([S1000D Stack](https://shuji-bonji.github.io/s1000d-stack/)) | s1000d-brex-mcp, s1000d-verify-mcp, etc. |
+| `s1000d`          | Read S1000D® technical publications, check them against BREX, verify them and build them ([S1000D Stack](https://shuji-bonji.github.io/s1000d-stack/)) | s1000d-brex-mcp, s1000d-verify-mcp, etc. |
 
 ## Directory layout
 

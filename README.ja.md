@@ -52,6 +52,7 @@ graph LR
   s1000d --> sbrex["s1000d-brex-mcp"]
   s1000d --> sverify["s1000d-verify-mcp"]
   s1000d --> sreader["s1000d-reader-mcp"]
+  s1000d --> swriter["s1000d-writer-mcp"]
 
   classDef live fill:#d4edda,stroke:#28a745
   class hr,hegov,hnta,pspecial,ppub,ptrust,pread,pwriter,pverify,hpdf,pspec,rfcxml,w3c,webcompat,xcomet,deepl,fact,media,speccomp,aidesign,epsg,ifc,rxjs,sbrex,sverify,sreader live
@@ -89,6 +90,7 @@ graph LR
 | [s1000d-brex-mcp](https://github.com/shuji-bonji/s1000d-brex-mcp)                      | MCP                 | s1000d          | v0.4.0  | `shuji-bonji/s1000d-brex-mcp`            |
 | [s1000d-verify-mcp](https://github.com/shuji-bonji/s1000d-verify-mcp)                  | MCP                 | s1000d          | v0.6.0  | `shuji-bonji/s1000d-verify-mcp`          |
 | [s1000d-reader-mcp](https://github.com/shuji-bonji/s1000d-reader-mcp)                  | MCP                 | s1000d          | v0.7.0  | `shuji-bonji/s1000d-reader-mcp`          |
+| [s1000d-writer-mcp](https://github.com/shuji-bonji/s1000d-writer-mcp)                  | MCP                 | s1000d          | v0.1.0  | `shuji-bonji/s1000d-writer-mcp`          |
 
 > `pdf-trust`（受入監査）は `pdf-verify-mcp` を、`pdf-publish`（送り出し）は `pdf-writer-mcp` を、`pdf-read`（読み取り）は `pdf-reader-mcp`（**v0.15.1+ 推奨**）を必須の前提 MCP とします（いずれも marketplace 収録済み）。受入・納品・読み取りを分担する 3 つの Skill なので、用途に応じて必要な MCP と一緒に install してください。
 
@@ -103,17 +105,17 @@ install の前に確認することと、plugin ごとの前提条件・既知�
   | 必要な Node | 対象                                                                                                                      |
   | ----------- | ------------------------------------------------------------------------------------------------------------------------- |
   | 20 以上     | `pdf-reader-mcp` / `pdf-verify-mcp` / `pdf-writer-mcp` / `pdf-spec-mcp`                                                   |
-  | 22 以上     | `houki-egov-mcp` / `houki-nta-mcp` / `rfcxml-mcp` / `w3c-mcp` / `web-compat-mcp` / `xcomet-mcp` / `epsg-mcp` / `rxjs-mcp` / `s1000d-brex-mcp` / `s1000d-verify-mcp` / `s1000d-reader-mcp` |
+  | 22 以上     | `houki-egov-mcp` / `houki-nta-mcp` / `rfcxml-mcp` / `w3c-mcp` / `web-compat-mcp` / `xcomet-mcp` / `epsg-mcp` / `rxjs-mcp` / `s1000d-brex-mcp` / `s1000d-verify-mcp` / `s1000d-reader-mcp` / `s1000d-writer-mcp` |
   | 22.12 以上  | `ifc-core-mcp`                                                                                                            |
 
   Node 20 は 2026-04-30 に EOL を迎えています。Node 22 以上を要件とする 12 本は Node 20 では起動しません。
 
 - **MCP SDK v2 への移行は 2026-09-07 に 13 本すべてで完了しました。** ツール名と引数を宣言どおりに渡している限り、`npx` で使う側に作業はありません。自前のクライアントから直接呼んでいる場合は、引数の検証とエラーの返り方が変わるので [docs/NOTES.ja.md](./docs/NOTES.ja.md#mcp-sdk-v2-への移行) を確認してください。
 
-#### s1000d-brex-mcp / s1000d-verify-mcp / s1000d-reader-mcp（S1000D Stack）
+#### s1000d-brex-mcp / s1000d-verify-mcp / s1000d-reader-mcp / s1000d-writer-mcp（S1000D Stack）
 
 - S1000D® の仕様書・XML スキーマ（XSD）・既定 BREX・公式サンプルは、利用条件により再配布できないため同梱していません。利用者ご自身で [s1000d.org](https://s1000d.org/) から配布物を入手し、展開したフォルダー（XML Schema Package の zip も展開しておく）を環境変数 `S1000D_SPEC_DIR` で、プロジェクトの CSDB（データモジュールのフォルダー）を `S1000D_CSDB_DIR` で指定してから使ってください。plugin の `mcpServers` は環境変数を設定しません。Claude Code は起動したシェルの環境変数を引き継いで渡しますが、Claude Desktop は plugin のサーバーに環境変数を渡しません。その場合は `~/.config/s1000d-stack/config.json` に `{"specDir": "/絶対パス", "csdbDirs": ["/絶対パス"]}` と書いてください。環境変数が無いとき、サーバーはこの設定ファイルを読みます（0.3.0 以降）。
-- 3 本の分担は、BREX の説明と照合が `s1000d-brex-mcp`、XSD 検証・BREX 照合・参照の解決を 1 つの検証状態にまとめるのが `s1000d-verify-mcp`、本文を構造として読み適用性を判定するのが `s1000d-reader-mcp` です。どれも S1000D への準拠は判定しません。使い方は [学習サイト](https://shuji-bonji.github.io/s1000d-stack/ja/)（日本語）を参照してください。
+- 4 本の分担は、BREX の説明と照合が `s1000d-brex-mcp`、XSD 検証・BREX 照合・参照の解決を 1 つの検証状態にまとめるのが `s1000d-verify-mcp`、本文を構造として読み適用性を判定するのが `s1000d-reader-mcp`、LLM に XML を書かせずに構造化した下書きからデータモジュールを組み立てて検証し、候補が 1 つに決まる修正だけを適用するのが `s1000d-writer-mcp`（`write: true` を渡したときだけ書き込む）です。どれも S1000D への準拠は判定しません。使い方は [学習サイト](https://shuji-bonji.github.io/s1000d-stack/ja/)（日本語）を参照してください。
 
 #### pdf-trust（受入監査・前提は `pdf-verify-mcp`）
 
@@ -214,7 +216,7 @@ install の前に確認することと、plugin ごとの前提条件・既知�
 | `web-spec`        | Web 標準・RFC の参照                                                       | rfcxml-mcp, w3c-mcp 等            |
 | `quality-tools`   | 翻訳評価・ファクトチェック・仕様準拠                                       | xcomet-mcp, factcheck 等          |
 | `domain-specific` | 特定ドメイン (測地・BIM・RxJS)                                             | epsg-mcp, ifc-core-mcp, rxjs-mcp  |
-| `s1000d`          | S1000D® の技術文書を読む・BREX に照合する・検証する（[S1000D Stack](https://shuji-bonji.github.io/s1000d-stack/ja/)） | s1000d-brex-mcp, s1000d-verify-mcp 等 |
+| `s1000d`          | S1000D® の技術文書を読む・BREX に照合する・検証する・作る（[S1000D Stack](https://shuji-bonji.github.io/s1000d-stack/ja/)） | s1000d-brex-mcp, s1000d-verify-mcp 等 |
 
 ## ディレクトリ構成
 

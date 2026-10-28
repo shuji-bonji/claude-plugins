@@ -8,7 +8,7 @@
   },
   "metadata": {
     "description": "shuji-bonji's Claude Plugins — Skill, MCP server, slash command などをまとめた個人 marketplace。日本の法令調査 (houki family)、PDF 真正性検証 (pdf family)、Web 仕様 (W3C/RFC)、品質ツール、S1000D 技術文書 (s1000d family)、ドメイン特化 MCP 等を category 別に提供。",
-    "version": "0.7.0"
+    "version": "0.8.0"
   },
   "plugins": [
     {
@@ -724,6 +724,33 @@
         "mcp-server"
       ],
       "homepage": "https://github.com/shuji-bonji/s1000d-reader-mcp",
+      "license": "MIT",
+      "author": {
+        "name": "shuji-bonji",
+        "url": "https://github.com/shuji-bonji"
+      }
+    },
+    {
+      "name": "s1000d-writer-mcp",
+      "source": {
+        "source": "github",
+        "repo": "shuji-bonji/s1000d-writer-mcp"
+      },
+      "version": "0.1.0",
+      "description": "S1000D® のデータモジュールを、LLM が XML を書かずに作るための MCP server（6 tools）。LLM は構造化した下書き（draft）を渡し、サーバーが XML を組み立て、XSD・BREX・参照で検証し、候補が 1 つに決まる修正（exact）だけを自動で適用する（build_data_module / convert_manual）。複数の候補がある修正は選択を受けて適用し、候補の外の値は受け付けない（apply_fixes）。コメント DM の作成（create_comment）と、翻訳用の文の取り出しと書き戻し（extract_segments / apply_segments）も行う。LLM が書いた XML は受け取らず、既定では何も書き込まず（write: true のときだけ）、S1000D への準拠の判定や重大度の解釈はしない。XSD 検証を行うには、s1000d.org から入手した配布物の展開先を環境変数 S1000D_SPEC_DIR で、CSDB を S1000D_CSDB_DIR で指定してから使う。ASD とは無関係の個人プロジェクト。",
+      "category": "s1000d",
+      "keywords": [
+        "s1000d",
+        "ietm",
+        "ietp",
+        "technical-publications",
+        "data-module",
+        "authoring",
+        "xml",
+        "mcp",
+        "mcp-server"
+      ],
+      "homepage": "https://github.com/shuji-bonji/s1000d-writer-mcp",
       "license": "MIT",
       "author": {
         "name": "shuji-bonji",
