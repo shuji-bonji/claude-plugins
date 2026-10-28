@@ -8,7 +8,7 @@
   },
   "metadata": {
     "description": "shuji-bonji's Claude Plugins — Skill, MCP server, slash command などをまとめた個人 marketplace。日本の法令調査 (houki family)、PDF 真正性検証 (pdf family)、Web 仕様 (W3C/RFC)、品質ツール、S1000D 技術文書 (s1000d family)、ドメイン特化 MCP 等を category 別に提供。",
-    "version": "0.8.0"
+    "version": "0.9.0"
   },
   "plugins": [
     {
@@ -751,6 +751,121 @@
         "mcp-server"
       ],
       "homepage": "https://github.com/shuji-bonji/s1000d-writer-mcp",
+      "license": "MIT",
+      "author": {
+        "name": "shuji-bonji",
+        "url": "https://github.com/shuji-bonji"
+      }
+    },
+    {
+      "name": "experience-to-s1000d",
+      "source": {
+        "source": "github",
+        "repo": "shuji-bonji/experience-to-s1000d-skill"
+      },
+      "version": "0.1.0",
+      "dependencies": [
+        "s1000d-writer-mcp",
+        "s1000d-verify-mcp"
+      ],
+      "description": "体験型マニュアル（experiential-manual-model の JSON）を S1000D® の CSDB（データモジュール・パブリケーションモジュール・ICN）に変換する手順の Skill。s1000d-writer-mcp の convert_manual で採番・組み立て・検証を行い、残った修正は候補の中から利用者が選び、s1000d-verify-mcp の verify_csdb で CSDB 全体を確かめて、Conversion Report を返す。XML は書かず、S1000D への準拠は判定しない。ASD とは無関係の個人プロジェクト。",
+      "category": "s1000d",
+      "keywords": [
+        "s1000d",
+        "skill",
+        "experiential-manual",
+        "csdb",
+        "data-module",
+        "conversion",
+        "mcp"
+      ],
+      "homepage": "https://github.com/shuji-bonji/experience-to-s1000d-skill",
+      "license": "MIT",
+      "author": {
+        "name": "shuji-bonji",
+        "url": "https://github.com/shuji-bonji"
+      }
+    },
+    {
+      "name": "s1000d-publish",
+      "source": {
+        "source": "github",
+        "repo": "shuji-bonji/s1000d-publish-skill"
+      },
+      "version": "0.1.0",
+      "dependencies": [
+        "s1000d-writer-mcp",
+        "s1000d-verify-mcp"
+      ],
+      "description": "構造化した下書き（DraftDataModule）から S1000D® のデータモジュールを 1 件ずつ作り、検証を通して CSDB に入れる手順の Skill。s1000d-writer-mcp の build_data_module で組み立て、残った修正は候補の中から利用者が選び、書き込み後に s1000d-verify-mcp で確かめ、DML との照合結果を含む Publish Report を返す。XML は書かず、S1000D への準拠は判定しない。ASD とは無関係の個人プロジェクト。",
+      "category": "s1000d",
+      "keywords": [
+        "s1000d",
+        "skill",
+        "authoring",
+        "data-module",
+        "csdb",
+        "dml",
+        "mcp"
+      ],
+      "homepage": "https://github.com/shuji-bonji/s1000d-publish-skill",
+      "license": "MIT",
+      "author": {
+        "name": "shuji-bonji",
+        "url": "https://github.com/shuji-bonji"
+      }
+    },
+    {
+      "name": "s1000d-review",
+      "source": {
+        "source": "github",
+        "repo": "shuji-bonji/s1000d-review-skill"
+      },
+      "version": "0.1.0",
+      "dependencies": [
+        "s1000d-reader-mcp",
+        "s1000d-verify-mcp"
+      ],
+      "description": "S1000D のデータモジュールのレビュー Skill。reader で DM を構造として読み、verify の suggest_fixes（機械で判定できること）、BREX の nonContextRules、文章（用語集）の 3 つの観点を書き分けて指摘を集め、利用者が選んだ指摘を writer の create_comment で comment DM にする。Review Report を返す。ASD とは無関係の個人プロジェクト。S1000D® は ASD の登録商標。",
+      "category": "s1000d",
+      "keywords": [
+        "s1000d",
+        "skill",
+        "review",
+        "data-module",
+        "brex",
+        "comment",
+        "csdb"
+      ],
+      "homepage": "https://github.com/shuji-bonji/s1000d-review-skill",
+      "license": "MIT",
+      "author": {
+        "name": "shuji-bonji",
+        "url": "https://github.com/shuji-bonji"
+      }
+    },
+    {
+      "name": "s1000d-translate",
+      "source": {
+        "source": "github",
+        "repo": "shuji-bonji/s1000d-translate-skill"
+      },
+      "version": "0.1.0",
+      "dependencies": [
+        "s1000d-writer-mcp"
+      ],
+      "description": "S1000D のデータモジュールの翻訳 Skill。writer の extract_segments で文を取り出し、LLM が訳し、xcomet-mcp で採点し、低得点の文は DeepL の訳と比べて採用を決め、apply_segments で同じ DMC・言語だけ違う DM に差し戻す。Translation Report を返す。ASD とは無関係の個人プロジェクト。S1000D® は ASD の登録商標。",
+      "category": "s1000d",
+      "keywords": [
+        "s1000d",
+        "skill",
+        "translation",
+        "data-module",
+        "xcomet",
+        "deepl",
+        "csdb"
+      ],
+      "homepage": "https://github.com/shuji-bonji/s1000d-translate-skill",
       "license": "MIT",
       "author": {
         "name": "shuji-bonji",

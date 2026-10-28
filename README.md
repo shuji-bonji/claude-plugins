@@ -53,6 +53,10 @@ graph LR
   s1000d --> sverify["s1000d-verify-mcp"]
   s1000d --> sreader["s1000d-reader-mcp"]
   s1000d --> swriter["s1000d-writer-mcp"]
+  s1000d --> se2s1000d["experience-to-s1000d"]
+  s1000d --> ss1000dpublish["s1000d-publish"]
+  s1000d --> ss1000dreview["s1000d-review"]
+  s1000d --> ss1000dtranslate["s1000d-translate"]
 
   classDef live fill:#d4edda,stroke:#28a745
   class hr,hegov,hnta,pspecial,ppub,ptrust,pread,pwriter,pverify,hpdf,pspec,rfcxml,w3c,webcompat,xcomet,deepl,fact,media,speccomp,aidesign,epsg,ifc,rxjs,sbrex,sverify,sreader live
@@ -91,6 +95,10 @@ graph LR
 | [s1000d-verify-mcp](https://github.com/shuji-bonji/s1000d-verify-mcp)                  | MCP                 | s1000d          | v0.6.0  | `shuji-bonji/s1000d-verify-mcp`          |
 | [s1000d-reader-mcp](https://github.com/shuji-bonji/s1000d-reader-mcp)                  | MCP                 | s1000d          | v0.7.0  | `shuji-bonji/s1000d-reader-mcp`          |
 | [s1000d-writer-mcp](https://github.com/shuji-bonji/s1000d-writer-mcp)                  | MCP                 | s1000d          | v0.1.1  | `shuji-bonji/s1000d-writer-mcp`          |
+| [experience-to-s1000d](https://github.com/shuji-bonji/experience-to-s1000d-skill)      | Skill               | s1000d          | v0.1.0  | `shuji-bonji/experience-to-s1000d-skill` |
+| [s1000d-publish](https://github.com/shuji-bonji/s1000d-publish-skill)                  | Skill               | s1000d          | v0.1.0  | `shuji-bonji/s1000d-publish-skill`       |
+| [s1000d-review](https://github.com/shuji-bonji/s1000d-review-skill)                    | Skill               | s1000d          | v0.1.0  | `shuji-bonji/s1000d-review-skill`        |
+| [s1000d-translate](https://github.com/shuji-bonji/s1000d-translate-skill)              | Skill               | s1000d          | v0.1.0  | `shuji-bonji/s1000d-translate-skill`     |
 
 > `pdf-trust` (acceptance audit) requires `pdf-verify-mcp`, `pdf-publish` (outbound delivery) requires `pdf-writer-mcp`, and `pdf-read` (reading pipeline) requires `pdf-reader-mcp` (**v0.15.1+ recommended**), as prerequisite MCPs (all are already in the marketplace). The three Skills cover intake, delivery and reading, so install whichever you need together with its required MCP.
 
