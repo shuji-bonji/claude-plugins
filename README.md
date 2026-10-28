@@ -87,8 +87,8 @@ graph LR
 | [ifc-core-mcp](https://github.com/shuji-bonji/ifc-core-mcp)                             | MCP                 | domain-specific | v0.3.0  | `shuji-bonji/ifc-core-mcp`               |
 | [rxjs-mcp](https://github.com/shuji-bonji/rxjs-mcp-server)                              | MCP                 | domain-specific | v0.5.3  | `shuji-bonji/rxjs-mcp-server`            |
 | [s1000d-brex-mcp](https://github.com/shuji-bonji/s1000d-brex-mcp)                      | MCP                 | s1000d          | v0.4.0  | `shuji-bonji/s1000d-brex-mcp`            |
-| [s1000d-verify-mcp](https://github.com/shuji-bonji/s1000d-verify-mcp)                  | MCP                 | s1000d          | v0.5.0  | `shuji-bonji/s1000d-verify-mcp`          |
-| [s1000d-reader-mcp](https://github.com/shuji-bonji/s1000d-reader-mcp)                  | MCP                 | s1000d          | v0.5.0  | `shuji-bonji/s1000d-reader-mcp`          |
+| [s1000d-verify-mcp](https://github.com/shuji-bonji/s1000d-verify-mcp)                  | MCP                 | s1000d          | v0.6.0  | `shuji-bonji/s1000d-verify-mcp`          |
+| [s1000d-reader-mcp](https://github.com/shuji-bonji/s1000d-reader-mcp)                  | MCP                 | s1000d          | v0.6.0  | `shuji-bonji/s1000d-reader-mcp`          |
 
 > `pdf-trust` (acceptance audit) requires `pdf-verify-mcp`, `pdf-publish` (outbound delivery) requires `pdf-writer-mcp`, and `pdf-read` (reading pipeline) requires `pdf-reader-mcp` (**v0.15.1+ recommended**), as prerequisite MCPs (all are already in the marketplace). The three Skills cover intake, delivery and reading, so install whichever you need together with its required MCP.
 

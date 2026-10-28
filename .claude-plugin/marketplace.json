@@ -679,7 +679,7 @@
         "source": "github",
         "repo": "shuji-bonji/s1000d-verify-mcp"
       },
-      "version": "0.5.0",
+      "version": "0.6.0",
       "description": "S1000D® のデータモジュールを「どこまで確認済みか」根拠付きで知るための MCP server（5 tools）。利用者が入手した公式 XSD による検証、BREX（Business Rules Exchange）の連鎖への照合、参照（dmRef・pmRef・ICN・internalRef・applicRefId）の解決の 3 つを行い、1 つの検証状態（verification）にまとめて返す（verify_data_module / validate_schema / check_references / verify_csdb / list_schemas）。S1000D への準拠の判定、BREX ルールの説明（s1000d-brex-mcp）、適用性の判定（s1000d-reader-mcp）はしない。仕様書・XSD・既定 BREX は同梱していないので、s1000d.org から入手した配布物（XML Schema Package の zip も展開しておく）の展開先を環境変数 S1000D_SPEC_DIR で、CSDB を S1000D_CSDB_DIR で指定してから使う。ASD とは無関係の個人プロジェクト。",
       "category": "s1000d",
       "keywords": [
@@ -708,7 +708,7 @@
         "source": "github",
         "repo": "shuji-bonji/s1000d-reader-mcp"
       },
-      "version": "0.5.0",
+      "version": "0.6.0",
       "description": "S1000D® のデータモジュールとパブリケーションモジュールを、LLM が XML ではなく構造として読むための MCP server（6 tools）。見出しの階層・番号付きの手順・警告・図（ICN）・表・参照先の題名を保ったまま返し（read_data_module / read_publication_module）、CSDB の一覧と参照の解決（list_data_modules / resolve_reference）、適用性の語彙（describe_applicability）、ICN メタデータ（read_icn_metadata）を提供する。どの製品に当てはまるか（適用性）はサーバーが判定して結果だけを渡し、すべての応答に検証状態（verification）が付く。要約・翻訳・S1000D への準拠の判定はしない。XSD 検証を行うには、s1000d.org から入手した配布物の展開先を環境変数 S1000D_SPEC_DIR で、CSDB を S1000D_CSDB_DIR で指定してから使う。ASD とは無関係の個人プロジェクト。",
       "category": "s1000d",
       "keywords": [
