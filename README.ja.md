@@ -90,7 +90,7 @@ graph LR
 | [s1000d-brex-mcp](https://github.com/shuji-bonji/s1000d-brex-mcp)                      | MCP                 | s1000d          | v0.4.0  | `shuji-bonji/s1000d-brex-mcp`            |
 | [s1000d-verify-mcp](https://github.com/shuji-bonji/s1000d-verify-mcp)                  | MCP                 | s1000d          | v0.6.0  | `shuji-bonji/s1000d-verify-mcp`          |
 | [s1000d-reader-mcp](https://github.com/shuji-bonji/s1000d-reader-mcp)                  | MCP                 | s1000d          | v0.7.0  | `shuji-bonji/s1000d-reader-mcp`          |
-| [s1000d-writer-mcp](https://github.com/shuji-bonji/s1000d-writer-mcp)                  | MCP                 | s1000d          | v0.1.0  | `shuji-bonji/s1000d-writer-mcp`          |
+| [s1000d-writer-mcp](https://github.com/shuji-bonji/s1000d-writer-mcp)                  | MCP                 | s1000d          | v0.1.1  | `shuji-bonji/s1000d-writer-mcp`          |
 
 > `pdf-trust`（受入監査）は `pdf-verify-mcp` を、`pdf-publish`（送り出し）は `pdf-writer-mcp` を、`pdf-read`（読み取り）は `pdf-reader-mcp`（**v0.15.1+ 推奨**）を必須の前提 MCP とします（いずれも marketplace 収録済み）。受入・納品・読み取りを分担する 3 つの Skill なので、用途に応じて必要な MCP と一緒に install してください。
 
