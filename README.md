@@ -92,13 +92,13 @@ graph LR
 | [ifc-core-mcp](https://github.com/shuji-bonji/ifc-core-mcp)                             | MCP                 | domain-specific | v0.3.0  | `shuji-bonji/ifc-core-mcp`               |
 | [rxjs-mcp](https://github.com/shuji-bonji/rxjs-mcp-server)                              | MCP                 | domain-specific | v0.5.3  | `shuji-bonji/rxjs-mcp-server`            |
 | [s1000d-brex-mcp](https://github.com/shuji-bonji/s1000d-brex-mcp)                      | MCP                 | s1000d          | v0.4.0  | `shuji-bonji/s1000d-brex-mcp`            |
-| [s1000d-verify-mcp](https://github.com/shuji-bonji/s1000d-verify-mcp)                  | MCP                 | s1000d          | v0.6.0  | `shuji-bonji/s1000d-verify-mcp`          |
-| [s1000d-reader-mcp](https://github.com/shuji-bonji/s1000d-reader-mcp)                  | MCP                 | s1000d          | v0.7.0  | `shuji-bonji/s1000d-reader-mcp`          |
-| [s1000d-writer-mcp](https://github.com/shuji-bonji/s1000d-writer-mcp)                  | MCP                 | s1000d          | v0.1.1  | `shuji-bonji/s1000d-writer-mcp`          |
-| [experience-to-s1000d](https://github.com/shuji-bonji/experience-to-s1000d-skill)      | Skill               | s1000d          | v0.1.0  | `shuji-bonji/experience-to-s1000d-skill` |
-| [s1000d-publish](https://github.com/shuji-bonji/s1000d-publish-skill)                  | Skill               | s1000d          | v0.1.0  | `shuji-bonji/s1000d-publish-skill`       |
-| [s1000d-review](https://github.com/shuji-bonji/s1000d-review-skill)                    | Skill               | s1000d          | v0.1.0  | `shuji-bonji/s1000d-review-skill`        |
-| [s1000d-translate](https://github.com/shuji-bonji/s1000d-translate-skill)              | Skill               | s1000d          | v0.1.0  | `shuji-bonji/s1000d-translate-skill`     |
+| [s1000d-verify-mcp](https://github.com/shuji-bonji/s1000d-verify-mcp)                  | MCP                 | s1000d          | v0.6.1  | `shuji-bonji/s1000d-verify-mcp`          |
+| [s1000d-reader-mcp](https://github.com/shuji-bonji/s1000d-reader-mcp)                  | MCP                 | s1000d          | v0.7.1  | `shuji-bonji/s1000d-reader-mcp`          |
+| [s1000d-writer-mcp](https://github.com/shuji-bonji/s1000d-writer-mcp)                  | MCP                 | s1000d          | v0.1.2  | `shuji-bonji/s1000d-writer-mcp`          |
+| [experience-to-s1000d](https://github.com/shuji-bonji/experience-to-s1000d-skill)      | Skill               | s1000d          | v0.1.1  | `shuji-bonji/experience-to-s1000d-skill` |
+| [s1000d-publish](https://github.com/shuji-bonji/s1000d-publish-skill)                  | Skill               | s1000d          | v0.1.1  | `shuji-bonji/s1000d-publish-skill`       |
+| [s1000d-review](https://github.com/shuji-bonji/s1000d-review-skill)                    | Skill               | s1000d          | v0.1.1  | `shuji-bonji/s1000d-review-skill`        |
+| [s1000d-translate](https://github.com/shuji-bonji/s1000d-translate-skill)              | Skill               | s1000d          | v0.1.1  | `shuji-bonji/s1000d-translate-skill`     |
 
 > `pdf-trust` (acceptance audit) requires `pdf-verify-mcp`, `pdf-publish` (outbound delivery) requires `pdf-writer-mcp`, and `pdf-read` (reading pipeline) requires `pdf-reader-mcp` (**v0.15.1+ recommended**), as prerequisite MCPs (all are already in the marketplace). The three Skills cover intake, delivery and reading, so install whichever you need together with its required MCP.
 
