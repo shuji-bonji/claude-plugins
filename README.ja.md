@@ -96,7 +96,7 @@ graph LR
 | [s1000d-reader-mcp](https://github.com/shuji-bonji/s1000d-reader-mcp)                  | MCP                 | s1000d          | v0.8.0  | `shuji-bonji/s1000d-reader-mcp`          |
 | [s1000d-writer-mcp](https://github.com/shuji-bonji/s1000d-writer-mcp)                  | MCP                 | s1000d          | v0.2.0  | `shuji-bonji/s1000d-writer-mcp`          |
 | [experience-to-s1000d](https://github.com/shuji-bonji/experience-to-s1000d-skill)      | Skill               | s1000d          | v0.1.1  | `shuji-bonji/experience-to-s1000d-skill` |
-| [s1000d-publish](https://github.com/shuji-bonji/s1000d-publish-skill)                  | Skill               | s1000d          | v0.1.1  | `shuji-bonji/s1000d-publish-skill`       |
+| [s1000d-publish](https://github.com/shuji-bonji/s1000d-publish-skill)                  | Skill               | s1000d          | v0.1.2  | `shuji-bonji/s1000d-publish-skill`       |
 | [s1000d-review](https://github.com/shuji-bonji/s1000d-review-skill)                    | Skill               | s1000d          | v0.1.1  | `shuji-bonji/s1000d-review-skill`        |
 | [s1000d-translate](https://github.com/shuji-bonji/s1000d-translate-skill)              | Skill               | s1000d          | v0.1.1  | `shuji-bonji/s1000d-translate-skill`     |
 
