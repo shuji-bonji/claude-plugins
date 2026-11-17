@@ -792,7 +792,7 @@
         "source": "github",
         "repo": "shuji-bonji/s1000d-publish-skill"
       },
-      "version": "0.3.1",
+      "version": "0.3.2",
       "dependencies": [
         "s1000d-writer-mcp",
         "s1000d-verify-mcp"
