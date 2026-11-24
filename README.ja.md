@@ -92,7 +92,7 @@ graph LR
 | [ifc-core-mcp](https://github.com/shuji-bonji/ifc-core-mcp)                             | MCP                 | domain-specific | v0.3.0  | `shuji-bonji/ifc-core-mcp`               |
 | [rxjs-mcp](https://github.com/shuji-bonji/rxjs-mcp-server)                              | MCP                 | domain-specific | v0.5.3  | `shuji-bonji/rxjs-mcp-server`            |
 | [s1000d-brex-mcp](https://github.com/shuji-bonji/s1000d-brex-mcp)                      | MCP                 | s1000d          | v0.9.0  | `shuji-bonji/s1000d-brex-mcp`            |
-| [s1000d-verify-mcp](https://github.com/shuji-bonji/s1000d-verify-mcp)                  | MCP                 | s1000d          | v0.10.0  | `shuji-bonji/s1000d-verify-mcp`          |
+| [s1000d-verify-mcp](https://github.com/shuji-bonji/s1000d-verify-mcp)                  | MCP                 | s1000d          | v0.11.0  | `shuji-bonji/s1000d-verify-mcp`          |
 | [s1000d-reader-mcp](https://github.com/shuji-bonji/s1000d-reader-mcp)                  | MCP                 | s1000d          | v0.16.0  | `shuji-bonji/s1000d-reader-mcp`          |
 | [s1000d-writer-mcp](https://github.com/shuji-bonji/s1000d-writer-mcp)                  | MCP                 | s1000d          | v0.9.0  | `shuji-bonji/s1000d-writer-mcp`          |
 | [experience-to-s1000d](https://github.com/shuji-bonji/experience-to-s1000d-skill)      | Skill               | s1000d          | v0.1.4  | `shuji-bonji/experience-to-s1000d-skill` |
