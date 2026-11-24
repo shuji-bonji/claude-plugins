@@ -763,7 +763,7 @@
         "source": "github",
         "repo": "shuji-bonji/experience-to-s1000d-skill"
       },
-      "version": "0.1.4",
+      "version": "0.1.5",
       "dependencies": [
         "s1000d-writer-mcp",
         "s1000d-verify-mcp"
